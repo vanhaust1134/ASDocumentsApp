@@ -43,8 +43,17 @@
           "ASDocument.ApprovalByLevel": {
             "tableName": "0ebe0426-a4f4-411a-bb30-d2413a523ddd"
           },
+          "ASDocument.Company": {
+            "tableName": "63f30826-6304-409f-9953-a1f2c89038d9"
+          },
+          "ASDocument.Division": {
+            "tableName": "06306df7-1a6f-4921-b132-7fe219e7a18a"
+          },
           "ASDocument.DocumentApproveRequest": {
             "tableName": "fd97bafb-3753-4936-a58f-d67d0d8c189c"
+          },
+          "ASDocument.DocumentRequest": {
+            "tableName": "e2f50056-3432-41af-a287-527ec86452ef"
           },
           "ASDocument.Level": {
             "tableName": "dfddfeee-df06-4c1f-9514-a3426cde9e57"
@@ -80,7 +89,10 @@
       "ASDocument.ApprovalByLevel",
       "ASDocument.Users_Roles",
       "ASDocument.Role",
-      "ASTakeLeave.Users"
+      "ASTakeLeave.Users",
+      "ASDocument.Company",
+      "ASDocument.Division",
+      "ASDocument.DocumentRequest"
     ],
     "dependencies": {},
     "dependents": [],
