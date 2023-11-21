@@ -513,7 +513,8 @@
                     LayoutMinWidth: =320
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |-
-                        =UpdateContext({locEditMSD:true})
+                        =UpdateContext({locEditMSD:true});
+                        UpdateContext({locMSDByLevel:ThisItem.ID})
                     TemplateSize: =45
                     ZIndex: =3
 
@@ -528,7 +529,7 @@
                     Label8_4 As label:
                         Align: =Align.Center
                         OnSelect: =Select(Parent)
-                        Text: =ThisItem.name
+                        Text: =LookUp(gblColAllUser,userID = ThisItem.userID).fullName
                         Width: =214
                         Wrap: =false
                         X: =184
@@ -1078,7 +1079,7 @@
             OnSelect: |-
                 =/*ASSignedDocument.Run(1,TextInput2.Text,{file:{contentBytes:First(DataCardValue1_1.Attachments).Value,name:"File ngay phep-" & Now()&".xlsx"},file_1:{contentBytes:PenInput1.Image,name:"Signature-" & Now()&".xlsx"}});*/
                 
-                Patch('ASDocument.ApprovalByLevel',LookUp('ASDocument.ApprovalByLevel',ID = This),{userID:1});
+                Patch('ASDocument.ApprovalByLevel',LookUp('ASDocument.ApprovalByLevel',ID = locMSDByLevel),{userID:cbo_ds_ApprovalMSD.Selected.ID});
                 
                 Notify("Thêm thành công",NotificationType.Success,1500);
                 UpdateContext({locEditMSD:false});
@@ -1125,9 +1126,11 @@
 
         cbo_ds_ApprovalMSD As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
+            DisplayFields: =["email"]
             InputTextPlaceholder: ="Tìm người dùng"
-            Items: =ComboBoxSample
-            SearchItems: =Search(ComboBoxSample,cbo_ds_ApprovalMSD.SearchText,"Value1")
+            Items: =gblColAllUser
+            SearchFields: =["email"]
+            SearchItems: =Search(gblColAllUser,cbo_ds_ApprovalMSD.SearchText,"email")
             SelectMultiple: =false
             X: =552
             Y: =331

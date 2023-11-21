@@ -951,7 +951,9 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Notify("Thêm thành công",NotificationType.Success,1500);
+                =//Concat(Split(User().FullName, " "), Left(Result, 1));
+                
+                Notify("Thêm thành công",NotificationType.Success,1500);
                 UpdateContext({locCreateDP:false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
