@@ -1,0 +1,32 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |-
+        =//Phân quyền màn hình
+        If(
+            LookUp(
+                'ASDocument.Users_Roles',
+                userID = LookUp(
+                    'ASTakeLeave.Users',
+                    email = User().Email And active = 1
+                ).userID And active = 1
+            ).roleID = 6,
+            Navigate('User Screen'),
+            LookUp(
+                'ASDocument.Users_Roles',
+                userID = LookUp(
+                    'ASTakeLeave.Users',
+                    email = User().Email And active = 1
+                ).userID And active = 1
+            ).roleID = 1,
+            Navigate('Home User Screen'),
+            Navigate('Home User Screen')
+        )
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

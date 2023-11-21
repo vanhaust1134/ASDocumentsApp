@@ -1,0 +1,89 @@
+{
+  "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
+  },
+  "cf341574-441c-4f2a-a3b6-ead8c294cdc6": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://bhktechcorp.sharepoint.com/sites/daotran": {
+        "dataSources": {
+          "test": {
+            "tableName": "8cd41c9f-8f4e-4454-a343-6ba85a3ae934"
+          }
+        }
+      },
+      "https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp": {
+        "dataSources": {
+          "ASDocument.ApprovalByLevel": {
+            "tableName": "0ebe0426-a4f4-411a-bb30-d2413a523ddd"
+          },
+          "ASDocument.DocumentApproveRequest": {
+            "tableName": "fd97bafb-3753-4936-a58f-d67d0d8c189c"
+          },
+          "ASDocument.Level": {
+            "tableName": "dfddfeee-df06-4c1f-9514-a3426cde9e57"
+          },
+          "ASDocument.Role": {
+            "tableName": "8b87dd36-89e5-4da0-9345-c8a8758aea63"
+          },
+          "ASDocument.SignedDocument": {
+            "tableName": "056b1256-47f1-4ceb-a3a5-71985d09059a"
+          },
+          "ASDocument.Type": {
+            "tableName": "0414c734-9b4b-4bd8-a83c-fa1491ae574b"
+          },
+          "ASDocument.Users_Roles": {
+            "tableName": "ceb9b910-2dfd-4945-85d8-12a50931dd85"
+          },
+          "ASTakeLeave.Users": {
+            "tableName": "17931dc0-814b-41d6-913f-223bec9116ab"
+          },
+          "Documents": {
+            "tableName": "6e28c9d1-0b8b-4770-bef7-b5a7a4da1451"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "test",
+      "ASDocument.Level",
+      "ASDocument.Type",
+      "Documents",
+      "ASDocument.DocumentApproveRequest",
+      "ASDocument.SignedDocument",
+      "ASDocument.ApprovalByLevel",
+      "ASDocument.Users_Roles",
+      "ASDocument.Role",
+      "ASTakeLeave.Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+  }
+}
