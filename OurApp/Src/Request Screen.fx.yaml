@@ -813,7 +813,7 @@
 
                 btn_Select_4 As button:
                     BorderThickness: =0
-                    Fill: =If(ThisItem.ID = 0,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
+                    Fill: =If(ThisItem.ID = gblMenuFunctionSelected,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
                     Height: =50
                     HoverFill: =ColorFade(RGBA(149, 149, 149,0.4), -20%)
                     OnSelect: |-

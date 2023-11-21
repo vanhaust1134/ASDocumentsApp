@@ -128,6 +128,7 @@
                     Image: =ThisItem.Image
                     OnSelect: =Select(Parent)
                     Width: =40
+                    X: =15
                     Y: =10
                     ZIndex: =1
 
@@ -138,12 +139,13 @@
                     OnSelect: =Select(Parent)
                     Text: =ThisItem.Title
                     Width: =117
+                    X: =60
                     Y: =10
                     ZIndex: =2
 
                 btn_Select_6 As button:
                     BorderThickness: =0
-                    Fill: =If(ThisItem.ID = 1,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
+                    Fill: =If(ThisItem.ID = gblMenuFunctionSelected,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
                     Height: =50
                     HoverFill: =ColorFade(RGBA(149, 149, 149,0.4), -20%)
                     OnSelect: |-
@@ -155,7 +157,8 @@
                     RadiusTopLeft: =0
                     RadiusTopRight: =0
                     Text: =""
-                    Width: =186
+                    Width: =195
+                    X: =-5
                     ZIndex: =3
 
             btn_Exit_5 As button:
@@ -635,7 +638,7 @@
                             BorderStyle: =BorderStyle.None
                             Fill: =RGBA(73, 113, 215, 1)
                             Height: =25
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Adjustment Screen'))
+                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
                             RadiusBottomLeft: =100
                             RadiusBottomRight: =100
                             RadiusTopLeft: =100
@@ -652,7 +655,7 @@
                             FillPortions: =2.5
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Adjustment Screen'))
+                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
                             Text: =ThisItem.Description
                             Width: =300
                             Wrap: =false
@@ -663,7 +666,7 @@
                             FillPortions: =0.5
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Adjustment Screen'))
+                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
                             Text: =ThisItem.companyName
                             Wrap: =false
                             ZIndex: =3
@@ -672,7 +675,7 @@
                             AlignInContainer: =AlignInContainer.Center
                             FillPortions: =1
                             LayoutMinWidth: =0
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Adjustment Screen'))
+                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
                             Text: =ThisItem.Modified
                             Wrap: =false
                             ZIndex: =4

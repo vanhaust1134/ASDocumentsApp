@@ -1,7 +1,11 @@
 "'Document Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =UpdateContext({locSortdocumentLevelID:1});
+        =If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Collect(gblColDocumentLevel,Table({name:"Tất cả"})));
+        
+        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,Collect(gblColDocumentType,Table({name:"Tất cả"})));
+        
+        UpdateContext({locSortdocumentLevelID:1});
         Set(gblMenuFunctionSelected,1);
 
     btn_ds_BackGroundScreen As button:
@@ -116,7 +120,7 @@
 
                 btn_Select_9 As button:
                     BorderThickness: =0
-                    Fill: =If(ThisItem.ID = 3,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
+                    Fill: =If(ThisItem.ID = gblMenuFunctionSelected,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
                     Height: =50
                     HoverFill: =ColorFade(RGBA(149, 149, 149,0.4), -20%)
                     OnSelect: |-
@@ -213,7 +217,7 @@
             BorderColor: =RGBA(73, 113, 215, 1)
             BorderThickness: =1
             ChevronBackground: =RGBA(73, 113, 215, 1)
-            Items: =gblColDocumentType
+            Items: =Filter(gblColDocumentType,levelID = drp_ds_Levels.Selected.levelID)
             Width: =200
             X: =104
             Y: =145

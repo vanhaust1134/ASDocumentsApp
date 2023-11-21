@@ -119,7 +119,7 @@
 
                 btn_Select_10 As button:
                     BorderThickness: =0
-                    Fill: =If(ThisItem.ID = 3,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
+                    Fill: =If(ThisItem.ID = gblMenuFunctionSelected,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
                     Height: =50
                     HoverFill: =ColorFade(RGBA(149, 149, 149,0.4), -20%)
                     OnSelect: |-
@@ -337,8 +337,7 @@
 
                 gal_ds_DocumentLevel_1 As gallery.variableTemplateHeightGallery:
                     DelayItemLoading: =true
-                    Items: |-
-                        =Table({ID:1,name:"AsiaShine",acronym:"AS"},{ID:2,name:"Sapharchems",acronym:"SPC"})
+                    Items: =gblColCompany
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =100
@@ -350,7 +349,7 @@
                         Align: =Align.Center
                         FontWeight: =FontWeight.Semibold
                         OnSelect: =Select(Parent)
-                        Text: =ThisItem.name & " (" & ThisItem.acronym & ")" 
+                        Text: =ThisItem.name & " (" & ThisItem.shortName & ")" 
                         Width: =245
                         Wrap: =false
                         X: =85
@@ -358,9 +357,8 @@
 
                     gal_ds_DocumentType_1 As gallery.galleryVertical:
                         DelayItemLoading: =true
-                        Height: =125
-                        Items: |-
-                            =Table({ID:1,name:"Phòng kinh tế",acronym:"PKT"},{ID:2,name:"Phòng chiến lược",acronym:"PCL"})
+                        Height: =62 * CountRows(Filter(gblColDivision,companyID = ThisItem.ID)) 
+                        Items: =Filter(gblColDivision,companyID = ThisItem.ID)
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         ShowScrollbar: =false
@@ -390,7 +388,7 @@
                                 AlignInContainer: =AlignInContainer.Center
                                 FillPortions: =1.5
                                 PaddingLeft: =130
-                                Text: =ThisItem.name & " (" & ThisItem.acronym & ")" 
+                                Text: =ThisItem.name & " (" & ThisItem.shortName & ")" 
                                 Wrap: =false
                                 ZIndex: =2
 
@@ -416,7 +414,8 @@
                         ImagePosition: =ImagePosition.Center
                         OnSelect: |-
                             =UpdateContext({locUpdateDP:true});
-                            ClearCollect(colListDivisionEdit,AddColumns(Filter(gblColDivision,companyID = ThisItem.ID),"status",1))
+                            UpdateContext({locInfoCompany:ThisItem});
+                            ClearCollect(colListDivisionEdit,AddColumns(Filter(gblColDivision,companyID = ThisItem.ID),"status",1));
                         Width: =44
                         X: =967
                         ZIndex: =4
@@ -748,7 +747,13 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Notify("Sửa thành công",NotificationType.Success,1500);
+                =Patch('ASDocument.Company',LookUp('ASDocument.Company',ID = locInfoCompany.ID),{active:0});
+                
+                Set(gblCompanyID,Patch('ASDocument.Company',Defaults('ASDocument.Company'),{name:txt_ds_DocuementLevelName_1.Text,shortName:Upper(txt_ds_DocuementLevelName_4.Text),active:1}));
+                
+                'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(colListDivisionEdit,JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes),1);
+                
+                Notify("Sửa thành công",NotificationType.Success,1500);
                 UpdateContext({locUpdateDP:false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
@@ -785,7 +790,7 @@
         txt_ds_DocuementLevelName_1 As text:
             BorderColor: =RGBA(116, 116, 116, 1)
             BorderThickness: =1
-            Default: ="AsiaShine"
+            Default: =locInfoCompany.name
             HintText: =""
             Width: =394
             X: =548
@@ -797,7 +802,7 @@
             FontWeight: =FontWeight.Semibold
             Text: ="Đơn vị"
             X: =387
-            Y: =267
+            Y: =337
             ZIndex: =17
 
         btn_ds_AddItemDocumentType_1 As button:
@@ -806,7 +811,7 @@
             Fill: =RGBA(139, 154, 159, 1)
             Height: =28
             OnSelect: |-
-                =Collect(colListDocumentType,Table({ID:Max(colListDocumentType,ID) + 1,name:"",status:3}))
+                =Collect(colListDivisionEdit,Table({ID:Max(colListDocumentType,ID) + 1,name:"",shortName:"",status:3}))
             RadiusBottomLeft: =5
             RadiusBottomRight: =5
             RadiusTopLeft: =5
@@ -814,12 +819,12 @@
             Text: ="Thêm"
             Width: =75
             X: =546
-            Y: =274
+            Y: =344
             ZIndex: =18
 
         gal_ds_ListUpdateDocument_1 As gallery.galleryVertical:
             DelayItemLoading: =true
-            Height: =280
+            Height: =215
             Items: =colListDivisionEdit
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -827,11 +832,11 @@
             TemplateSize: =65
             Width: =578
             X: =390
-            Y: =307
+            Y: =372
             ZIndex: =20
 
             ctn_ds_ListUpdateDocument_1 As groupContainer.horizontalAutoLayoutContainer:
-                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderColor: =If(ThisItem.status = 1,RGBA(0, 0, 0, 0),ThisItem.status = 2,Color.Red,ThisItem.status = 3,Color.Blue)
                 BorderThickness: =1
                 Height: =65
                 LayoutGap: =5
@@ -861,7 +866,7 @@
                     HintText: ="Nhập tên đơn vị"
                     OnChange: |-
                         =//Cập nhật thay đổi trường Phòng trên danh sách phòng
-                        Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text})
+                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text,shortName:Upper(Concat(Split(txt_ds_DocumentType_1.Text, " "), Left(Value, 1)))})
                     OnSelect: =
                     Width: =450
                     X: =44
@@ -871,15 +876,31 @@
                 img_ds_DeleteDocumentTypeItem_1 As image:
                     AlignInContainer: =AlignInContainer.Center
                     Height: =40
-                    Image: |-
-                        =//If(ThisItem.status = 2,Undo,Delete)
-                        Delete
+                    Image: =If(ThisItem.status = 2,Undo,Delete)
                     OnSelect: |-
-                        =If(ThisItem.status <> 3,If(ThisItem.status = 1,Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{status:2}),ThisItem.status = 2,Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{status:1})),RemoveIf(colListDocumentType,ID = ThisItem.ID))
+                        =If(ThisItem.status <> 3,If(ThisItem.status = 1,Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{status:2}),ThisItem.status = 2,Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{status:1})),RemoveIf(colListDivisionEdit,ID = ThisItem.ID))
                     Width: =50
                     X: =513
                     Y: =4
                     ZIndex: =4
+
+        lbl_ds_DepartmentLevel_4 As label:
+            Align: =Align.Right
+            FontWeight: =FontWeight.Semibold
+            Text: ="Tên viết tắt"
+            X: =390
+            Y: =278
+            ZIndex: =21
+
+        txt_ds_DocuementLevelName_4 As text:
+            BorderColor: =RGBA(116, 116, 116, 1)
+            BorderThickness: =1
+            Default: =locInfoCompany.shortName
+            HintText: =""
+            Width: =394
+            X: =551
+            Y: =278
+            ZIndex: =22
 
     ctn_ds_UpdateDocument_2 As groupContainer.manualLayoutContainer:
         Fill: =RGBA(0, 0, 0, 0.5)
@@ -958,12 +979,18 @@
             OnSelect: |-
                 =//Concat(Split(User().FullName, " "), Left(Result, 1));
                 
-                Set(gblCompanyID,Patch('ASDocument.Company',Defaults('ASDocument.Company'),{name:txt_ds_DocuementLevelName_2.Text,shortName:Upper(Concat(Split(txt_ds_DocuementLevelName_2.Text, " "), Left(Value, 1)))}));
+                Set(gblCompanyID,Patch('ASDocument.Company',Defaults('ASDocument.Company'),{name:txt_ds_DocuementLevelName_2.Text,shortName:Upper(txt_ds_DocuementLevelName_3.Text),active:1}));
                 
                 'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(colListDivision,JSONFormat.IgnoreBinaryData),1);
                 
                 Clear(colListDivision);
                 Reset(txt_ds_DocuementLevelName_2);
+                
+                //Lấy danh sách công ty
+                ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));
+                
+                //Lấy danh sách đơn vị
+                ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));
                 
                 Notify("Thêm thành công",NotificationType.Success,1500);
                 UpdateContext({locCreateDP:false})
@@ -1014,7 +1041,7 @@
             FontWeight: =FontWeight.Semibold
             Text: ="Đơn vị"
             X: =387
-            Y: =267
+            Y: =323
             ZIndex: =17
 
         btn_ds_AddItemDocumentType_2 As button:
@@ -1031,12 +1058,12 @@
             Text: ="Thêm"
             Width: =75
             X: =546
-            Y: =274
+            Y: =330
             ZIndex: =18
 
         gal_ds_ListUpdateDocument_2 As gallery.galleryVertical:
             DelayItemLoading: =true
-            Height: =280
+            Height: =219
             Items: =colListDivision
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -1044,7 +1071,7 @@
             TemplateSize: =65
             Width: =578
             X: =390
-            Y: =307
+            Y: =366
             ZIndex: =20
 
             ctn_ds_ListUpdateDocument_2 As groupContainer.horizontalAutoLayoutContainer:
@@ -1097,10 +1124,21 @@
                     Y: =4
                     ZIndex: =4
 
-    Button2 As button:
-        OnSelect: ='ASDocument.ManageDivision'.Run(1,JSON(colListDivision,JSONFormat.IgnoreBinaryData),1);
-        Text: ="Button"
-        X: =18
-        Y: =227
-        ZIndex: =12
+        lbl_ds_DepartmentLevel_3 As label:
+            Align: =Align.Right
+            FontWeight: =FontWeight.Semibold
+            Text: ="Tên viết tắt"
+            X: =387
+            Y: =271
+            ZIndex: =21
+
+        txt_ds_DocuementLevelName_3 As text:
+            BorderColor: =RGBA(116, 116, 116, 1)
+            BorderThickness: =1
+            Default: =""
+            HintText: ="Nhập tên viết tắt"
+            Width: =394
+            X: =548
+            Y: =271
+            ZIndex: =22
 
