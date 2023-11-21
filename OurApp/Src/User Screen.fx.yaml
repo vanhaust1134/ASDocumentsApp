@@ -317,7 +317,7 @@
                     lb_us_UserName As label:
                         AlignInContainer: =AlignInContainer.Center
                         Color: =RGBA(47, 47, 47, 1)
-                        FillPortions: =1
+                        FillPortions: =1.5
                         FontWeight: =FontWeight.Bold
                         Text: ="Tên nhân viên"
                         ZIndex: =1
@@ -396,12 +396,12 @@
 
                         lbl_us_ItemUserName As label:
                             Color: =RGBA(114, 114, 114, 1)
-                            FillPortions: =1
+                            FillPortions: =1.5
                             FontWeight: =FontWeight.Bold
                             LayoutMinHeight: =30
                             OnSelect: |-
                                 =UpdateContext({locDetailUser:true})
-                            Text: =ThisItem.Name
+                            Text: =ThisItem.fullName
                             Wrap: =false
                             ZIndex: =1
 
@@ -412,7 +412,7 @@
                             LayoutMinHeight: =30
                             OnSelect: |-
                                 =UpdateContext({locDetailUser:true})
-                            Text: =ThisItem.Division
+                            Text: =ThisItem.jobTitle
                             Wrap: =false
                             ZIndex: =2
 
@@ -661,7 +661,7 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật trạng thái cho user cũ
-                Patch('ASDocument.Users_Roles',LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID),{active:0});
+                Patch('ASDocument.Users_Roles',LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID And roleID = locInfoUser.roleID And active = 1),{active:0});
                 
                 //Tạo mới vai trò cho user
                 Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_Users.Selected.userID,roleID:cbo_us_Roles.Selected.ID,active:1});
@@ -673,7 +673,7 @@
                 ClearCollect(
                         gblColAllUser,
                         AddColumns(
-                            ShowColumns('ASTakeLeave.Users', "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
+                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
                             "roleID", 
                             LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                         )
@@ -852,11 +852,12 @@
 
         ComboBox3 As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
-            DisplayFields: =["Value"]
+            DisplayFields: =["name"]
             InputTextPlaceholder: ="Chọn vai trò"
             IsSearchable: =false
-            Items: =["MSD"]
-            SearchFields: =["Value"]
+            Items: |-
+                =Table({ID:2,name:"Người soạn thảo"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
+            SearchFields: =["name"]
             SearchItems: =[]
             SelectMultiple: =false
             X: =525
@@ -1048,7 +1049,7 @@
                 ClearCollect(
                         gblColAllUser,
                         AddColumns(
-                            ShowColumns('ASTakeLeave.Users', "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
+                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
                             "roleID", 
                             LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                         )
