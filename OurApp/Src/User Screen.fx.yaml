@@ -1043,7 +1043,7 @@
                 Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_Users.Selected.userID,roleID:cbo_us_Roles.Selected.ID,active:1});
                 
                 //Tạo mới chữ ký
-                Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_Users.Selected.userID),Form1_3.Updates);
+                Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_Users.Selected.userID And active = 1),Form1_3.Updates);
                 
                 //Cập nhật lại bảng user
                 ClearCollect(
@@ -1100,7 +1100,7 @@
 
             Attachments_DataCard1_3 As typedDataCard.attachmentsEditCard:
                 BorderStyle: =BorderStyle.Solid
-                DataField: ="Attachments"
+                DataField: ="{Attachments}"
                 Default: =ThisItem.Attachments
                 DisplayMode: =DisplayMode.Edit
                 DisplayName: ="Ảnh chữ ký"

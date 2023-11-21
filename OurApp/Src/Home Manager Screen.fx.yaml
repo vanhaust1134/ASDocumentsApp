@@ -1,9 +1,17 @@
 "'Home Manager Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.Level',"status",0));
+        =//Lấy danh sách cấp
+        ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.Level',"status",0));
         Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = 1),{status:1});
+        //Lấy danh sách văn bản
         ClearCollect(gblColDocumentType,'ASDocument.Type');
+        
+        //Lấy danh sách công ty
+        ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));
+        
+        //Lấy danh sách đơn vị
+        ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));
         Set(gblMenuFunctionSelected,1);
         
         //Lấy tất cả user và role về

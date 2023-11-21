@@ -95,7 +95,37 @@
       "ASDocument.DocumentRequest"
     ],
     "dependencies": {},
-    "dependents": [],
+    "dependents": [
+      "ea8b33a5-1473-4199-9326-6712b7d1cac0"
+    ],
     "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+  },
+  "ea8b33a5-1473-4199-9326-6712b7d1cac0": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "92647bee-90ab-4690-9cc1-302a2af147c7"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "92647bee-90ab-4690-9cc1-302a2af147c7"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ASDocument.ManageDivision"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+    },
+    "dependents": [],
+    "id": "ea8b33a5-1473-4199-9326-6712b7d1cac0"
   }
 }
