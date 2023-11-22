@@ -28,6 +28,10 @@
                 )
             );
         
+        //Lấy danh sách user giám đốc khối
+        ClearCollect(colDivisionDirectorID,ShowColumns('ASTakeLeave.Division',"directorUserID"));
+        ClearCollect(gblColDivisionDirector,Filter(gblColAllUser,userID exactin (colDivisionDirectorID).directorUserID));
+        
         //Lấy user hiện tại
             Set(
                 gblRecUser,

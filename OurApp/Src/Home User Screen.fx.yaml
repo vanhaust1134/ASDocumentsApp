@@ -1,7 +1,9 @@
 "'Home User Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =//Nếu chưa có dữ liệu thì lấy về
+        =Set(gblMenuFunctionSelected,1);
+        
+        //Nếu chưa có dữ liệu thì lấy về
         If(IsBlank(locGetData),
         //Lấy danh sách cấp
         ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
@@ -15,7 +17,6 @@
         
         //Lấy danh sách đơn vị
         ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));
-        Set(gblMenuFunctionSelected,1);
         
         //Lấy tất cả user và role về
             //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
@@ -27,6 +28,10 @@
                     LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                 )
             );
+        
+        //Lấy danh sách user giám đốc khối
+        ClearCollect(colDivisionDirectorID,ShowColumns('ASTakeLeave.Division',"directorUserID"));
+        ClearCollect(gblColDivisionDirector,Filter(gblColAllUser,userID exactin (colDivisionDirectorID).directorUserID));
         
         //Lấy user hiện tại
             Set(
