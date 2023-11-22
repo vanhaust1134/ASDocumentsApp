@@ -1,7 +1,9 @@
 "'Home User Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =//Lấy danh sách cấp
+        =//Nếu chưa có dữ liệu thì lấy về
+        If(IsBlank(locGetData),
+        //Lấy danh sách cấp
         ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
         Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = 1),{status:1});
         
@@ -30,7 +32,10 @@
             Set(
                 gblRecUser,
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
-            );
+            ));
+            
+        //Đã lấy data
+        UpdateContext({locGetData:1});
 
     btn_hs_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None

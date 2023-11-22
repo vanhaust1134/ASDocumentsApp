@@ -1,10 +1,13 @@
 "'Home Manager Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =//Lấy danh sách cấp
+        =//Nếu chưa có dữ liệu thì lấy về
+        If(IsBlank(locGetData),
+        //Lấy danh sách cấp
         ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
         Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = 1),{status:1});
-        //Lấy danh sách văn bản
+        
+        //Lấy các loại văn bản
         ClearCollect(gblColDocumentType,'ASDocument.DocumentType');
         
         //Lấy danh sách công ty
@@ -25,10 +28,14 @@
                 )
             );
         
+        //Lấy user hiện tại
             Set(
                 gblRecUser,
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
-            );
+            ));
+        
+        //Đã lấy data
+        UpdateContext({locGetData:1});
 
     btn_hs_BackGroundScreen_3 As button:
         BorderStyle: =BorderStyle.None
@@ -272,7 +279,7 @@
                 LayoutMinWidth: =243
                 LoadingSpinner: =LoadingSpinner.Data
                 ShowScrollbar: =false
-                TemplateSize: =32
+                TemplateSize: =35
                 Width: =581
                 X: =290
                 Y: =225
@@ -285,11 +292,12 @@
                     Text: ="📁 " & ThisItem.name
                     Width: =209
                     Wrap: =false
+                    X: =24
                     ZIndex: =1
 
                 Gallery10_1 As gallery.galleryVertical:
                     DelayItemLoading: =true
-                    Height: =32
+                    Height: =35 * CountRows(Filter(gblColDocumentType,levelID = ThisItem.levelID))
                     Items: =Filter(gblColDocumentType,levelID = ThisItem.levelID)
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
@@ -299,6 +307,8 @@
                     TemplateSize: =36
                     Visible: =ThisItem.status = 1
                     Width: =198
+                    X: =35
+                    Y: =30
                     ZIndex: =2
 
                     Label10_3 As label:
@@ -334,6 +344,7 @@
                     OnSelect: |-
                         =If(ThisItem.status = 0,Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = ThisItem.levelID),{status:1}),Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = ThisItem.levelID),{status:0}))
                     Width: =14
+                    X: =5
                     Y: =5
                     ZIndex: =4
 
@@ -613,7 +624,7 @@
                     LoadingSpinner: =LoadingSpinner.Data
                     ShowScrollbar: =false
                     TemplateSize: =55
-                    Width: =630
+                    Width: =828
                     Y: =41
                     ZIndex: =4
 
@@ -630,7 +641,7 @@
                         PaddingLeft: =5
                         PaddingRight: =5
                         RadiusBottomLeft: =0
-                        Width: =620
+                        Width: =818
                         ZIndex: =1
 
                         Button4_1 As button:
@@ -716,7 +727,7 @@
                     Rectangle6_2 As rectangle:
                         Fill: =RGBA(40, 134, 222, 1)
                         Height: =2
-                        Width: =620
+                        Width: =818
                         Y: =53
                         ZIndex: =2
 

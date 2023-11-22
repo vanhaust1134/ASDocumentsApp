@@ -1,7 +1,8 @@
 "'User Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =Set(gblMenuFunctionSelected,1);
+        =//Nếu chưa có dữ liệu thì lấy về
+        If(IsBlank(locGetData),Set(gblMenuFunctionSelected,1);
         
         //Lấy tất cả user và role về
             //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
@@ -17,7 +18,10 @@
             Set(
                 gblRecUser,
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
-            );
+            ));
+        
+            //Đã lấy data
+        UpdateContext({locGetData:1});
 
     btn_us_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -719,7 +723,7 @@
             ZIndex: =8
 
         Form1_2 As form:
-            DataSource: =test
+            DataSource: ='ASTakeLeave.Users'
             DefaultMode: =FormMode.New
             Height: =244
             Width: =591
