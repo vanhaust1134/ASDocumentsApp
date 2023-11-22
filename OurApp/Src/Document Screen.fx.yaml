@@ -1,9 +1,13 @@
 "'Document Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Collect(gblColDocumentLevel,Table({name:"Tất cả"})));
+        =//Lấy danh sách cấp
+        Clear(gblColDocumentLevel);
+        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.Level',"status",0));Collect(gblColDocumentLevel,Table({name:"Tất cả"})));
         
-        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,Collect(gblColDocumentType,Table({name:"Tất cả"})));
+        //Lấy các loại văn bản
+        Clear(gblColDocumentType);
+        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,ClearCollect(gblColDocumentType,'ASDocument.Type');Collect(gblColDocumentType,Table({name:"Tất cả"})));
         
         UpdateContext({locSortdocumentLevelID:1});
         Set(gblMenuFunctionSelected,1);
@@ -217,7 +221,7 @@
             BorderColor: =RGBA(73, 113, 215, 1)
             BorderThickness: =1
             ChevronBackground: =RGBA(73, 113, 215, 1)
-            Items: =Filter(gblColDocumentType,levelID = drp_ds_Levels.Selected.levelID And name = "Tất cả")
+            Items: =Filter(gblColDocumentType,levelID = drp_ds_Levels.Selected.levelID Or name = "Tất cả")
             Width: =200
             X: =104
             Y: =145
@@ -321,7 +325,7 @@
 
                 gal_ds_DocumentLevel As gallery.variableTemplateHeightGallery:
                     DelayItemLoading: =true
-                    Items: =gblColDocumentLevel
+                    Items: =Filter(gblColDocumentLevel,name <> "Tất cả" And (ID = drp_ds_Levels.Selected.ID || If(IsBlank(drp_ds_Levels.Selected.ID),true,false)))
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =100
@@ -342,7 +346,7 @@
                     gal_ds_DocumentType As gallery.galleryVertical:
                         DelayItemLoading: =true
                         Height: =62 * CountRows(Filter(gblColDocumentType,levelID = ThisItem.levelID))
-                        Items: =Filter(gblColDocumentType,levelID = ThisItem.levelID)
+                        Items: =Filter(gblColDocumentType,levelID = ThisItem.levelID And (ID = drp_ds_Types.Selected.ID || If(IsBlank(drp_ds_Types.Selected.ID),true,false)))
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         ShowScrollbar: =false
@@ -372,6 +376,7 @@
                                 FillPortions: =2
                                 PaddingLeft: =85
                                 Text: =ThisItem.name
+                                Tooltip: =ThisItem.name
                                 Wrap: =false
                                 ZIndex: =2
 
@@ -637,6 +642,9 @@
                 RadiusTopRight: =5
                 Size: =13
                 Text: ="Đơn vị"
+                Visible: |-
+                    =//Kiểm tra nếu là admin thì hiển thị
+                    If(gblRecUser.roleID = 5,true,false)
                 Width: =110
                 X: =117
                 Y: =36

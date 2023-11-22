@@ -4764,19 +4764,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Levels_1.AccessibleLabel"
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Company.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Levels_1.AccessibleLabel",
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Company.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Levels_1"
+                "type": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Company"
               }
             }
           ],
@@ -4794,19 +4794,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Types_1.AccessibleLabel"
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Division.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Types_1.AccessibleLabel",
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Division.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Types_1"
+                "type": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Division"
               }
             }
           ],
@@ -7477,6 +7477,36 @@
                 "member": "OnVisible",
                 "module": "Home Manager Screen",
                 "type": "'Home Manager Screen'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-CollectDelegatableDataSource",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.OnVisible",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "Document Screen",
+                "type": "'Document Screen'"
               }
             }
           ],

@@ -535,6 +535,9 @@
                 RadiusTopRight: =5
                 Size: =13
                 Text: ="Đơn vị"
+                Visible: |-
+                    =//Kiểm tra nếu là admin thì hiển thị
+                    If(gblRecUser.roleID = 5,true,false)
                 Width: =104
                 X: =117
                 Y: =36

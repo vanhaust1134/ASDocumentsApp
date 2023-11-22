@@ -1,11 +1,12 @@
 "'Company Screen' As screen":
     Fill: =RGBA(224,224,224,1)
-    OnVisible: |-
+    OnVisible: |+
         =//Lấy danh sách công ty
-        ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));
+        If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));Collect(gblColCompany,Table({name:"Tất cả"})));
         
         //Lấy danh sách đơn vị
-        ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));
+        If(CountRows(Filter(gblColDivision,name = "Tất cả")) = 0,ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));Collect(gblColDivision,Table({name:"Tất cả"})));
+        
 
     btn_ds_BackGroundScreen_1 As button:
         BorderStyle: =BorderStyle.None
@@ -204,13 +205,12 @@
             Y: =145
             ZIndex: =3
 
-        drp_ds_Levels_1 As dropdown:
+        drp_ds_Company As dropdown:
             AlignInContainer: =AlignInContainer.Center
             BorderColor: =RGBA(73, 113, 215, 1)
             BorderThickness: =1
             ChevronBackground: =RGBA(73, 113, 215, 1)
-            Items: |-
-                =Table({ID:1,name:"AsiaShine"},{ID:2,name:"Sapharchems"})
+            Items: =gblColCompany
             Width: =200
             X: =590
             Y: =145
@@ -227,13 +227,12 @@
             Y: =145
             ZIndex: =5
 
-        drp_ds_Types_1 As dropdown:
+        drp_ds_Division As dropdown:
             AlignInContainer: =AlignInContainer.Center
             BorderColor: =RGBA(73, 113, 215, 1)
             BorderThickness: =1
             ChevronBackground: =RGBA(73, 113, 215, 1)
-            Items: |-
-                =Table({ID:1,name:"Phòng kinh tế"},{ID:2,name:"Phòng chiến lược"})
+            Items: =gblColDivision
             Width: =200
             X: =104
             Y: =145
@@ -337,7 +336,7 @@
 
                 gal_ds_DocumentLevel_1 As gallery.variableTemplateHeightGallery:
                     DelayItemLoading: =true
-                    Items: =gblColCompany
+                    Items: =Filter(gblColCompany,name <> "Tất cả" And (ID = drp_ds_Company.Selected.ID And If(IsBlank(drp_ds_Company.Selected.ID),true,false)))
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =100
@@ -358,7 +357,7 @@
                     gal_ds_DocumentType_1 As gallery.galleryVertical:
                         DelayItemLoading: =true
                         Height: =62 * CountRows(Filter(gblColDivision,companyID = ThisItem.ID)) 
-                        Items: =Filter(gblColDivision,companyID = ThisItem.ID)
+                        Items: =Filter(gblColDivision,companyID = ThisItem.ID And (ID = drp_ds_Division.Selected.ID And If(IsBlank(drp_ds_Division.Selected.ID),true,false)))
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         ShowScrollbar: =false
@@ -506,6 +505,9 @@
                 RadiusTopRight: =5
                 Size: =13
                 Text: ="Đơn vị"
+                Visible: |-
+                    =//Kiểm tra nếu là admin thì hiển thị
+                    If(gblRecUser.roleID = 5,true,false)
                 Width: =110
                 X: =74
                 Y: =36
@@ -747,11 +749,11 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Patch('ASDocument.Company',LookUp('ASDocument.Company',ID = locInfoCompany.ID),{active:0});
+                =If(locInfoCompany.name <> txt_ds_DocuementLevelName_1.Text Or locInfoCompany.shortName <> txt_ds_DocuementLevelName_4.Text,Patch('ASDocument.Company',LookUp('ASDocument.Company',ID = locInfoCompany.ID),{active:0});
                 
-                Set(gblCompanyID,Patch('ASDocument.Company',Defaults('ASDocument.Company'),{name:txt_ds_DocuementLevelName_1.Text,shortName:Upper(txt_ds_DocuementLevelName_4.Text),active:1}));
+                Set(gblCompanyID,Patch('ASDocument.Company',Defaults('ASDocument.Company'),{name:txt_ds_DocuementLevelName_1.Text,shortName:Upper(txt_ds_DocuementLevelName_4.Text),active:1})),Set(gblCompanyID,locInfoCompany));
                 
-                'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(colListDivisionEdit,JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes),1);
+                'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(Filter(colListDivisionEdit,status = 2 Or status = 3 Or status = 4),JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes),2);
                 
                 Notify("Sửa thành công",NotificationType.Success,1500);
                 UpdateContext({locUpdateDP:false})
@@ -802,7 +804,7 @@
             FontWeight: =FontWeight.Semibold
             Text: ="Đơn vị"
             X: =387
-            Y: =337
+            Y: =330
             ZIndex: =17
 
         btn_ds_AddItemDocumentType_1 As button:
@@ -819,7 +821,7 @@
             Text: ="Thêm"
             Width: =75
             X: =546
-            Y: =344
+            Y: =337
             ZIndex: =18
 
         gal_ds_ListUpdateDocument_1 As gallery.galleryVertical:
@@ -866,7 +868,7 @@
                     HintText: ="Nhập tên đơn vị"
                     OnChange: |-
                         =//Cập nhật thay đổi trường Phòng trên danh sách phòng
-                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text,shortName:Upper(Concat(Split(txt_ds_DocumentType_1.Text, " "), Left(Value, 1)))})
+                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text,shortName:Upper(Concat(Split(txt_ds_DocumentType_1.Text, " "), Left(Value, 1))),status:4})
                     OnSelect: =
                     Width: =450
                     X: =44
