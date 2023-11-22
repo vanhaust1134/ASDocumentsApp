@@ -2,10 +2,10 @@
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
         =//Lấy danh sách cấp
-        ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.Level',"status",0));
+        ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
         Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = 1),{status:1});
         //Lấy danh sách văn bản
-        ClearCollect(gblColDocumentType,'ASDocument.Type');
+        ClearCollect(gblColDocumentType,'ASDocument.DocumentType');
         
         //Lấy danh sách công ty
         ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));

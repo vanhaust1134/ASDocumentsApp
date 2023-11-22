@@ -3,11 +3,11 @@
     OnVisible: |-
         =//Lấy danh sách cấp
         Clear(gblColDocumentLevel);
-        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Collect(gblColDocumentLevel,Table({name:"Tất cả"}));ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.Level',"status",0)));
+        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Collect(gblColDocumentLevel,Table({name:"Tất cả"}));ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0)));
         
         //Lấy các loại văn bản
         Clear(gblColDocumentType);
-        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,Collect(gblColDocumentType,Table({name:"Tất cả"}));ClearCollect(gblColDocumentType,'ASDocument.Type'));
+        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,Collect(gblColDocumentType,Table({name:"Tất cả"}));ClearCollect(gblColDocumentType,'ASDocument.DocumentType'));
         
         UpdateContext({locSortdocumentLevelID:1});
         Set(gblMenuFunctionSelected,1);
@@ -471,7 +471,7 @@
                         FillPortions: =1
                         FontWeight: =FontWeight.Bold
                         Size: =12
-                        Text: =LookUp('ASDocument.Level',levelID= locSortdocumentLevelID).name
+                        Text: =LookUp('ASDocument.DocumentLevel',levelID= locSortdocumentLevelID).name
                         ZIndex: =2
 
                     ico_ds_Right As icon.BackArrow:
@@ -839,8 +839,8 @@
 
         lbl_ds_Title_13 As label:
             FontWeight: =FontWeight.Bold
-            Text: ="Thêm loại tài liệu"
-            Width: =177
+            Text: ="Chỉnh sửa loại tài liệu"
+            Width: =214
             X: =387
             Y: =144
             ZIndex: =2
@@ -887,9 +887,10 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật tên cấp tài liệu
-                Patch('ASDocument.Level',LookUp('ASDocument.Level',ID = locDocumentLevelID),{name:txt_ds_DocuementLevelName.Text});
+                Patch('ASDocument.DocumentLevel',LookUp('ASDocument.DocumentLevel',ID = locDocumentLevelID),{name:txt_ds_DocuementLevelName.Text});
                 
-                
+                //Cập nhật danh sách loại tài liệu
+                'ASDocument.AddDocument'.Run(locDocumentLevelID,JSON(Filter(colListDocumentType,Or(status = 2, status = 3, status = 4)),JSONFormat.IncludeBinaryData & JSONFormat.IgnoreUnsupportedTypes));
                 
                 Notify("Sửa thành công",NotificationType.Success,1500);
                 UpdateContext({locUpdateDP:false})
@@ -1004,7 +1005,7 @@
                     HintText: ="Nhập tên Phòng"
                     OnChange: |-
                         =//Cập nhật thay đổi trường Phòng trên danh sách phòng
-                        Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType.Text})
+                        Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType.Text,status:4})
                     OnSelect: =
                     Width: =450
                     X: =44
