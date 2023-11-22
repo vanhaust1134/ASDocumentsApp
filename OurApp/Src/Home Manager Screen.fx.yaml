@@ -19,7 +19,7 @@
             ClearCollect(
                 gblColAllUser,
                 AddColumns(
-                    ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
+                    ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
                     "roleID", 
                     LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                 )

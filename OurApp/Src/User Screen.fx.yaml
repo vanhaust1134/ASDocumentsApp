@@ -8,7 +8,7 @@
             ClearCollect(
                 gblColAllUser,
                 AddColumns(
-                    ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
+                    ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
                     "roleID", 
                     LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                 )
@@ -221,7 +221,8 @@
             BorderColor: =RGBA(73, 113, 215, 1)
             BorderThickness: =1
             ChevronBackground: =RGBA(73, 113, 215, 1)
-            Items: =["MSD"]
+            Items: |-
+                =Table({roleID:Blank(),name:"Tất cả"},{roleID:1,name:"Người soạn thảo"},{roleID:2,name:"Người xem xét"},{roleID:3,name:"MSD"},{roleID:4,name:"Người phê duyệt"},{roleID:5,name:"Admin"})
             Width: =200
             X: =104
             Y: =145
@@ -233,7 +234,7 @@
             LayoutMinWidth: =250
             ZIndex: =6
 
-            txt_lds_Search_1 As text:
+            txt_us_Search As text:
                 BorderStyle: =BorderStyle.None
                 Default: =""
                 HintText: ="Nhập tìm kiếm"
@@ -367,7 +368,7 @@
                 gal_us_List As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: =gblColAllUser
+                    Items: =Search(Filter(gblColAllUser,roleID <> Blank() And (roleID = drp_us_Employee_1.Selected.roleID || If(IsBlank(drp_us_Employee_1.Selected.roleID),true,false))),txt_us_Search.Text,"fullName")
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =0
@@ -424,7 +425,7 @@
                             LayoutMinHeight: =30
                             OnSelect: |-
                                 =UpdateContext({locDetailUser:true})
-                            Text: ="MSD"
+                            Text: =LookUp('ASDocument.Role',roleID = ThisItem.roleID).name
                             Wrap: =false
                             ZIndex: =3
 
@@ -432,7 +433,7 @@
                             AlignInContainer: =AlignInContainer.Center
                             FillPortions: =1.5
                             Height: =50
-                            Image: ='chu ky'
+                            Image: =First(ThisItem.'{Attachments}').AbsoluteUri
                             ZIndex: =4
 
                         img_us_Edit As image:
@@ -453,7 +454,8 @@
                             Image: =Delete
                             ImagePosition: =ImagePosition.Center
                             OnSelect: |-
-                                =UpdateContext({locDeleteDP:true})
+                                =UpdateContext({locDeleteDP:true});
+                                UpdateContext({locInfoUser:ThisItem})
                             Width: =49
                             X: =593
                             Y: =2
@@ -676,7 +678,7 @@
                 ClearCollect(
                         gblColAllUser,
                         AddColumns(
-                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
+                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
                             "roleID", 
                             LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                         )
@@ -842,11 +844,11 @@
 
         ComboBox2 As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
-            DisplayFields: =["Value"]
+            DisplayFields: =["email"]
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
-            Items: =["Trần Văn Hậu"]
-            SearchFields: =["Value"]
+            Items: =Filter(gblColAllUser,!IsBlank(roleID))
+            SearchFields: =["email"]
             SearchItems: =[]
             SelectMultiple: =false
             X: =525
@@ -941,7 +943,21 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Notify("Xóa thành công",NotificationType.Success,1500);
+                =//Cập nhật trạng thái cho user cũ
+                Patch('ASDocument.Users_Roles',LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID And roleID = locInfoUser.roleID And active = 1),{active:0});
+                
+                //Lấy tất cả user và role về
+                    //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
+                    ClearCollect(
+                        gblColAllUser,
+                        AddColumns(
+                            ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
+                            "roleID", 
+                            LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
+                        )
+                    );
+                
+                Notify("Xóa thành công",NotificationType.Success,1500);
                 UpdateContext({locDeleteDP:false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
@@ -1052,7 +1068,7 @@
                 ClearCollect(
                         gblColAllUser,
                         AddColumns(
-                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active") As temp, 
+                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
                             "roleID", 
                             LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                         )
@@ -1220,9 +1236,10 @@
             BorderColor: =RGBA(116, 116, 116, 1)
             DisplayFields: =["fullName","email"]
             InputTextPlaceholder: ="Tìm người dùng"
-            Items: =gblColAllUser
+            IsSearchable: =false
+            Items: =Filter(gblColAllUser,IsBlank(roleID))
             SearchFields: =["email"]
-            SearchItems: =Search(gblColAllUser,cbo_us_Users.SearchText,"email")
+            SearchItems: =[]
             SelectMultiple: =false
             Template: =ListItemTemplate.Person
             X: =525

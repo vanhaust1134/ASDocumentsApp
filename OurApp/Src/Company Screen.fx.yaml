@@ -2,10 +2,12 @@
     Fill: =RGBA(224,224,224,1)
     OnVisible: |+
         =//Lấy danh sách công ty
-        If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));Collect(gblColCompany,Table({name:"Tất cả"})));
+        Clear(gblColCompany);
+        If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,Collect(gblColCompany,Table({name:"Tất cả"}));ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1)));
         
         //Lấy danh sách đơn vị
-        If(CountRows(Filter(gblColDivision,name = "Tất cả")) = 0,ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));Collect(gblColDivision,Table({name:"Tất cả"})));
+        Clear(gblColDivision);
+        If(CountRows(Filter(gblColDivision,name = "Tất cả")) = 0,Collect(gblColDivision,Table({name:"Tất cả"}));ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1)));
         
 
     btn_ds_BackGroundScreen_1 As button:
@@ -233,7 +235,7 @@
             BorderThickness: =1
             ChevronBackground: =RGBA(73, 113, 215, 1)
             Items: =gblColDivision
-            Width: =200
+            Width: =250
             X: =104
             Y: =145
             ZIndex: =6
@@ -336,7 +338,7 @@
 
                 gal_ds_DocumentLevel_1 As gallery.variableTemplateHeightGallery:
                     DelayItemLoading: =true
-                    Items: =Filter(gblColCompany,name <> "Tất cả" And (ID = drp_ds_Company.Selected.ID And If(IsBlank(drp_ds_Company.Selected.ID),true,false)))
+                    Items: =Filter(gblColCompany,name <> "Tất cả" And (ID = drp_ds_Company.Selected.ID || If(IsBlank(drp_ds_Company.Selected.ID),true,false)))
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =100
@@ -357,7 +359,7 @@
                     gal_ds_DocumentType_1 As gallery.galleryVertical:
                         DelayItemLoading: =true
                         Height: =62 * CountRows(Filter(gblColDivision,companyID = ThisItem.ID)) 
-                        Items: =Filter(gblColDivision,companyID = ThisItem.ID And (ID = drp_ds_Division.Selected.ID And If(IsBlank(drp_ds_Division.Selected.ID),true,false)))
+                        Items: =Filter(gblColDivision,companyID = ThisItem.ID And (ID = drp_ds_Division.Selected.ID || If(IsBlank(drp_ds_Division.Selected.ID),true,false)))
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         ShowScrollbar: =false
@@ -378,7 +380,7 @@
                                 FillPortions: =1
                                 FontWeight: =FontWeight.Semibold
                                 LayoutMinWidth: =0
-                                Text: =ThisItem.ID
+                                Text: =""
                                 Width: =370
                                 Wrap: =false
                                 ZIndex: =1

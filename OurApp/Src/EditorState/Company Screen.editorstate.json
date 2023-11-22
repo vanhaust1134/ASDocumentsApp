@@ -4266,7 +4266,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_ds_Document_2",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5628,7 +5628,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_ds_User_1",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6001,7 +6001,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_ds_User_3",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11632,7 +11632,14 @@
         "DisabledBorderColor",
         "HoverBorderColor",
         "PressedBorderColor",
-        "BorderStyle",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "BorderStyle",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "FocusedBorderColor",
         "Fill",
         "DisabledFill",

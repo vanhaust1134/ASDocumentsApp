@@ -3,11 +3,11 @@
     OnVisible: |-
         =//Lấy danh sách cấp
         Clear(gblColDocumentLevel);
-        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.Level',"status",0));Collect(gblColDocumentLevel,Table({name:"Tất cả"})));
+        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Collect(gblColDocumentLevel,Table({name:"Tất cả"}));ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.Level',"status",0)));
         
         //Lấy các loại văn bản
         Clear(gblColDocumentType);
-        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,ClearCollect(gblColDocumentType,'ASDocument.Type');Collect(gblColDocumentType,Table({name:"Tất cả"})));
+        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,Collect(gblColDocumentType,Table({name:"Tất cả"}));ClearCollect(gblColDocumentType,'ASDocument.Type'));
         
         UpdateContext({locSortdocumentLevelID:1});
         Set(gblMenuFunctionSelected,1);
