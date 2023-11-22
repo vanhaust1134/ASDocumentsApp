@@ -9,7 +9,13 @@ App As appinfo:
                     'ASTakeLeave.Users',
                     email = User().Email And active = 1
                 ).userID And active = 1
-            ).roleID = 6,
+            ).roleID = 5 Or LookUp(
+                'ASDocument.Users_Roles',
+                userID = LookUp(
+                    'ASTakeLeave.Users',
+                    email = User().Email And active = 1
+                ).userID And active = 1
+            ).roleID = 3,
             Navigate('User Screen'),
             LookUp(
                 'ASDocument.Users_Roles',
@@ -19,7 +25,7 @@ App As appinfo:
                 ).userID And active = 1
             ).roleID = 1,
             Navigate('Home User Screen'),
-            Navigate('Home User Screen')
+            Navigate('Home Manager Screen')
         )
     Theme: =PowerAppsTheme
 
