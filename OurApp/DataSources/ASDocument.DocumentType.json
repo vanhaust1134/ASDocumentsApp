@@ -35,6 +35,7 @@
       "Modified": "Modified",
       "name": "name",
       "OData__ColorTag": "Color Tag",
+      "shortName": "shortName",
       "Title": "Title"
     },
     "DatasetName": "https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp",

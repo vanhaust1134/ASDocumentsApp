@@ -940,8 +940,8 @@
             Align: =Align.Right
             FontWeight: =FontWeight.Semibold
             Text: ="Loại tài liệu"
-            X: =387
-            Y: =260
+            X: =386
+            Y: =256
             ZIndex: =17
 
         btn_ds_AddItemDocumentType As button:
@@ -957,13 +957,13 @@
             RadiusTopRight: =5
             Text: ="Thêm"
             Width: =75
-            X: =546
-            Y: =267
+            X: =548
+            Y: =263
             ZIndex: =18
 
         gal_ds_ListUpdateDocument As gallery.galleryVertical:
             DelayItemLoading: =true
-            Height: =285
+            Height: =287
             Items: =colListDocumentType
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -971,7 +971,7 @@
             TemplateSize: =65
             Width: =578
             X: =390
-            Y: =295
+            Y: =291
             ZIndex: =20
 
             ctn_ds_ListUpdateDocument As groupContainer.horizontalAutoLayoutContainer:
@@ -997,20 +997,37 @@
                     Y: =4
                     ZIndex: =1
 
-                txt_ds_DocumentType As text:
+                txt_ds_DocumentType_3 As text:
                     AlignInContainer: =AlignInContainer.Center
                     BorderColor: =RGBA(116, 116, 116, 1)
                     BorderThickness: =1
                     Default: =ThisItem.name
+                    FillPortions: =1
                     HintText: ="Nhập tên Phòng"
+                    LayoutMinWidth: =100
                     OnChange: |-
-                        =//Cập nhật thay đổi trường Phòng trên danh sách phòng
-                        Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType.Text,status:4})
+                        =//Cập nhật thay đổi
+                        Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType_3.Text,status:4})
                     OnSelect: =
                     Width: =450
                     X: =44
                     Y: =4
                     ZIndex: =2
+
+                txt_ds_DocumentType As text:
+                    AlignInContainer: =AlignInContainer.Center
+                    BorderColor: =RGBA(116, 116, 116, 1)
+                    BorderThickness: =1
+                    Default: =ThisItem.shortName
+                    HintText: ="Tên viết tắt"
+                    OnChange: |-
+                        =//Cập nhật thay đổi
+                        Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{shortName:txt_ds_DocumentType.Text,status:4})
+                    OnSelect: =
+                    Width: =150
+                    X: =44
+                    Y: =4
+                    ZIndex: =3
 
                 img_ds_DeleteDocumentTypeItem As image:
                     AlignInContainer: =AlignInContainer.Center

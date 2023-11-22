@@ -867,15 +867,33 @@
                     BorderColor: =RGBA(116, 116, 116, 1)
                     BorderThickness: =1
                     Default: =ThisItem.name
+                    FillPortions: =1
                     HintText: ="Nhập tên đơn vị"
                     OnChange: |-
-                        =//Cập nhật thay đổi trường Phòng trên danh sách phòng
-                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text,shortName:Upper(Concat(Split(txt_ds_DocumentType_1.Text, " "), Left(Value, 1))),status:4})
+                        =//Cập nhật thay đổi
+                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text,status:4})
+                    OnSelect: =
+                    Width: =200
+                    X: =44
+                    Y: =4
+                    ZIndex: =2
+
+                txt_ds_DocumentType_5 As text:
+                    AlignInContainer: =AlignInContainer.Center
+                    BorderColor: =RGBA(116, 116, 116, 1)
+                    BorderThickness: =1
+                    Default: =ThisItem.shortName
+                    FillPortions: =1
+                    HintText: ="Tên viết tắt"
+                    LayoutMinWidth: =0
+                    OnChange: |-
+                        =//Cập nhật thay đổi
+                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{shortName:txt_ds_DocumentType_5.Text,status:4})
                     OnSelect: =
                     Width: =450
                     X: =44
                     Y: =4
-                    ZIndex: =2
+                    ZIndex: =3
 
                 img_ds_DeleteDocumentTypeItem_1 As image:
                     AlignInContainer: =AlignInContainer.Center
@@ -1106,15 +1124,34 @@
                     BorderColor: =RGBA(116, 116, 116, 1)
                     BorderThickness: =1
                     Default: =ThisItem.name
+                    FillPortions: =1.5
                     HintText: ="Nhập tên đơn vị"
+                    LayoutMinWidth: =200
                     OnChange: |-
-                        =//Cập nhật thay đổi trường Phòng trên danh sách phòng
-                        Patch(colListDivision,LookUp(colListDivision,ID = ThisItem.ID),{name:txt_ds_DocumentType_2.Text,shortName:Upper(Concat(Split(txt_ds_DocumentType_2.Text, " "), Left(Value, 1)))})
+                        =//Cập nhật thay đổi
+                        Patch(colListDivision,LookUp(colListDivision,ID = ThisItem.ID),{name:txt_ds_DocumentType_2.Text})
+                    OnSelect: =
+                    Width: =100
+                    X: =44
+                    Y: =4
+                    ZIndex: =2
+
+                txt_ds_DocumentType_4 As text:
+                    AlignInContainer: =AlignInContainer.Center
+                    BorderColor: =RGBA(116, 116, 116, 1)
+                    BorderThickness: =1
+                    Default: =ThisItem.shortName
+                    FillPortions: =1
+                    HintText: ="Nhập tên viết tắt"
+                    LayoutMinWidth: =100
+                    OnChange: |-
+                        =//Cập nhật thay đổi
+                        Patch(colListDivision,LookUp(colListDivision,ID = ThisItem.ID),{shortName:txt_ds_DocumentType_4.Text})
                     OnSelect: =
                     Width: =450
                     X: =44
                     Y: =4
-                    ZIndex: =2
+                    ZIndex: =3
 
                 img_ds_DeleteDocumentTypeItem_2 As image:
                     AlignInContainer: =AlignInContainer.Center
