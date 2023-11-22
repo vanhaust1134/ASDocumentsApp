@@ -29,8 +29,11 @@
             );
         
         //Lấy danh sách user giám đốc khối
-        ClearCollect(colDivisionDirectorID,ShowColumns('ASTakeLeave.Division',"directorUserID"));
+        ClearCollect(colDivisionDirectorID,ShowColumns(Filter('ASTakeLeave.Division',active = 1),"directorUserID"));
         ClearCollect(gblColDivisionDirector,Filter(gblColAllUser,userID exactin (colDivisionDirectorID).directorUserID));
+        
+        //Lấy danh sách request hiện tại
+        ClearCollect(gblColDocumentRequest,Filter('ASDocument.DocumentRequest',active = 1));
         
         //Lấy user hiện tại
             Set(
@@ -444,6 +447,7 @@
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
                 TemplateSize: =50
+                Visible: =If(IsEmpty(Gallery1_2.AllItems),false,true)
                 ZIndex: =2
 
                 Label8_5 As label:
@@ -734,6 +738,34 @@
                         Width: =818
                         Y: =53
                         ZIndex: =2
+
+            ctn_hms_EmptyRequest As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.None
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Visible: =If(IsEmpty(Gallery1_2.AllItems),true,false)
+                ZIndex: =3
+
+                img_hms_EmptyList As image:
+                    AlignInContainer: =AlignInContainer.Center
+                    Image: ='icons8-list-is-empty-100'
+                    X: =
+                    Y: =
+                    ZIndex: =1
+
+                lbl_hms_EmptyList As label:
+                    Align: =Align.Center
+                    AlignInContainer: =AlignInContainer.Center
+                    FontWeight: =FontWeight.Bold
+                    Height: =41
+                    Text: ="Không có yêu cầu trình duyệt"
+                    Width: =645
+                    X: =
+                    Y: =
+                    ZIndex: =2
 
     ctn_hs_Header_3 As groupContainer.horizontalAutoLayoutContainer:
         DropShadow: =DropShadow.None

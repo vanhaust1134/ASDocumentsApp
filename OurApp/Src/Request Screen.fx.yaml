@@ -2,7 +2,7 @@
     Fill: =RGBA(224,224,224,1)
     OnHidden: |-
         =UpdateContext({locReview:false})
-    OnVisible: =Clear(colApprovesPeopleProcess)
+    OnVisible: =Clear(colApprovesPeopleProcess);
 
     btn_rs_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -216,7 +216,7 @@
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
                                 FillPortions: =1
-                                Items: =["SPC","AS"]
+                                Items: =gblColCompany
                                 LayoutMinWidth: =100
                                 ZIndex: =1
 
@@ -227,7 +227,7 @@
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
                                 FillPortions: =1
-                                Items: =["Phòng kinh doanh","Phòng kỹ thuật"]
+                                Items: =Filter(gblColDivision,companyID = drp_rs_CompanyNameInput.Selected.ID)
                                 LayoutMinWidth: =100
                                 ZIndex: =2
 
@@ -595,8 +595,9 @@
                 btn_rs_Submit As button:
                     AlignInContainer: =AlignInContainer.End
                     Fill: =RGBA(73, 113, 215, 1)
-                    OnSelect: |-
-                        =UpdateContext({locSubmit:true})
+                    OnSelect: |+
+                        =UpdateContext({locSubmit:true});
+                        
                     Text: =If(locReview = false,"Tạo","Gửi")
                     ZIndex: =3
 
@@ -892,7 +893,7 @@
                 =UpdateContext({locSubmit:false})
             Width: =25
             X: =942
-            Y: =304
+            Y: =308
             ZIndex: =4
 
         lbl_ds_DepartmentName_6 As label:
@@ -917,8 +918,33 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Notify("Gửi thành công",NotificationType.Success,1500);
-                UpdateContext({locSubmit:false})
+                =//Gửi yêu cầu
+                Patch(
+                    'ASDocument.DocumentRequest',
+                    Defaults('ASDocument.DocumentRequest'),
+                    {
+                        documentGroupID: drp_rs_DocumentLevel.Selected.documentGroupID,
+                        levelID: drp_rs_DocumentLevel.Selected.levelID,
+                        documentTypeID: drp_rs_DocumentType.Selected.ID,
+                        userID: gblRecUser.userID,
+                        documentID: Upper(Concat(Split(txt_rs_DocumentName.Text, " "), Left(Value, 1))),
+                        createdDateValue: Value(Day(Today() & Month(Today()) & Year(Today()))),
+                        currentApproveLevel:1,
+                        maxApproveLevel:2,
+                        status:1,
+                        pageSignNumber:Value(txt_rs_SignPage.Text),
+                        requestTimeNum:0,
+                        companyID:drp_rs_CompanyNameInput.Selected.ID,
+                        divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,
+                        active:1
+                    },frm_rs_Document.Updates
+                );
+                Notify(
+                    "Gửi thành công",
+                    NotificationType.Success,
+                    1500
+                );
+                UpdateContext({locSubmit: false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
