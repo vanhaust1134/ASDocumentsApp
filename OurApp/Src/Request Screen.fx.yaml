@@ -145,6 +145,10 @@
                                 FillPortions: =1
                                 Items: =gblColDocumentLevel
                                 LayoutMinWidth: =100
+                                OnChange: |-
+                                    =//Lấy danh sách MSD chọn theo cấp
+                                    If(drp_rs_DocumentLevel.Selected.documentGroupID = 1,ClearCollect(colMSDByDocumentLevel,Filter('ASDocument.MSDApproval',levelID = drp_rs_DocumentLevel.Selected.levelID)),
+                                    ClearCollect(colUserMSD,Filter('ASTakeLeave.Users',userID exactin (colMSDByDocumentLevel).userID)));
                                 ZIndex: =1
 
                             drp_rs_DocumentType As dropdown:
@@ -504,6 +508,7 @@
                                 Fill: =RGBA(255, 255, 255, 1)
                                 Height: =35
                                 LayoutMode: =LayoutMode.Auto
+                                Visible: =If(Or(drp_rs_DocumentLevel.Selected.levelID = 3,drp_rs_DocumentLevel.Selected.levelID = 4) And ThisItem.ID = 2,false,true)
                                 Width: =499
                                 ZIndex: =1
 
@@ -525,14 +530,27 @@
                                     LayoutMinHeight: =30
                                     LayoutMinWidth: =10
                                     OnSelect: |-
-                                        =If(ThisItem.ID = 1,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 5,Collect(colApprovesPeopleProcess,Table({ID:Max(colApprovesPeopleProcess,ID) + 1,name:"",BaseID:ThisItem.ID}))),ThisItem.ID = 3,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 2,Collect(colApprovesPeopleProcess,Table({ID:Max(colApprovesPeopleProcess,ID) + 1,name:"",BaseID:ThisItem.ID}))))
+                                        =UpdateContext({locDocumentIDGenerate:drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(Concat(Split(txt_rs_DocumentName.Text, " "), Left(Value, 1)))});
+                                        
+                                        If(ThisItem.ID = 1,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 5,Collect(colApprovesPeopleProcess,Table({ID:Max(colApprovesPeopleProcess,ID) + 1,userID:"",BaseID:ThisItem.ID,approveProcess:1,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate}))),ThisItem.ID = 3,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 2,Collect(colApprovesPeopleProcess,Table({ID:Max(colApprovesPeopleProcess,ID) + 1,name:"",BaseID:ThisItem.ID,approveProcess:3,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate}))));
+                                        
+                                        ClearCollect(
+                                            colSortApproval,
+                                            ForAll(
+                                                Sequence(CountRows(colApprovesPeopleProcess)),
+                                                Patch(
+                                                    Last(FirstN(colApprovesPeopleProcess, Value)),
+                                                    {RowNumber: Value}
+                                                )
+                                            )
+                                        )
                                     Visible: =If(ThisItem.ID = 2,false,true)
                                     ZIndex: =2
 
                             Gallery13 As gallery.galleryVertical:
                                 DelayItemLoading: =true
-                                Height: =40 * CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID))
-                                Items: =Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)
+                                Height: =40 * CountRows(Filter(colSortApproval,BaseID = ThisItem.ID))
+                                Items: =Filter(colSortApproval,BaseID = ThisItem.ID)
                                 Layout: =Layout.Vertical
                                 LoadingSpinner: =LoadingSpinner.Data
                                 ShowScrollbar: =false
@@ -563,7 +581,7 @@
                                     FontWeight: =FontWeight.Semibold
                                     Height: =26
                                     OnSelect: =Select(Parent)
-                                    Text: =ThisItem.ID
+                                    Text: =ThisItem.RowNumber
                                     Width: =30
                                     Y: =5
                                     ZIndex: =3
@@ -586,7 +604,7 @@
                                 Image4 As image:
                                     Height: =25
                                     Image: =Delete
-                                    OnSelect: =RemoveIf(colApprovesPeopleProcess,ID = ThisItem.ID)
+                                    OnSelect: =RemoveIf(colSortApproval,ID = ThisItem.ID);RemoveIf(colApprovesPeopleProcess,ID = ThisItem.ID)
                                     Width: =47
                                     X: =381
                                     Y: =5
@@ -595,9 +613,14 @@
                 btn_rs_Submit As button:
                     AlignInContainer: =AlignInContainer.End
                     Fill: =RGBA(73, 113, 215, 1)
-                    OnSelect: |+
+                    OnSelect: |-
                         =UpdateContext({locSubmit:true});
                         
+                        //Text(0999 + 1,"0####")
+                        
+                        UpdateContext({locNumberCountRequest:If(!IsEmpty(Filter('ASDocument.DocumentIDGenerated',companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID)),Value(Text(LookUp('ASDocument.DocumentIDGenerated',companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID).lastAutoNumber + 1,"0####")),01)});
+                        
+                        UpdateContext({locDocumentIDGenerate:drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(Concat(Split(txt_rs_DocumentName.Text, " "), Left(Value, 1)))})
                     Text: =If(locReview = false,"Tạo","Gửi")
                     ZIndex: =3
 
@@ -927,10 +950,10 @@
                         levelID: drp_rs_DocumentLevel.Selected.levelID,
                         documentTypeID: drp_rs_DocumentType.Selected.ID,
                         userID: gblRecUser.userID,
-                        documentID: Upper(Concat(Split(txt_rs_DocumentName.Text, " "), Left(Value, 1))),
+                        documentID: locDocumentIDGenerate,
                         createdDateValue: Value(Day(Today() & Month(Today()) & Year(Today()))),
                         currentApproveLevel:1,
-                        maxApproveLevel:2,
+                        maxApproveLevel:If(Or(drp_rs_DocumentLevel.Selected.levelID = 3,drp_rs_DocumentLevel.Selected.levelID = 4),2,3),
                         status:1,
                         pageSignNumber:Value(txt_rs_SignPage.Text),
                         requestTimeNum:0,
@@ -939,6 +962,12 @@
                         active:1
                     },frm_rs_Document.Updates
                 );
+                
+                //Cập nhật số thứ tự mới nhất của phân loại yêu cầu
+                Patch('ASDocument.DocumentIDGenerated',Defaults('ASDocument.DocumentIDGenerated'),{companyID:drp_rs_CompanyNameInput.Selected.ID,divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,documentTypeID:drp_rs_DocumentType.Selected.ID,lastAutoNumber:locNumberCountRequest});
+                
+                //Tạo luồng các dòng quy trình phê duyệt yêu cầu
+                
                 Notify(
                     "Gửi thành công",
                     NotificationType.Success,

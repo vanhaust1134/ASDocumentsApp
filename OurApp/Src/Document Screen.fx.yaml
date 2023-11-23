@@ -2,12 +2,10 @@
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
         =//Lấy danh sách cấp
-        Clear(gblColDocumentLevel);
-        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Collect(gblColDocumentLevel,Table({name:"Tất cả"}));ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0)));
+        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0)));
         
         //Lấy các loại văn bản
-        Clear(gblColDocumentType);
-        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,Collect(gblColDocumentType,Table({name:"Tất cả"}));ClearCollect(gblColDocumentType,'ASDocument.DocumentType'));
+        If(CountRows(Filter(gblColDocumentType,name = "Tất cả")) = 0,Clear(gblColDocumentType);Collect(gblColDocumentType,Table({name:"Tất cả"}));ClearCollect(gblColDocumentType,'ASDocument.DocumentType'));
         
         UpdateContext({locSortdocumentLevelID:1});
         Set(gblMenuFunctionSelected,1);
@@ -516,14 +514,14 @@
 
                 gal_ds_ApproverDocumentLevel As gallery.variableTemplateHeightGallery:
                     DelayItemLoading: =true
-                    Items: =Filter('ASDocument.ApprovalByLevel',levelID = locSortdocumentLevelID)
+                    Items: =Sort(Filter('ASDocument.MSDApproval',active = 1 And levelID = locSortdocumentLevelID),sort,SortOrder.Ascending)
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |-
                         =UpdateContext({locEditMSD:true});
-                        UpdateContext({locMSDByLevel:ThisItem.ID})
+                        UpdateContext({locMSDByLevel:ThisItem})
                     TemplateSize: =45
                     ZIndex: =3
 
@@ -1068,8 +1066,8 @@
 
         lbl_us_Title_18 As label:
             FontWeight: =FontWeight.Bold
-            Text: ="Sửa người duyệt"
-            Width: =189
+            Text: ="Cập nhật người duyệt"
+            Width: =228
             X: =387
             Y: =264
             ZIndex: =2
@@ -1107,9 +1105,13 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =/*ASSignedDocument.Run(1,TextInput2.Text,{file:{contentBytes:First(DataCardValue1_1.Attachments).Value,name:"File ngay phep-" & Now()&".xlsx"},file_1:{contentBytes:PenInput1.Image,name:"Signature-" & Now()&".xlsx"}});*/
+                =//Tạo dòng MSD duyệt mới
+                Patch('ASDocument.MSDApproval',Defaults('ASDocument.MSDApproval'),{documentGroupID:locMSDByLevel.documentGroupID,levelID:locMSDByLevel.levelID,userID:cbo_ds_ApprovalMSD.Selected.userID,active:1,sort:locMSDByLevel.sort});
                 
-                Patch('ASDocument.ApprovalByLevel',LookUp('ASDocument.ApprovalByLevel',ID = locMSDByLevel),{userID:cbo_ds_ApprovalMSD.Selected.ID});
+                //Cập nhật trạng thái dòng MSD
+                Patch('ASDocument.MSDApproval',LookUp('ASDocument.ApprovalByLevel',ID = locMSDByLevel.ID),{active:0});
+                
+                Reset(cbo_ds_ApprovalMSD);
                 
                 Notify("Thêm thành công",NotificationType.Success,1500);
                 UpdateContext({locEditMSD:false});
@@ -1156,12 +1158,15 @@
 
         cbo_ds_ApprovalMSD As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
-            DisplayFields: =["email"]
-            InputTextPlaceholder: ="Tìm người dùng"
-            Items: =gblColAllUser
+            DisplayFields: =["fullName","email"]
+            InputTextPlaceholder: ="Tìm người duyệt"
+            IsSearchable: =false
+            Items: =Filter(gblColAllUser,roleID = 3)
+            NoSelectionText: ="Tìm người duyệt"
             SearchFields: =["email"]
-            SearchItems: =Search(gblColAllUser,cbo_ds_ApprovalMSD.SearchText,"email")
+            SearchItems: =[]
             SelectMultiple: =false
+            Template: =ListItemTemplate.Person
             X: =552
             Y: =331
             ZIndex: =12

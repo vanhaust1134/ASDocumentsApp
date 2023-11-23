@@ -852,6 +852,7 @@
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
             Items: =Filter(gblColAllUser,!IsBlank(roleID))
+            NoSelectionText: ="Tìm người dùng"
             SearchFields: =["email"]
             SearchItems: =[]
             SelectMultiple: =false
@@ -866,6 +867,7 @@
             IsSearchable: =false
             Items: |-
                 =Table({ID:2,name:"Người soạn thảo"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
+            NoSelectionText: ="Chọn vai trò"
             SearchFields: =["name"]
             SearchItems: =[]
             SelectMultiple: =false
@@ -1078,6 +1080,8 @@
                         )
                     );
                 
+                Reset(cbo_us_Users);Reset(cbo_us_Roles);ResetForm(Form1_3);
+                
                 Notify("Thêm thành công",NotificationType.Success,1500);
                 UpdateContext({locCreateUser:false});
             PressedColor: =RGBA(255,255,255,1)
@@ -1242,6 +1246,7 @@
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
             Items: =Filter(gblColAllUser,IsBlank(roleID))
+            NoSelectionText: ="Tìm người dùng"
             SearchFields: =["email"]
             SearchItems: =[]
             SelectMultiple: =false
@@ -1257,6 +1262,7 @@
             IsSearchable: =false
             Items: |-
                 =Table({ID:2,name:"Người soạn thảo"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
+            NoSelectionText: ="Chọn vai trò"
             SearchFields: =["name"]
             SearchItems: =[]
             SelectMultiple: =false
