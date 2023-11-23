@@ -2851,36 +2851,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.drp_ds_Types.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.drp_ds_Types.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_Filter.drp_ds_Types"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.AccessibleLabel"
                 }
               ],
@@ -7501,6 +7471,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.asiashine"
                 }
               ],
@@ -7724,36 +7754,6 @@
                 "member": "OnVisible",
                 "module": "Home User Screen",
                 "type": "'Home User Screen'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-CollectDelegatableDataSource",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.OnVisible",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "Document Screen",
-                "type": "'Document Screen'"
               }
             }
           ],
