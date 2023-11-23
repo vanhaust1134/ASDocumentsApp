@@ -1310,7 +1310,7 @@
             ZIndex: =8
 
         Form1_1 As form:
-            DataSource: =test
+            DataSource: ='ASDocument.DocumentRequest'
             DefaultMode: =FormMode.New
             Height: =252
             Width: =591

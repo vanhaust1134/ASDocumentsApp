@@ -2,7 +2,10 @@
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
         =//Lấy danh sách cấp
-        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0)));
+        If(CountRows(Filter(gblColDocumentLevel,name = "Tất cả")) = 0,Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0)));
+        
+        //Lấy các loại văn bản
+        ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
         
         UpdateContext({locSortdocumentLevelID:1});
         Set(gblMenuFunctionSelected,1);
@@ -341,7 +344,7 @@
                                 AlignInContainer: =AlignInContainer.Center
                                 FillPortions: =1.65
                                 FontWeight: =FontWeight.Semibold
-                                Text: =ThisItem.ID
+                                Text: =
                                 Width: =370
                                 Wrap: =false
                                 ZIndex: =1
@@ -349,7 +352,7 @@
                             lbl_ds_DocumenTypeName As label:
                                 AlignInContainer: =AlignInContainer.Center
                                 FillPortions: =2
-                                PaddingLeft: =85
+                                PaddingLeft: =27
                                 Text: =ThisItem.name
                                 Tooltip: =ThisItem.name
                                 Wrap: =false
@@ -367,6 +370,7 @@
                                 Color: =RGBA(47, 47, 47, 1)
                                 FillPortions: =0.1
                                 FontWeight: =FontWeight.Bold
+                                LayoutMinWidth: =0
                                 Text: =""
                                 ZIndex: =4
 
@@ -377,7 +381,7 @@
                         OnSelect: |-
                             =UpdateContext({locUpdateDP:true});
                             ClearCollect(colListDocumentType,AddColumns(Filter(gblColDocumentType,levelID = ThisItem.levelID),"status",1));
-                            UpdateContext({locDocumentLevelID:ThisItem.ID});
+                            UpdateContext({locDocumentLevelID:ThisItem.levelID});
                         Width: =44
                         X: =550
                         Y: =2
@@ -536,6 +540,7 @@
                         ZIndex: =5
 
                     Container2 As groupContainer.horizontalAutoLayoutContainer:
+                        DropShadow: =DropShadow.None
                         Height: =45
                         LayoutMode: =LayoutMode.Auto
                         Width: =426
@@ -556,6 +561,7 @@
                             FillPortions: =1.5
                             OnSelect: =
                             Text: =LookUp(gblColAllUser,userID = ThisItem.userID).fullName
+                            Tooltip: =LookUp(gblColAllUser,userID = ThisItem.userID).fullName
                             Width: =214
                             Wrap: =false
                             X: =184
@@ -900,6 +906,12 @@
                 
                 //Cập nhật danh sách loại tài liệu
                 'ASDocument.AddDocument'.Run(locDocumentLevelID,JSON(Filter(colListDocumentType,Or(status = 2, status = 3, status = 4)),JSONFormat.IncludeBinaryData & JSONFormat.IgnoreUnsupportedTypes));
+                
+                //Lấy danh sách các cấp
+                Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
+                
+                //Lấy các loại văn bản
+                ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
                 
                 Notify("Sửa thành công",NotificationType.Success,1500);
                 UpdateContext({locUpdateDP:false})

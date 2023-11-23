@@ -99,6 +99,8 @@
             ZIndex: =5
 
         Dropdown1 As dropdown:
+            BorderColor: =RGBA(73, 113, 215, 1)
+            ChevronBackground: =RGBA(73, 113, 215, 1)
             Items: =["Trần Văn Hậu"]
             LayoutMinWidth: =80
             Width: =200

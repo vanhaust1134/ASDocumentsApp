@@ -143,12 +143,17 @@
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
                                 FillPortions: =1
-                                Items: =gblColDocumentLevel
+                                Items: =Filter(gblColDocumentLevel,name <> "Tất cả")
                                 LayoutMinWidth: =100
                                 OnChange: |-
                                     =//Lấy danh sách MSD chọn theo cấp
                                     If(drp_rs_DocumentLevel.Selected.documentGroupID = 1,ClearCollect(colMSDByDocumentLevel,Filter('ASDocument.MSDApproval',levelID = drp_rs_DocumentLevel.Selected.levelID)),
-                                    ClearCollect(colUserMSD,Filter('ASTakeLeave.Users',userID exactin (colMSDByDocumentLevel).userID)));
+                                    ClearCollect(colUserMSD,Filter(gblColAllUser,userID exactin (colMSDByDocumentLevel).userID)));
+                                    
+                                    //Cập nhật MSD vào luồng phê duyệt
+                                    RemoveIf(colApprovesPeopleProcess,ID = 1 And BaseID = 2);
+                                    RemoveIf(colApprovesPeopleProcess,ID = 2 And BaseID = 2);
+                                    ForAll(Filter(colMSDByDocumentLevel,levelID = drp_rs_DocumentLevel.Selected.levelID) As Temp,Collect(colApprovesPeopleProcess,Table({ID:Max(Filter(colApprovesPeopleProcess,BaseID = 2),ID) + 1,userID:Temp.userID,BaseID:2,approveProcess:2,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate})));
                                 ZIndex: =1
 
                             drp_rs_DocumentType As dropdown:
@@ -532,25 +537,14 @@
                                     OnSelect: |-
                                         =UpdateContext({locDocumentIDGenerate:drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(Concat(Split(txt_rs_DocumentName.Text, " "), Left(Value, 1)))});
                                         
-                                        If(ThisItem.ID = 1,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 5,Collect(colApprovesPeopleProcess,Table({ID:Max(colApprovesPeopleProcess,ID) + 1,userID:"",BaseID:ThisItem.ID,approveProcess:1,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate}))),ThisItem.ID = 3,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 2,Collect(colApprovesPeopleProcess,Table({ID:Max(colApprovesPeopleProcess,ID) + 1,name:"",BaseID:ThisItem.ID,approveProcess:3,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate}))));
-                                        
-                                        ClearCollect(
-                                            colSortApproval,
-                                            ForAll(
-                                                Sequence(CountRows(colApprovesPeopleProcess)),
-                                                Patch(
-                                                    Last(FirstN(colApprovesPeopleProcess, Value)),
-                                                    {RowNumber: Value}
-                                                )
-                                            )
-                                        )
+                                        If(ThisItem.ID = 1,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 5,Collect(colApprovesPeopleProcess,Table({ID:Max(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID),ID) + 1,userID:"",BaseID:ThisItem.ID,approveProcess:1,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate}))),ThisItem.ID = 3,If(CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)) < 2,Collect(colApprovesPeopleProcess,Table({ID:Max(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID),ID) + 1,name:"",BaseID:ThisItem.ID,approveProcess:3,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate}))));
                                     Visible: =If(ThisItem.ID = 2,false,true)
                                     ZIndex: =2
 
                             Gallery13 As gallery.galleryVertical:
                                 DelayItemLoading: =true
-                                Height: =40 * CountRows(Filter(colSortApproval,BaseID = ThisItem.ID))
-                                Items: =Filter(colSortApproval,BaseID = ThisItem.ID)
+                                Height: =40 * CountRows(Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID))
+                                Items: =Filter(colApprovesPeopleProcess,BaseID = ThisItem.ID)
                                 Layout: =Layout.Vertical
                                 LoadingSpinner: =LoadingSpinner.Data
                                 ShowScrollbar: =false
@@ -581,7 +575,7 @@
                                     FontWeight: =FontWeight.Semibold
                                     Height: =26
                                     OnSelect: =Select(Parent)
-                                    Text: =ThisItem.RowNumber
+                                    Text: =ThisItem.ID
                                     Width: =30
                                     Y: =5
                                     ZIndex: =3
@@ -590,21 +584,22 @@
                                     BorderStyle: =BorderStyle.None
                                     ChevronBackground: =RGBA(73, 113, 215, 1)
                                     DefaultSelectedItems: =[ThisItem.name]
-                                    DisplayFields: =["Value"]
+                                    DisplayFields: =["fullName","email"]
                                     Height: =35
                                     InputTextPlaceholder: ="Chọn nhân viên"
-                                    Items: =[ThisItem.name]
+                                    Items: =If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4))
                                     OnSelect: =Select(Parent)
-                                    SearchFields: =["Value"]
-                                    SearchItems: =Search([ThisItem.name],ComboBox1.SearchText,"Value")
+                                    SearchFields: =["email"]
+                                    SearchItems: =Search(If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4)),ComboBox1.SearchText,"email")
                                     SelectMultiple: =false
+                                    Template: =ListItemTemplate.Person
                                     X: =44
                                     ZIndex: =4
 
                                 Image4 As image:
                                     Height: =25
                                     Image: =Delete
-                                    OnSelect: =RemoveIf(colSortApproval,ID = ThisItem.ID);RemoveIf(colApprovesPeopleProcess,ID = ThisItem.ID)
+                                    OnSelect: =RemoveIf(colApprovesPeopleProcess,ID = ThisItem.ID And BaseID = ThisItem.BaseID)
                                     Width: =47
                                     X: =381
                                     Y: =5

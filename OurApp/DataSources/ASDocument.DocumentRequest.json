@@ -39,6 +39,7 @@
       "Editor": "Modified By",
       "Editor#Claims": "Modified By Claims",
       "ID": "ID",
+      "lastSignNum": "lastSignNum",
       "levelID": "levelID",
       "maxApproveLevel": "maxApproveLevel",
       "Modified": "Modified",

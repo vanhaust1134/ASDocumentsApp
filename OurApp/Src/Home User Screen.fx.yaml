@@ -10,7 +10,7 @@
         Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = 1),{status:1});
         
         //Lấy các loại văn bản
-        ClearCollect(gblColDocumentType,'ASDocument.DocumentType');
+        ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
         
         //Lấy danh sách công ty
         ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));
