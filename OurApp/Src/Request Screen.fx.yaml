@@ -151,8 +151,9 @@
                                     ClearCollect(colUserMSD,Filter(gblColAllUser,userID exactin (colMSDByDocumentLevel).userID)));
                                     
                                     //Cập nhật MSD vào luồng phê duyệt
-                                    RemoveIf(colApprovesPeopleProcess,ID = 1 And BaseID = 2);
-                                    RemoveIf(colApprovesPeopleProcess,ID = 2 And BaseID = 2);
+                                    RemoveIf(colApprovesPeopleProcess,BaseID = 2 And ID = 1);
+                                    RemoveIf(colApprovesPeopleProcess,BaseID = 2 And ID = 2);
+                                    
                                     ForAll(Filter(colMSDByDocumentLevel,levelID = drp_rs_DocumentLevel.Selected.levelID) As Temp,Collect(colApprovesPeopleProcess,Table({ID:Max(Filter(colApprovesPeopleProcess,BaseID = 2),ID) + 1,userID:Temp.userID,BaseID:2,approveProcess:2,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate})));
                                 ZIndex: =1
 
