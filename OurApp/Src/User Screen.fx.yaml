@@ -100,7 +100,7 @@
                 Fill: =RGBA(255, 255, 255, 1)
                 Height: =652
                 Items: |-
-                    =If(gblRecUser.roleID = 1,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'}),gblRecUser.roleID = 2 Or gblRecUser.roleID = 4,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'}),gblRecUser.roleID = 3,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'},{ID:3,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}),gblRecUser.roleID = 5,Table({ID:1,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}))
+                    =If(gblRecUser.roleID = Blank(),Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'}),gblRecUser.roleID = 2 Or gblRecUser.roleID = 4,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'}),gblRecUser.roleID = 3,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'},{ID:3,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}),gblRecUser.roleID = 5,Table({ID:1,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}))
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =0
@@ -438,6 +438,9 @@
                             FillPortions: =1.5
                             Height: =50
                             Image: =First(ThisItem.'{Attachments}').AbsoluteUri
+                            OnSelect: |-
+                                =UpdateContext({locShowImage:true});
+                                UpdateContext({locImageSign:First(ThisItem.'{Attachments}').AbsoluteUri})
                             ZIndex: =4
 
                         img_us_Edit As image:
@@ -848,7 +851,8 @@
 
         ComboBox2 As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
-            DisplayFields: =["email"]
+            DefaultSelectedItems: =locInfoUser
+            DisplayFields: =["fullName"]
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
             Items: =Filter(gblColAllUser,!IsBlank(roleID))
@@ -862,11 +866,12 @@
 
         ComboBox3 As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
+            DefaultSelectedItems: =LookUp('ASDocument.Role',roleID = locInfoUser.roleID)
             DisplayFields: =["name"]
             InputTextPlaceholder: ="Chọn vai trò"
             IsSearchable: =false
             Items: |-
-                =Table({ID:2,name:"Người soạn thảo"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
+                =Table({ID:2,name:"Người xem xét"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
             NoSelectionText: ="Chọn vai trò"
             SearchFields: =["name"]
             SearchItems: =[]
@@ -1261,7 +1266,7 @@
             InputTextPlaceholder: ="Chọn vai trò"
             IsSearchable: =false
             Items: |-
-                =Table({ID:2,name:"Người soạn thảo"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
+                =Table({ID:2,name:"Người xem xét"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
             NoSelectionText: ="Chọn vai trò"
             SearchFields: =["name"]
             SearchItems: =[]
@@ -1269,4 +1274,36 @@
             X: =525
             Y: =247
             ZIndex: =13
+
+    ctn_us_ImageSign As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(0, 0, 0, 0.5)
+        Height: =768
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Visible: =locShowImage
+        Width: =1366
+        ZIndex: =10
+
+        Image3 As image:
+            Height: =485
+            Image: =locImageSign
+            ImagePosition: =ImagePosition.Center
+            Width: =687
+            X: =336
+            Y: =159
+            ZIndex: =1
+
+        Icon3 As icon.Cancel:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =29
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({locShowImage:false});
+                UpdateContext({locImageSign:Blank()});
+            Width: =27
+            X: =1023
+            Y: =130
+            ZIndex: =2
 
