@@ -389,7 +389,7 @@
                         Height: =52
                         LayoutAlignItems: =LayoutAlignItems.Stretch
                         LayoutMode: =LayoutMode.Auto
-                        PaddingLeft: =15
+                        PaddingLeft: =20
                         PaddingRight: =20
                         RadiusBottomLeft: =15
                         RadiusBottomRight: =15
@@ -457,9 +457,11 @@
 
                         img_ds_Delete_1 As image:
                             AlignInContainer: =AlignInContainer.Center
+                            FillPortions: =0.2
                             Height: =45
                             Image: =Delete
                             ImagePosition: =ImagePosition.Center
+                            LayoutMinWidth: =0
                             OnSelect: |-
                                 =UpdateContext({locDeleteDP:true});
                                 UpdateContext({locInfoUser:ThisItem})
@@ -974,6 +976,9 @@
                             LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
                         )
                     );
+                
+                //Cập nhật lại MSD của tài liệu nếu role thay đổi
+                'ASDocument.UpdateMSDApproval'.Run(locInfoUser.userID);
                 
                 Notify("Xóa thành công",NotificationType.Success,1500);
                 UpdateContext({locDeleteDP:false})

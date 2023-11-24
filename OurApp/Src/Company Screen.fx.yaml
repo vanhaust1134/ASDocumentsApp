@@ -364,6 +364,7 @@
                         FontWeight: =FontWeight.Semibold
                         OnSelect: =Select(Parent)
                         Text: =ThisItem.name & " (" & ThisItem.shortName & ")" 
+                        Tooltip: =ThisItem.name & " (" & ThisItem.shortName & ")" 
                         Width: =245
                         Wrap: =false
                         X: =85
