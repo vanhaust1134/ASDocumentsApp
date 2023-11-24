@@ -2,12 +2,10 @@
     Fill: =RGBA(224,224,224,1)
     OnVisible: |+
         =//Lấy danh sách công ty
-        Clear(gblColCompany);
-        If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,Collect(gblColCompany,Table({name:"Tất cả"}));ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1)));
+        If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1)));
         
         //Lấy danh sách đơn vị
-        Clear(gblColDivision);
-        If(CountRows(Filter(gblColDivision,name = "Tất cả")) = 0,Collect(gblColDivision,Table({name:"Tất cả"}));ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1)));
+        If(CountRows(Filter(gblColDivision,name = "Tất cả")) = 0,Clear(gblColDivision);Collect(gblColDivision,Table({name:"Tất cả"}));Collect(gblColDivision,Filter('ASDocument.Division',active = 1)));
         
 
     btn_ds_BackGroundScreen_1 As button:
