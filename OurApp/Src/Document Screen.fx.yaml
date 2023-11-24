@@ -182,11 +182,12 @@
         PaddingRight: =25
         Width: =1170
         X: =196
-        Y: =150
+        Y: =143
         ZIndex: =4
 
         lbt_ds_Level As label:
             Align: =Align.Center
+            AlignInContainer: =AlignInContainer.Center
             Color: =RGBA(174, 174, 177, 1)
             FontWeight: =FontWeight.Semibold
             Text: ="Cấp"
@@ -196,6 +197,7 @@
             ZIndex: =3
 
         drp_ds_Levels As dropdown:
+            AlignInContainer: =AlignInContainer.Center
             BorderColor: =RGBA(73, 113, 215, 1)
             BorderThickness: =1
             ChevronBackground: =RGBA(73, 113, 215, 1)
@@ -204,6 +206,21 @@
             X: =590
             Y: =145
             ZIndex: =4
+
+        Icon1_1 As icon.Reload:
+            AlignInContainer: =AlignInContainer.Center
+            Color: =RGBA(73, 113, 215, 1)
+            Height: =30
+            Icon: =Icon.Reload
+            OnSelect: |-
+                =Refresh('ASDocument.DocumentLevel');Refresh('ASDocument.DocumentType');
+                //Lấy danh sách cấp
+                Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
+                
+                //Lấy các loại văn bản
+                Clear(gblColDocumentType);ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
+            Width: =100
+            ZIndex: =5
 
     ctn_ds_MainContent As groupContainer.horizontalAutoLayoutContainer:
         DropShadow: =DropShadow.None
@@ -905,7 +922,7 @@
                 Patch('ASDocument.DocumentLevel',LookUp('ASDocument.DocumentLevel',ID = locDocumentLevelID),{name:txt_ds_DocuementLevelName.Text});
                 
                 //Cập nhật danh sách loại tài liệu
-                'ASDocument.AddDocument'.Run(locDocumentLevelID,JSON(Filter(colListDocumentType,Or(status = 2, status = 3, status = 4)),JSONFormat.IncludeBinaryData & JSONFormat.IgnoreUnsupportedTypes));
+                'ASDocument.AddDocument'.Run(locDocumentLevelID,JSON(Filter(colListDocumentType,Or(status = 2, status = 3, status = 4) And !IsBlank(name)),JSONFormat.IncludeBinaryData & JSONFormat.IgnoreUnsupportedTypes));
                 
                 //Lấy danh sách các cấp
                 Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
@@ -1028,7 +1045,7 @@
                     LayoutMinWidth: =100
                     OnChange: |-
                         =//Cập nhật thay đổi
-                        If(ThisItem.status <> 3,Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType_3.Text,status:4}))
+                        If(ThisItem.status <> 3,Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType_3.Text,status:4}),Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{name:txt_ds_DocumentType_3.Text}))
                     OnSelect: =
                     Width: =450
                     X: =44
@@ -1043,7 +1060,7 @@
                     HintText: ="Tên viết tắt"
                     OnChange: |-
                         =//Cập nhật thay đổi
-                        If(ThisItem.status <> 3,Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{shortName:txt_ds_DocumentType.Text,status:4}))
+                        If(ThisItem.status <> 3,Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{shortName:Upper(txt_ds_DocumentType.Text),status:4}),Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{shortName:Upper(txt_ds_DocumentType.Text)}))
                     OnSelect: =
                     Width: =150
                     X: =44

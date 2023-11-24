@@ -681,6 +681,9 @@
                 //Tạo mới chữ ký
                 Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_UsersEdit.Selected.userID And active = 1),Form1_2.Updates);
                 
+                //Cập nhật lại MSD của tài liệu nếu role thay đổi
+                If(locInfoUser.roleID <> cbo_us_RolesEdit.Selected.ID,'ASDocument.UpdateMSDApproval'.Run(cbo_us_UsersEdit.Selected.userID));
+                
                 //Cập nhật lại bảng user
                 ClearCollect(
                         gblColAllUser,
@@ -767,7 +770,7 @@
                     DropTargetBorderThickness: =1
                     Height: =167
                     IsInDataCard: =true
-                    Items: =First(locInfoUser.'{Attachments}')
+                    Items: =
                     MaxAttachments: =1
                     MaxAttachmentSize: =50
                     MaxAttachmentsText: ="Số lượng file đã đạt tối đa."
@@ -851,8 +854,12 @@
 
         cbo_us_UsersEdit As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
+            ChevronDisabledBackground: =RGBA(56, 96, 178, 1)
             DefaultSelectedItems: =locInfoUser
+            DisabledColor: =RGBA(0, 0, 0, 1)
+            DisabledFill: =RGBA(255, 255, 255, 1)
             DisplayFields: =["fullName"]
+            DisplayMode: =DisplayMode.Disabled
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
             Items: =gblColAllUser

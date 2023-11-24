@@ -238,6 +238,21 @@
             Y: =145
             ZIndex: =6
 
+        Icon1 As icon.Reload:
+            AlignInContainer: =AlignInContainer.Center
+            Color: =RGBA(73, 113, 215, 1)
+            Height: =30
+            Icon: =Icon.Reload
+            OnSelect: |-
+                =Refresh('ASDocument.Company');Refresh('ASDocument.Division');
+                //Lấy danh sách công ty
+                Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1));
+                
+                //Lấy danh sách đơn vị
+                Clear(gblColDivision);Collect(gblColDivision,Table({name:"Tất cả"}));Collect(gblColDivision,Filter('ASDocument.Division',active = 1));
+            Width: =100
+            ZIndex: =7
+
     ctn_ds_MainContent_1 As groupContainer.horizontalAutoLayoutContainer:
         DropShadow: =DropShadow.None
         Height: =571
@@ -356,7 +371,7 @@
 
                     gal_ds_DocumentType_1 As gallery.galleryVertical:
                         DelayItemLoading: =true
-                        Height: =62 * CountRows(Filter(gblColDivision,companyID = ThisItem.ID)) 
+                        Height: =62 * CountRows(Filter(gblColDivision,companyID = ThisItem.ID And (ID = drp_ds_Division.Selected.ID || If(IsBlank(drp_ds_Division.Selected.ID),true,false)))) 
                         Items: =Filter(gblColDivision,companyID = ThisItem.ID And (ID = drp_ds_Division.Selected.ID || If(IsBlank(drp_ds_Division.Selected.ID),true,false)))
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
@@ -749,11 +764,9 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =If(locInfoCompany.name <> txt_ds_DocuementLevelName_1.Text Or locInfoCompany.shortName <> txt_ds_DocuementLevelName_4.Text,Patch('ASDocument.Company',LookUp('ASDocument.Company',ID = locInfoCompany.ID),{active:0});
+                =If(locInfoCompany.name <> txt_ds_DocuementLevelName_1.Text Or locInfoCompany.shortName <> txt_ds_DocuementLevelName_4.Text,Patch('ASDocument.Company',LookUp('ASDocument.Company',ID = locInfoCompany.ID),{name:txt_ds_DocuementLevelName_1.Text,shortName:Upper(txt_ds_DocuementLevelName_4.Text)}));
                 
-                Set(gblCompanyID,Patch('ASDocument.Company',Defaults('ASDocument.Company'),{name:txt_ds_DocuementLevelName_1.Text,shortName:Upper(txt_ds_DocuementLevelName_4.Text),active:1})),Set(gblCompanyID,locInfoCompany));
-                
-                'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(Filter(colListDivisionEdit,status = 2 Or status = 3 Or status = 4),JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes),2);
+                'ASDocument.ManageDivision'.Run(locInfoCompany.ID,JSON(Filter(colListDivisionEdit,Or(status = 2, status = 3, status = 4) And !IsBlank(name)),JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes),2);
                 
                 Notify("Sửa thành công",NotificationType.Success,1500);
                 UpdateContext({locUpdateDP:false})
@@ -869,7 +882,7 @@
                     HintText: ="Nhập tên đơn vị"
                     OnChange: |-
                         =//Cập nhật thay đổi
-                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text,status:4})
+                        If(ThisItem.status <> 3,Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text,status:4}),Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{name:txt_ds_DocumentType_1.Text}))
                     OnSelect: =
                     Width: =200
                     X: =44
@@ -886,7 +899,7 @@
                     LayoutMinWidth: =0
                     OnChange: |-
                         =//Cập nhật thay đổi
-                        Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{shortName:txt_ds_DocumentType_5.Text,status:4})
+                        If(ThisItem.status <> 3,Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{shortName:Upper(txt_ds_DocumentType_5.Text),status:4}),Patch(colListDivisionEdit,LookUp(colListDivisionEdit,ID = ThisItem.ID),{shortName:Upper(txt_ds_DocumentType_5.Text)}))
                     OnSelect: =
                     Width: =450
                     X: =44
@@ -1007,10 +1020,10 @@
                 Reset(txt_ds_DocuementLevelName_2);
                 
                 //Lấy danh sách công ty
-                ClearCollect(gblColCompany,Filter('ASDocument.Company',active = 1));
+                If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1)));
                 
                 //Lấy danh sách đơn vị
-                ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));
+                If(CountRows(Filter(gblColDivision,name = "Tất cả")) = 0,Clear(gblColDivision);Collect(gblColDivision,Table({name:"Tất cả"}));Collect(gblColDivision,Filter('ASDocument.Division',active = 1)));
                 
                 Notify("Thêm thành công",NotificationType.Success,1500);
                 UpdateContext({locCreateDP:false})
