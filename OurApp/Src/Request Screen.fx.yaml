@@ -2,7 +2,27 @@
     Fill: =RGBA(224,224,224,1)
     OnHidden: |-
         =UpdateContext({locReview:false})
-    OnVisible: =Clear(colApprovesPeopleProcess);
+    OnVisible: |-
+        =//Xóa bảng quy trình phê duyệt
+        Clear(colApprovesPeopleProcess);
+        
+        //Cập nhật mã văn bản
+        UpdateContext(
+                {
+                    locDocumentIDGenerate: drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(
+                        Concat(
+                            Split(
+                                txt_rs_DocumentName.Text,
+                                " "
+                            ),
+                            Left(
+                                Value,
+                                1
+                            )
+                        )
+                    )
+                }
+            )
 
     btn_rs_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -147,7 +167,7 @@
                                 LayoutMinWidth: =100
                                 OnChange: |-
                                     =//Lấy danh sách MSD chọn theo cấp
-                                    If(drp_rs_DocumentLevel.Selected.documentGroupID = 1,ClearCollect(colMSDByDocumentLevel,Filter('ASDocument.MSDApproval',levelID = drp_rs_DocumentLevel.Selected.levelID)),
+                                    If(drp_rs_DocumentLevel.Selected.documentGroupID = 1,ClearCollect(colMSDByDocumentLevel,Filter('ASDocument.MSDApproval',levelID = drp_rs_DocumentLevel.Selected.levelID And active = 1)),
                                     ClearCollect(colUserMSD,Filter(gblColAllUser,userID exactin (colMSDByDocumentLevel).userID)));
                                     
                                     //Cập nhật MSD vào luồng phê duyệt
@@ -584,11 +604,13 @@
                                 ComboBox1 As combobox:
                                     BorderStyle: =BorderStyle.None
                                     ChevronBackground: =RGBA(73, 113, 215, 1)
-                                    DefaultSelectedItems: =[ThisItem.name]
+                                    DefaultSelectedItems: =LookUp(gblColAllUser,userID = ThisItem.userID)
                                     DisplayFields: =["fullName","email"]
                                     Height: =35
                                     InputTextPlaceholder: ="Chọn nhân viên"
                                     Items: =If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4))
+                                    OnChange: |-
+                                        =Patch(colApprovesPeopleProcess,LookUp(colApprovesPeopleProcess,ID = ThisItem.ID And BaseID = ThisItem.BaseID),{userID:ComboBox1.Selected.userID})
                                     OnSelect: =Select(Parent)
                                     SearchFields: =["email"]
                                     SearchItems: =Search(If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4)),ComboBox1.SearchText,"email")
@@ -609,14 +631,54 @@
                 btn_rs_Submit As button:
                     AlignInContainer: =AlignInContainer.End
                     Fill: =RGBA(73, 113, 215, 1)
-                    OnSelect: |-
-                        =UpdateContext({locSubmit:true});
-                        
-                        //Text(0999 + 1,"0####")
-                        
-                        UpdateContext({locNumberCountRequest:If(!IsEmpty(Filter('ASDocument.DocumentIDGenerated',companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID)),Value(Text(LookUp('ASDocument.DocumentIDGenerated',companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID).lastAutoNumber + 1,"0####")),01)});
-                        
-                        UpdateContext({locDocumentIDGenerate:drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(Concat(Split(txt_rs_DocumentName.Text, " "), Left(Value, 1)))})
+                    OnSelect: |
+                        =If(
+                            IsBlank(txt_rs_DocumentName.Text),
+                            Notify(
+                                "Trường tên văn bản không được để trống",
+                                NotificationType.Error,
+                                1500
+                            ),
+                            UpdateContext({locSubmit: true});
+                            UpdateContext(
+                                {
+                                    locNumberCountRequest: If(
+                                        !IsEmpty(
+                                            Filter(
+                                                'ASDocument.DocumentIDGenerated',
+                                                companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID
+                                            )
+                                        ),
+                                        Value(
+                                            Text(
+                                                LookUp(
+                                                    'ASDocument.DocumentIDGenerated',
+                                                    companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID
+                                                ).lastAutoNumber + 1,
+                                                "0####"
+                                            )
+                                        ),
+                                        01
+                                    )
+                                }
+                            );
+                            UpdateContext(
+                                {
+                                    locDocumentIDGenerate: drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(
+                                        Concat(
+                                            Split(
+                                                txt_rs_DocumentName.Text,
+                                                " "
+                                            ),
+                                            Left(
+                                                Value,
+                                                1
+                                            )
+                                        )
+                                    )
+                                }
+                            )
+                        );
                     Text: =If(locReview = false,"Tạo","Gửi")
                     ZIndex: =3
 
@@ -946,9 +1008,10 @@
                         levelID: drp_rs_DocumentLevel.Selected.levelID,
                         documentTypeID: drp_rs_DocumentType.Selected.ID,
                         userID: gblRecUser.userID,
-                        documentID: locDocumentIDGenerate,
+                        documentID: If(drp_rs_DocumentLevel.Selected.documentGroupID = 1,locDocumentIDGenerate,txt_rs_FileCodeInput.Text),
                         createdDateValue: Value(Day(Today() & Month(Today()) & Year(Today()))),
                         currentApproveLevel:1,
+                        description:txt_rs_DocumentName.Text,
                         maxApproveLevel:If(Or(drp_rs_DocumentLevel.Selected.levelID = 3,drp_rs_DocumentLevel.Selected.levelID = 4),2,3),
                         status:1,
                         pageSignNumber:Value(txt_rs_SignPage.Text),
@@ -963,6 +1026,10 @@
                 Patch('ASDocument.DocumentIDGenerated',Defaults('ASDocument.DocumentIDGenerated'),{companyID:drp_rs_CompanyNameInput.Selected.ID,divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,documentTypeID:drp_rs_DocumentType.Selected.ID,lastAutoNumber:locNumberCountRequest});
                 
                 //Tạo luồng các dòng quy trình phê duyệt yêu cầu
+                'ASDocument.AddRequestApproveProcess'.Run(JSON(colApprovesPeopleProcess,JSONFormat.IncludeBinaryData));
+                
+                //Lưu tài liệu liên quan
+                Patch('ASDocument.RelatedDocument',Defaults('ASDocument.RelatedDocument'),{documentID:locDocumentIDGenerate,active:1},frm_rs_Attachment.Updates);
                 
                 Notify(
                     "Gửi thành công",

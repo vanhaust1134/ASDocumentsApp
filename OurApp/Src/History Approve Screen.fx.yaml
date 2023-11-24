@@ -1,5 +1,6 @@
 "'History Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
+    OnVisible: =ClearCollect(gblColApprovalByRequest,AddColumns('ASDocument.DocumentRequest' As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID))
 
     btn_has_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -98,7 +99,7 @@
             Y: =145
             ZIndex: =5
 
-        Dropdown1 As dropdown:
+        drp_as_UserCreated As dropdown:
             BorderColor: =RGBA(73, 113, 215, 1)
             ChevronBackground: =RGBA(73, 113, 215, 1)
             Items: =["Trần Văn Hậu"]
@@ -224,8 +225,7 @@
                 gal_has_List As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: |-
-                        =Table({ID:1,Reason:"Quy trình nghỉ phép",Time:"03/10/2023",Created:"Trần Văn Hậu",Status:"Đã phê duyệt"},{ID:1,Reason:"Quy trình văn bản",Time:"28/09/2023",Created:"Trần Văn Hậu",Status:"Đã phê duyệt"},{ID:1,Reason:"Quy trình đánh giá năng lực",Time:"17/09/2023",Created:"Trần Văn Hậu",Status:"Đã phê duyệt"})
+                    Items: =Search(Filter(gblColApprovalByRequest,approvalUserID = gblRecUser.userID And Created > dtp_has_FromDate.SelectedDate And Created > dtp_has_ToDate.SelectedDate And (userID = drp_as_UserCreated.Selected.ID || If(IsBlank(drp_as_UserCreated.Selected.userID),true,false))),"txt_has_Search.text","description")
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =0
@@ -256,7 +256,7 @@
                             FillPortions: =1
                             FontWeight: =FontWeight.Semibold
                             OnSelect: =Navigate('Request Detail Screen')
-                            Text: =ThisItem.Reason
+                            Text: =ThisItem.description
                             ZIndex: =1
 
                         lbl_has_ItemTime As label:
@@ -264,7 +264,7 @@
                             FillPortions: =1
                             FontWeight: =FontWeight.Semibold
                             OnSelect: =Navigate('Request Detail Screen')
-                            Text: =ThisItem.Time
+                            Text: =ThisItem.Created
                             ZIndex: =2
 
                         lbl_has_ItemCreatedBy As label:
@@ -272,7 +272,7 @@
                             FillPortions: =1
                             FontWeight: =FontWeight.Semibold
                             OnSelect: =Navigate('Request Detail Screen')
-                            Text: =ThisItem.Created
+                            Text: =LookUp(gblColAllUser,userID = ThisItem.userID).fullName
                             ZIndex: =4
 
                         Container17_1 As groupContainer.manualLayoutContainer:
@@ -294,7 +294,7 @@
                                 RadiusTopLeft: =20
                                 RadiusTopRight: =20
                                 Size: =13
-                                Text: =ThisItem.Status
+                                Text: =If(ThisItem.status = 1,"Đang duyệt",ThisItem.status = 2,"Đã duyệt",ThisItem.status = 1,"Đã từ chối")
                                 X: =36
                                 Y: =8
                                 ZIndex: =1

@@ -1,5 +1,6 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
+    OnVisible: =ClearCollect(gblColApprovalByRequest,AddColumns('ASDocument.DocumentRequest' As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID))
 
     btn_as_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -288,8 +289,7 @@
                 gal_as_List As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: |-
-                        =Table({ID:1,Reason:"Quy trình nghỉ phép",Time:"03/10/2023",Created:"Trần Văn Hậu",Status:"Đã phê duyệt"},{ID:1,Reason:"Quy trình văn bản",Time:"28/09/2023",Created:"Trần Văn Hậu",Status:"Đã phê duyệt"},{ID:1,Reason:"Quy trình đánh giá năng lực",Time:"17/09/2023",Created:"Trần Văn Hậu",Status:"Đã phê duyệt"})
+                    Items: =Filter(gblColApprovalByRequest,approvalUserID = gblRecUser.userID)
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =0
@@ -320,8 +320,10 @@
                             FillPortions: =1
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =140
-                            OnSelect: =Navigate('Request Detail Screen')
-                            Text: =ThisItem.Reason
+                            OnSelect: |-
+                                =UpdateContext({locInfoRequest:ThisItem});
+                                Navigate('Request Detail Screen',ScreenTransition.Fade);
+                            Text: =ThisItem.description
                             Wrap: =false
                             ZIndex: =1
 
@@ -329,8 +331,10 @@
                             Color: =RGBA(114, 114, 114, 1)
                             FillPortions: =1
                             FontWeight: =FontWeight.Semibold
-                            OnSelect: =Navigate('Request Detail Screen')
-                            Text: =ThisItem.Time
+                            OnSelect: |-
+                                =UpdateContext({locInfoRequest:ThisItem});
+                                Navigate('Request Detail Screen',ScreenTransition.Fade);
+                            Text: =ThisItem.Created
                             Wrap: =false
                             ZIndex: =2
 
@@ -338,8 +342,10 @@
                             Color: =RGBA(114, 114, 114, 1)
                             FillPortions: =1
                             FontWeight: =FontWeight.Semibold
-                            OnSelect: =Navigate('Request Detail Screen')
-                            Text: =ThisItem.Created
+                            OnSelect: |-
+                                =UpdateContext({locInfoRequest:ThisItem});
+                                Navigate('Request Detail Screen',ScreenTransition.Fade);
+                            Text: =LookUp(gblColAllUser,userID = ThisItem.userID).fullName
                             Wrap: =false
                             ZIndex: =3
 
@@ -362,7 +368,7 @@
                                 DelayItemLoading: =true
                                 Height: |
                                     =30
-                                Items: =[1,2,3]
+                                Items: =Sequence(ThisItem.maxApproveLevel,1)
                                 LayoutMinHeight: =0
                                 LayoutMinWidth: =0
                                 LoadingSpinner: =LoadingSpinner.Data
@@ -398,7 +404,8 @@
                             LayoutMinHeight: =0
                             LayoutMinWidth: =0
                             OnSelect: |-
-                                =UpdateContext({locApprove:true})
+                                =UpdateContext({locApprove:true});
+                                UpdateContext({locInfoRequest:ThisItem})
                             Width: =50
                             ZIndex: =7
 
@@ -752,33 +759,37 @@
             Height: =457
             HtmlText: |-
                 ="<table  width='100%' border='1' cellpadding='5' style='border:1px solid black; border-collapse:collapse'>
-                  <tr>
-                    <td style=width:200px><b>Tên văn bản</b></td>
-                    <td>" & "Quy trình thực hiện báo giá" &"</td>
+                <tr>
+                    <td style=width:200px><b>Mã văn bản</b></td>
+                    <td>" & locInfoRequest.documentID &"</td>
                   </tr>
                   <tr>
-                    <td style=width:100px><b>Mô tả</b></td>
-                    <td>" & "Đảm bảo quy trình thực hiện báo giá trong khâu quản lý" &"</td>
+                    <td style=width:200px><b>Tên văn bản</b></td>
+                    <td>" & locInfoRequest.description &"</td>
                   </tr>
                   <tr>
                     <td style=width:100px><b>Công ty</b></td>
-                    <td>" & "AsiaShine" &"</td>
+                    <td>" & LookUp('ASDocument.Company',ID = locInfoRequest.companyID).name &"</td>
+                  </tr>
+                  <tr>
+                    <td style=width:100px><b>Đơn vị</b></td>
+                    <td>" & LookUp('ASDocument.Division',ID = locInfoRequest.divisionID).name &"</td>
                   </tr>
                   <tr>
                     <td style=width:100px><b>Cấp</b></td>
-                    <td>" & "Tài liệu cấp 1" &"</td>
+                    <td>" & LookUp('ASDocument.DocumentLevel',levelID = locInfoRequest.levelID).name &"</td>
                   </tr>
                   <tr>
                     <td style=width:100px><b>Loại văn bản</b></td>
-                    <td>" & "Chính sách công ty" &"</td>
+                    <td>" & LookUp('ASDocument.DocumentType',ID = locInfoRequest.ID).name &"</td>
                   </tr>
                   <tr>
                     <td style=width:100px><b>Người tạo</b></td>
-                    <td>" & "Trần Văn Hậu" &"</td>
+                    <td>" & LookUp(gblColAllUser,userID = locInfoRequest.userID).fullName &"</td>
                   </tr>
                   <tr>
                     <td style=width:100px><b>Ngày tạo</b></td>
-                    <td>" & "11/11/2023" &"</td>
+                    <td>" & locInfoRequest.Created &"</td>
                   </tr>
                 </table>"
             Size: =13

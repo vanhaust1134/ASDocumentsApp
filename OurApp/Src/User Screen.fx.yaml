@@ -1261,11 +1261,10 @@
             BorderColor: =RGBA(116, 116, 116, 1)
             DisplayFields: =["fullName","email"]
             InputTextPlaceholder: ="Tìm người dùng"
-            IsSearchable: =false
             Items: =gblColAllUser
             NoSelectionText: ="Tìm người dùng"
             SearchFields: =["email"]
-            SearchItems: =[]
+            SearchItems: =Search(gblColAllUser,cbo_us_Users.SearchText,"email")
             SelectMultiple: =false
             Template: =ListItemTemplate.Person
             X: =525
