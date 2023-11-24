@@ -100,7 +100,7 @@
                 Fill: =RGBA(255, 255, 255, 1)
                 Height: =652
                 Items: |-
-                    =If(gblRecUser.roleID = Blank(),Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'}),gblRecUser.roleID = 2 Or gblRecUser.roleID = 4,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'}),gblRecUser.roleID = 3,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'},{ID:3,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}),gblRecUser.roleID = 5,Table({ID:1,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}))
+                    =If(gblRecUser.roleID = 1,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'}),gblRecUser.roleID = 2 Or gblRecUser.roleID = 4,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'}),gblRecUser.roleID = 3,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'},{ID:3,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}),gblRecUser.roleID = 5,Table({ID:1,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}))
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =0
@@ -676,10 +676,10 @@
                 Patch('ASDocument.Users_Roles',LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID And roleID = locInfoUser.roleID And active = 1),{active:0});
                 
                 //Tạo mới vai trò cho user
-                Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_Users.Selected.userID,roleID:cbo_us_Roles.Selected.ID,active:1});
+                Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_UsersEdit.Selected.userID,roleID:cbo_us_RolesEdit.Selected.ID,active:1});
                 
                 //Tạo mới chữ ký
-                Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_Users.Selected.userID),Form1_3.Updates);
+                Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_UsersEdit.Selected.userID And active = 1),Form1_2.Updates);
                 
                 //Cập nhật lại bảng user
                 ClearCollect(
@@ -767,7 +767,7 @@
                     DropTargetBorderThickness: =1
                     Height: =167
                     IsInDataCard: =true
-                    Items: =Parent.Default
+                    Items: =First(locInfoUser.'{Attachments}')
                     MaxAttachments: =1
                     MaxAttachmentSize: =50
                     MaxAttachmentsText: ="Số lượng file đã đạt tối đa."
@@ -849,13 +849,13 @@
             Y: =247
             ZIndex: =11
 
-        ComboBox2 As combobox:
+        cbo_us_UsersEdit As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
             DefaultSelectedItems: =locInfoUser
             DisplayFields: =["fullName"]
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
-            Items: =Filter(gblColAllUser,!IsBlank(roleID))
+            Items: =gblColAllUser
             NoSelectionText: ="Tìm người dùng"
             SearchFields: =["email"]
             SearchItems: =[]
@@ -864,7 +864,7 @@
             Y: =178
             ZIndex: =12
 
-        ComboBox3 As combobox:
+        cbo_us_RolesEdit As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
             DefaultSelectedItems: =LookUp('ASDocument.Role',roleID = locInfoUser.roleID)
             DisplayFields: =["name"]
@@ -1250,7 +1250,7 @@
             DisplayFields: =["fullName","email"]
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
-            Items: =Filter(gblColAllUser,IsBlank(roleID))
+            Items: =gblColAllUser
             NoSelectionText: ="Tìm người dùng"
             SearchFields: =["email"]
             SearchItems: =[]
@@ -1266,7 +1266,7 @@
             InputTextPlaceholder: ="Chọn vai trò"
             IsSearchable: =false
             Items: |-
-                =Table({ID:2,name:"Người xem xét"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
+                =Table({ID:1,name:"Người soạn thảo"},{ID:2,name:"Người xem xét"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
             NoSelectionText: ="Chọn vai trò"
             SearchFields: =["name"]
             SearchItems: =[]

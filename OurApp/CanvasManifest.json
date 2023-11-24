@@ -109,11 +109,11 @@
     "DocumentType": "App",
     "EnableInstrumentation": false,
     "FileID": "306ef002-5c1f-4d60-b80f-a4dc85a4c3ce",
-    "Id": "72655343-e1a7-4a48-8d4b-88ba32971107",
+    "Id": "46757dec-8db2-48ab-89db-b61567ea4a53",
     "InstrumentationKey": "",
     "LocalDatabaseReferences": "{}",
     "ManualOfflineProfileId": "",
-    "Name": "AS_DocumentApplication",
+    "Name": "AS_DocumentApplication.msapp",
     "OriginatingVersion": "1.334",
     "ParserErrorCount": 0,
     "ShowStatusBar": false

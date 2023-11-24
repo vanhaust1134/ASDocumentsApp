@@ -17,40 +17,6 @@
     "dependents": [],
     "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
   },
-  "8ebfa6b4-0d78-4c91-bb6c-4daa06d1e392": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "cf341574-441c-4f2a-a3b6-ead8c294cdc6": {
-          "value": "shared_sharepointonline"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "f2aa9c63-9165-4e19-b4a5-de12a60a5d98"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_sharepointonline": {
-          "value": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
-        },
-        "workflowEntityId": {},
-        "workflowName": {
-          "value": "f2aa9c63-9165-4e19-b4a5-de12a60a5d98"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "ASDocument.AddDocument"
-    ],
-    "dependencies": {
-      "shared_sharepointonline": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
-    },
-    "dependents": [],
-    "id": "8ebfa6b4-0d78-4c91-bb6c-4daa06d1e392"
-  },
   "ba84e307-324a-4015-845c-dce71f23858a": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -190,9 +156,43 @@
     "dependents": [
       "da7ab5b8-3d2b-41f3-9728-0c021bc0d5c4",
       "ba84e307-324a-4015-845c-dce71f23858a",
-      "8ebfa6b4-0d78-4c91-bb6c-4daa06d1e392"
+      "d324d472-ea8a-4c77-84e2-272b0845d79e"
     ],
     "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+  },
+  "d324d472-ea8a-4c77-84e2-272b0845d79e": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "cf341574-441c-4f2a-a3b6-ead8c294cdc6": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "f2aa9c63-9165-4e19-b4a5-de12a60a5d98"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "f2aa9c63-9165-4e19-b4a5-de12a60a5d98"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ASDocument.AddDocument"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+    },
+    "dependents": [],
+    "id": "d324d472-ea8a-4c77-84e2-272b0845d79e"
   },
   "da7ab5b8-3d2b-41f3-9728-0c021bc0d5c4": {
     "connectionRef": {
