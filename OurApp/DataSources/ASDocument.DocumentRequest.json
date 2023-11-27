@@ -35,6 +35,7 @@
       "divisionID": "divisionID",
       "documentGroupID": "documentGroupID",
       "documentID": "documentID",
+      "documentName": "documentName",
       "documentTypeID": "documentTypeID",
       "Editor": "Modified By",
       "Editor#Claims": "Modified By Claims",

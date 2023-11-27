@@ -197,7 +197,7 @@
                                 DisabledFill: =RGBA(255, 255, 255, 1)
                                 DisplayMode: =DisplayMode.Disabled
                                 FillPortions: =1
-                                Items: =gblColDocumentLevel
+                                Items: =[locInfoRequest.levelID]
                                 LayoutMinWidth: =150
                                 ZIndex: =1
 

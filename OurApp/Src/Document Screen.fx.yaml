@@ -1145,11 +1145,11 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =//Tạo dòng MSD duyệt mới
-                Patch('ASDocument.MSDApproval',Defaults('ASDocument.MSDApproval'),{documentGroupID:locMSDByLevel.documentGroupID,levelID:locMSDByLevel.levelID,userID:cbo_ds_ApprovalMSD.Selected.userID,active:1,sort:locMSDByLevel.sort});
-                
-                //Cập nhật trạng thái dòng MSD
+                =//Cập nhật trạng thái dòng MSD
                 Patch('ASDocument.MSDApproval',LookUp('ASDocument.MSDApproval',ID = locMSDByLevel.ID And active= 1),{active:0});
+                
+                //Tạo dòng MSD duyệt mới
+                Patch('ASDocument.MSDApproval',Defaults('ASDocument.MSDApproval'),{documentGroupID:locMSDByLevel.documentGroupID,levelID:locMSDByLevel.levelID,userID:cbo_ds_ApprovalMSD.Selected.userID,active:1,sort:locMSDByLevel.sort});
                 
                 Reset(cbo_ds_ApprovalMSD);
                 

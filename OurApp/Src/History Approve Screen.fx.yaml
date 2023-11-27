@@ -102,7 +102,7 @@
         drp_as_UserCreated As dropdown:
             BorderColor: =RGBA(73, 113, 215, 1)
             ChevronBackground: =RGBA(73, 113, 215, 1)
-            Items: =["Trần Văn Hậu"]
+            Items: =gblColAllUser
             LayoutMinWidth: =80
             Width: =200
             ZIndex: =6
@@ -256,7 +256,7 @@
                             FillPortions: =1
                             FontWeight: =FontWeight.Semibold
                             OnSelect: =Navigate('Request Detail Screen')
-                            Text: =ThisItem.description
+                            Text: =ThisItem.documentName
                             ZIndex: =1
 
                         lbl_has_ItemTime As label:
@@ -294,7 +294,7 @@
                                 RadiusTopLeft: =20
                                 RadiusTopRight: =20
                                 Size: =13
-                                Text: =If(ThisItem.status = 1,"Đang duyệt",ThisItem.status = 2,"Đã duyệt",ThisItem.status = 1,"Đã từ chối")
+                                Text: =If(ThisItem.status = 1,"Đang duyệt",ThisItem.status = 2,"Đã duyệt",ThisItem.status = 3,"Đã từ chối")
                                 X: =36
                                 Y: =8
                                 ZIndex: =1

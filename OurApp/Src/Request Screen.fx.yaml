@@ -22,7 +22,17 @@
                         )
                     )
                 }
-            )
+            );
+        
+        //Lấy danh sách MSD chọn theo cấp
+        If(drp_rs_DocumentLevel.Selected.documentGroupID = 1,ClearCollect(colMSDByDocumentLevel,Filter('ASDocument.MSDApproval',levelID = drp_rs_DocumentLevel.Selected.levelID And active = 1)),
+        ClearCollect(colUserMSD,Filter(gblColAllUser,userID exactin (colMSDByDocumentLevel).userID)));
+        
+        //Cập nhật MSD vào luồng phê duyệt
+        RemoveIf(colApprovesPeopleProcess,BaseID = 2 And ID = 1);
+        RemoveIf(colApprovesPeopleProcess,BaseID = 2 And ID = 2);
+        
+        ForAll(Filter(colMSDByDocumentLevel,levelID = drp_rs_DocumentLevel.Selected.levelID) As Temp,Collect(colApprovesPeopleProcess,Table({ID:Max(Filter(colApprovesPeopleProcess,BaseID = 2),ID) + 1,userID:Temp.userID,BaseID:2,approveProcess:2,sort:Max(colApprovesPeopleProcess,ID),documentID:locDocumentIDGenerate})));
 
     btn_rs_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -246,7 +256,7 @@
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
                                 FillPortions: =1
-                                Items: =gblColCompany
+                                Items: =Filter(gblColCompany,name <> "Tất cả")
                                 LayoutMinWidth: =100
                                 ZIndex: =1
 
@@ -664,7 +674,7 @@
                             );
                             UpdateContext(
                                 {
-                                    locDocumentIDGenerate: drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(
+                                    locDocumentIDGenerate: drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & Value(Text(locNumberCountRequest,"0,####")) & "-" & Upper(
                                         Concat(
                                             Split(
                                                 txt_rs_DocumentName.Text,
@@ -1012,6 +1022,7 @@
                         createdDateValue: Value(Day(Today() & Month(Today()) & Year(Today()))),
                         currentApproveLevel:1,
                         description:txt_rs_DocumentName.Text,
+                        documentName:txt_rs_DocumentName.Text,
                         maxApproveLevel:If(Or(drp_rs_DocumentLevel.Selected.levelID = 3,drp_rs_DocumentLevel.Selected.levelID = 4),2,3),
                         status:1,
                         pageSignNumber:Value(txt_rs_SignPage.Text),
