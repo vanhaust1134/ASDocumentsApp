@@ -19,7 +19,7 @@
             ClearCollect(
                 gblColAllUserRoles,
                 AddColumns(
-                    ShowColumns(Filter('ASDocument.Users_Roles', active = 1), "ID", "userID", "roleID", "{Attachments}") As temp,
+                    Filter('ASDocument.Users_Roles', active = 1) As temp,
                     "roleName",
                     LookUp('ASDocument.Role', ID = temp.roleID).name,
                     "fullName",
@@ -478,7 +478,7 @@
                             LayoutMinWidth: =0
                             OnSelect: |-
                                 =UpdateContext({locFunctionSignature:true});
-                                UpdateContext({locInfoUser:ThisItem})
+                                UpdateContext({locInfoUser: ThisItem});
                             Width: =50
                             ZIndex: =5
 
@@ -681,7 +681,9 @@
             Height: =29
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({locFunctionSignature:false})
+                =UpdateContext({locFunctionSignature:false});
+                ResetForm(Form1_2);
+                UpdateContext({locNumEditUserAttachments: 0});
             Width: =25
             X: =942
             Y: =116
@@ -700,9 +702,8 @@
             DisplayMode: |-
                 =If(
                     Or(
-                        IsBlank(cbo_us_UsersEdit.Selected),
                         IsBlank(cbo_us_RolesEdit.Selected),
-                        CountRows(DataCardValue1_2.Attachments) > 1
+                        locNumEditUserAttachments > 1
                     ),
                     DisplayMode.Disabled,
                     DisplayMode.Edit
@@ -712,37 +713,50 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật trạng thái cho user cũ
-                Patch('ASDocument.Users_Roles',LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID And roleID = locInfoUser.roleID And active = 1),{active:0});
-                
-                //Tạo mới vai trò cho user
-                Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_UsersEdit.Selected.userID,roleID:cbo_us_RolesEdit.Selected.ID,active:1});
-                
-                //Tạo mới chữ ký
                 Patch(
                     'ASDocument.Users_Roles',
-                    LookUp('ASDocument.Users_Roles',userID = cbo_us_UsersEdit.Selected.userID And active = 1),
-                    Form1_2.Updates
+                    LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID And roleID = locInfoUser.roleID And active = 1),
+                    {active:0}
                 );
                 
-                //
-                If(IsEmpty(DataCardValue1_2.Attachments), true);
+                
+                //Tạo mới chữ ký + role
+                UpdateContext({
+                    locEditUser:
+                    Patch(
+                        'ASDocument.Users_Roles',
+                        Defaults('ASDocument.Users_Roles'),
+                        {
+                            userID: locInfoUser.userID,
+                            roleID: cbo_us_RolesEdit.Selected.ID,
+                            active: 1
+                        },
+                        Form1_2.Updates
+                    )
+                });
+                
+                //Update lại collection
+                UpdateIf( 
+                    gblColAllUserRoles,
+                    userID = locInfoUser.userID,
+                    Patch(
+                        locEditUser,
+                        {
+                            roleName: LookUp('ASDocument.Role', ID = cbo_us_RolesEdit.Selected.ID).name,
+                            fullName: LookUp(gblColAllUser, userID = cbo_us_UsersEdit.Selected.userID).fullName,
+                            jobTitle: LookUp(gblColAllUser, userID = cbo_us_UsersEdit.Selected.userID).jobTitle
+                        }
+                    )
+                );
                 
                 //Cập nhật lại MSD của tài liệu nếu role thay đổi
                 If(locInfoUser.roleID <> cbo_us_RolesEdit.Selected.ID,'ASDocument.UpdateMSDApproval'.Run(cbo_us_UsersEdit.Selected.userID));
                 
-                //Cập nhật lại bảng user
-                ClearCollect(
-                        gblColAllUser,
-                        AddColumns(
-                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
-                            "roleID", 
-                            LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
-                        )
-                    );
-                
-                Notify("Thêm thành công",NotificationType.Success,1500);
                 ResetForm(Form1_2);
+                Notify("Lưu thành công",NotificationType.Success,1500);
+                
                 UpdateContext({locFunctionSignature:false});
+                UpdateContext({locNumEditUserAttachments: 0});
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
@@ -762,7 +776,9 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =UpdateContext({locFunctionSignature:false})
+                =UpdateContext({locFunctionSignature:false});
+                ResetForm(Form1_2);
+                UpdateContext({locNumEditUserAttachments: 0})
             PressedColor: =RGBA(0,0,0,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
@@ -779,6 +795,7 @@
             DataSource: ='ASDocument.Users_Roles'
             DefaultMode: =FormMode.New
             Height: =244
+            Item: =LookUp('ASDocument.Users_Roles', userID = locInfoUser.userID)
             Width: =591
             X: =389
             Y: =303
@@ -787,7 +804,7 @@
             Attachments_DataCard1_2 As typedDataCard.attachmentsEditCard:
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="{Attachments}"
-                Default: =ThisItem.Attachments
+                Default: =
                 DisplayMode: =DisplayMode.Edit
                 DisplayName: ="Ảnh chữ ký"
                 Fill: =RGBA(0, 0, 0, 0)
@@ -817,7 +834,8 @@
                     DropTargetBorderThickness: =1
                     Height: =167
                     IsInDataCard: =true
-                    Items: =locInfoUser.'{Attachments}'
+                    Items: |
+                        =locInfoUser.Attachments
                     MaxAttachments: =2
                     MaxAttachmentSize: =50
                     MaxAttachmentsText: ="Số lượng file đã đạt tối đa."
@@ -844,8 +862,15 @@
                                 "Only Image files are allowed",
                                 NotificationType.Error
                             );
-                            Reset(Self)
+                            Reset(Self),
+                        
+                            //Nếu hợp lệ
+                            UpdateContext({locNumEditUserAttachments: CountRows(Self.Attachments)})
                         )
+                    OnRemoveFile: |-
+                        = UpdateContext({locNumEditUserAttachments: CountRows(Self.Attachments)})
+                    OnUndoRemoveFile: |-
+                        = UpdateContext({locNumEditUserAttachments: CountRows(Self.Attachments)})
                     PaddingBottom: =5
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     PaddingRight: =5
@@ -906,7 +931,7 @@
             DisabledColor: =RGBA(0, 0, 0, 1)
             DisabledFill: =RGBA(255, 255, 255, 1)
             DisplayFields: =["fullName"]
-            DisplayMode: =DisplayMode.Disabled
+            DisplayMode: =DisplayMode.View
             InputTextPlaceholder: ="Tìm người dùng"
             IsSearchable: =false
             Items: =gblColAllUser
@@ -1131,10 +1156,7 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =//Tạo mới vai trò cho user
-                Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_Users.Selected.userID,roleID:cbo_us_Roles.Selected.ID,active:1});
-                
-                //Tạo mới chữ ký  + thêm mới record vào col user role hiện tại
+                =//Tạo mới chữ ký  + thêm mới record vào col user role hiện tại
                 UpdateContext({
                     locNewUser:
                     Patch(
@@ -1151,16 +1173,14 @@
                 
                 Collect(
                     gblColAllUserRoles,
-                    {
-                        ID: locNewUser.ID,
-                        userID: cbo_us_Users.Selected.userID,
-                        roleID: cbo_us_Roles.Selected.ID,
-                        active: 1,
-                        roleName: LookUp('ASDocument.Role', ID = cbo_us_Roles.Selected.ID).name,
-                        fullName: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).fullName,
-                        jobTitle: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).jobTitle,
-                        Attachments: locNewUser.Attachments
-                    }
+                    Patch(
+                        locNewUser,
+                        {
+                            roleName: LookUp('ASDocument.Role', ID = cbo_us_Roles.Selected.ID).name,
+                            fullName: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).fullName,
+                            jobTitle: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).jobTitle
+                        }
+                    )
                 );
                 
                 //roleName: LookUp('ASDocument.Role', ID = cbo_us_Roles.Selected.ID).name,
@@ -1331,10 +1351,10 @@
             BorderColor: =RGBA(116, 116, 116, 1)
             DisplayFields: =["fullName","email"]
             InputTextPlaceholder: ="Tìm người dùng"
-            Items: =Filter(gblColAllUser, IsBlank(roleID))
+            Items: =Filter(gblColAllUser, !(userID exactin gblColAllUserRoles.userID))
             NoSelectionText: ="Tìm người dùng"
             SearchFields: =["email"]
-            SearchItems: =Search(Filter(gblColAllUser, IsBlank(roleID)),cbo_us_Users.SearchText,"email")
+            SearchItems: =Search(Filter(gblColAllUser, !(userID exactin gblColAllUserRoles.userID)),cbo_us_Users.SearchText,"email")
             SelectMultiple: =false
             Template: =ListItemTemplate.Person
             X: =525
