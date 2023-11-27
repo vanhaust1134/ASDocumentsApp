@@ -302,7 +302,7 @@
 
                         Attachments_DataCard2 As typedDataCard.attachmentsEditCard:
                             BorderStyle: =BorderStyle.Solid
-                            DataField: ="Attachments"
+                            DataField: ="{Attachments}"
                             Default: =ThisItem.Attachments
                             DisplayMode: =Parent.DisplayMode
                             DisplayName: ="Đính kèm"
@@ -1033,7 +1033,7 @@
                         companyID:drp_rs_CompanyNameInput.Selected.ID,
                         divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,
                         active:1,
-                        lastSignNum:0
+                        lastSignNum:1
                     },frm_rs_Document.Updates
                 );
                 

@@ -257,6 +257,7 @@
                             FontWeight: =FontWeight.Semibold
                             OnSelect: =Navigate('Request Detail Screen')
                             Text: =ThisItem.documentName
+                            Tooltip: =ThisItem.documentName
                             ZIndex: =1
 
                         lbl_has_ItemTime As label:
