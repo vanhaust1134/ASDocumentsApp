@@ -5,10 +5,17 @@
       <string name="ManualTriggerInput_text_def" />
       <string name="ManualTriggerInput_text_1_def" />
       <string name="ManualTriggerInput_text_2_def" />
+      <string name="ManualTriggerInput_file_def_name_def" />
+      <base64Binary name="ManualTriggerInput_file_def_contentBytes_def" />
+      <object name="ManualTriggerInput_file_def">
+        <property name="name" type="string" />
+        <property name="contentBytes" typeRef="ManualTriggerInput_file_def_contentBytes_def" />
+      </object>
       <object name="ManualTriggerInput">
         <property name="text" type="string" />
         <property name="text_1" type="string" />
         <property name="text_2" type="string" />
+        <property name="file" typeRef="ManualTriggerInput_file_def" />
       </object>
     </jsonTypes>
   </grammars>
@@ -30,6 +37,9 @@
             </param>
             <param style="plain" name="text_2" path="/text_2" type="xs:string" required="true">
               <doc title="content" />
+            </param>
+            <param style="plain" name="file" path="/file" type="service:ManualTriggerInput_file_def">
+              <doc title="File Content" />
             </param>
           </representation>
         </request>
