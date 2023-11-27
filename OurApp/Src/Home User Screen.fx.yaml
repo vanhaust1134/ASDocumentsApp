@@ -281,7 +281,7 @@
             Gallery9 As gallery.variableTemplateHeightGallery:
                 DelayItemLoading: =true
                 Height: =368
-                Items: =gblColDocumentLevel
+                Items: =Filter(gblColDocumentLevel,name <> "Tất cả")
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =243
@@ -310,7 +310,7 @@
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |-
-                        =If(CountRows(Filter(colDocumentRequestType,ID = ThisItem.ID)) = 0,Collect(colDocumentRequestType,Table({ID:ThisItem.ID,Name:ThisItem.name})),RemoveIf(colDocumentRequestType,ID = ThisItem.ID))
+                        =If(CountRows(Filter(colDocumentRequestType,ID = ThisItem.ID)) = 0,Collect(colDocumentRequestType,Table({ID:ThisItem.ID,LevelID:ThisItem.levelID,Name:ThisItem.name})),RemoveIf(colDocumentRequestType,ID = ThisItem.ID))
                     ShowScrollbar: =false
                     TemplateSize: =36
                     Visible: =ThisItem.status = 1
@@ -388,16 +388,15 @@
                 cbo_hs_Company As combobox:
                     AlignInContainer: =AlignInContainer.Center
                     BorderColor: =RGBA(214, 221, 224, 1)
-                    DisplayFields: =["companyName"]
+                    DisplayFields: =["name"]
                     FillPortions: =1.5
                     Height: =35
                     InputTextPlaceholder: ="Chọn công ty"
                     IsSearchable: =false
-                    Items: |-
-                        =Table({ID:1,companyName:"AsiaShine",acronym:"AS"},{ID:2,companyName:"Sapharchems",acronym:"SPC"})
+                    Items: =Filter(gblColCompany,name <> "Tất cả")
                     LayoutMinWidth: =0
                     NoSelectionText: ="Chọn công ty"
-                    SearchFields: =["companyName"]
+                    SearchFields: =["ComplianceAssetId"]
                     SearchItems: =[]
                     SelectMultiple: =false
                     Width: =146
@@ -462,164 +461,11 @@
 
                 Gallery6_2 As gallery.galleryVertical:
                     DelayItemLoading: =true
-                    Height: |-
-                        =65 * CountRows(Search(Filter(Table(
-                            {
-                                ID: 1,
-                                Class: 1,
-                                Description: "Quy định nghỉ phép",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QĐNP",
-                                docuType:"ĐLCT"
-                            },
-                            {
-                                ID: 2,
-                                Class: 2,
-                                Description: "Quy trình đánh giá thử việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTDGTV",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 3,
-                                Class: 2,
-                                Description: "Quy trình phê duyệt hợp đồng",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTPDHD",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 4,
-                                Class: 2,
-                                Description: "Quy trình đánh giá năng lực",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTDGNL",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 5,
-                                Class: 7,
-                                Description: "Quy trình quản lý nội bộ",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTQLNB",
-                                docuType:"SĐTTCV"
-                            },
-                            {
-                                ID: 6,
-                                Class: 7,
-                                Description: "Văn bản hợp đồng lao động",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBHĐLĐ",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 7,
-                                Class: 8,
-                                Description: "Văn bản ký kết công việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBKKCV",
-                                docuType:"SĐCDCK"
-                            }
-                        ),Class = ThisItem.ID && (companyName = cbo_hs_Company.Selected.acronym || If(IsBlank(cbo_hs_Company.Selected.ID),true,false)) ),txt_has_Search_1.Text,"companyName","docuName","docuType"))
+                    Height: =65 * CountRows(Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID && (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID"))
                     Items: |-
                         =With(
                             {
-                                records:Search(Filter(Table(
-                            {
-                                ID: 1,
-                                Class: 1,
-                                Description: "Quy định nghỉ phép",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đã từ chối",
-                                companyName:"SPC",
-                                docuName:"QTNP",
-                                docuType:"ĐLCT"
-                            },
-                            {
-                                ID: 2,
-                                Class: 2,
-                                Description: "Quy trình đánh giá thử việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTDGTV",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 3,
-                                Class: 2,
-                                Description: "Quy trình phê duyệt hợp đồng",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTPDHD",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 4,
-                                Class: 2,
-                                Description: "Quy trình đánh giá năng lực",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTDGNL",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 5,
-                                Class: 7,
-                                Description: "Quy trình quản lý nội bộ",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTQLNB",
-                                docuType:"SĐTTCV"
-                            },
-                            {
-                                ID: 6,
-                                Class: 7,
-                                Description: "Văn bản hợp đồng lao động",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBHĐLĐ",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 7,
-                                Class: 8,
-                                Description: "Văn bản ký kết công việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBKKCV",
-                                docuType:"SĐCDCK"
-                            }
-                        ),Class = ThisItem.ID && (companyName = cbo_hs_Company.Selected.acronym || If(IsBlank(cbo_hs_Company.Selected.ID),true,false)) ),txt_has_Search_1.Text,"companyName","docuName","docuType")
+                                records:Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID && (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID")
                             },
                             ForAll(
                                 Sequence(CountRows(records)),
@@ -677,7 +523,7 @@
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
-                            Text: =ThisItem.Description
+                            Text: =ThisItem.documentName
                             Width: =300
                             Wrap: =false
                             ZIndex: =2
@@ -688,7 +534,7 @@
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
-                            Text: =ThisItem.companyName
+                            Text: =LookUp(gblColCompany,ID = ThisItem.companyID).name
                             Wrap: =false
                             ZIndex: =3
 
@@ -720,14 +566,14 @@
                                 RadiusTopLeft: =20
                                 RadiusTopRight: =20
                                 Size: =12
-                                Text: =ThisItem.Status
+                                Text: =If(ThisItem.status = 1,"Đang chờ duyệt",ThisItem.status = 2,"Đã duyệt",ThisItem.status = 3,"Đã từ chối")
                                 Width: =161
                                 X: =1
                                 Y: =10
                                 ZIndex: =1
 
                             shp_has_Status_2 As circle:
-                                Fill: =If(ThisItem.ID <> 1,RGBA(173, 214, 116, 1),Color.Red)
+                                Fill: =If(ThisItem.status = 1,Color.LightGray,ThisItem.status = 2,RGBA(173, 214, 116, 1),ThisItem.status = 3,Color.Red)
                                 Height: =15
                                 Width: =15
                                 X: =12

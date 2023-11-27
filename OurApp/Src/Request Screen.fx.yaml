@@ -406,7 +406,7 @@
 
                         Attachments_DataCard2_2 As typedDataCard.attachmentsEditCard:
                             BorderStyle: =BorderStyle.Solid
-                            DataField: ="Attachments"
+                            DataField: ="{Attachments}"
                             Default: =ThisItem.Attachments
                             DisplayMode: =Parent.DisplayMode
                             DisplayName: ="Phụ lục đính kèm"
@@ -449,7 +449,7 @@
                                 PaddingRight: =5
                                 PaddingTop: =5
                                 Tooltip: =Parent.DisplayName
-                                Width: =482
+                                Width: =480
                                 X: =2
                                 Y: =DataCardKey6_2.Y + DataCardKey6_2.Height + 5
                                 ZIndex: =2
@@ -618,12 +618,14 @@
                                     DisplayFields: =["fullName","email"]
                                     Height: =35
                                     InputTextPlaceholder: ="Chọn nhân viên"
-                                    Items: =If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4))
+                                    IsSearchable: =false
+                                    Items: =Switch(ThisItem.BaseID,1,Filter(gblColAllUser,roleID = 2),3,Filter(gblColAllUser,roleID = 4))
+                                    NoSelectionText: ="Chọn nhân viên"
                                     OnChange: |-
                                         =Patch(colApprovesPeopleProcess,LookUp(colApprovesPeopleProcess,ID = ThisItem.ID And BaseID = ThisItem.BaseID),{userID:ComboBox1.Selected.userID})
                                     OnSelect: =Select(Parent)
                                     SearchFields: =["email"]
-                                    SearchItems: =Search(If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4)),ComboBox1.SearchText,"email")
+                                    SearchItems: =[]
                                     SelectMultiple: =false
                                     Template: =ListItemTemplate.Person
                                     X: =44
@@ -659,22 +661,23 @@
                                                 companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID
                                             )
                                         ),
-                                        Value(
-                                            Text(
-                                                LookUp(
-                                                    'ASDocument.DocumentIDGenerated',
-                                                    companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID
-                                                ).lastAutoNumber + 1,
-                                                "0####"
-                                            )
+                                        Text(
+                                            LookUp(
+                                                'ASDocument.DocumentIDGenerated',
+                                                companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID
+                                            ).lastAutoNumber + 1,
+                                            "0####"
                                         ),
-                                        01
+                                        Text(
+                                            01,
+                                            "0####"
+                                        )
                                     )
                                 }
                             );
                             UpdateContext(
                                 {
-                                    locDocumentIDGenerate: drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & Value(Text(locNumberCountRequest,"0,####")) & "-" & Upper(
+                                    locDocumentIDGenerate: drp_rs_CompanyNameInput.Selected.shortName & "-" & drp_rs_CompanyNameInput_2.Selected.shortName & "-" & drp_rs_DocumentType.Selected.shortName & locNumberCountRequest & "-" & Upper(
                                         Concat(
                                             Split(
                                                 txt_rs_DocumentName.Text,
@@ -1019,7 +1022,7 @@
                         documentTypeID: drp_rs_DocumentType.Selected.ID,
                         userID: gblRecUser.userID,
                         documentID: If(drp_rs_DocumentLevel.Selected.documentGroupID = 1,locDocumentIDGenerate,txt_rs_FileCodeInput.Text),
-                        createdDateValue: Value(Day(Today() & Month(Today()) & Year(Today()))),
+                        createdDateValue: Value(Day(Today()) & Month(Today()) & Year(Today())),
                         currentApproveLevel:1,
                         description:txt_rs_DocumentName.Text,
                         documentName:txt_rs_DocumentName.Text,
@@ -1029,15 +1032,28 @@
                         requestTimeNum:0,
                         companyID:drp_rs_CompanyNameInput.Selected.ID,
                         divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,
-                        active:1
+                        active:1,
+                        lastSignNum:0
                     },frm_rs_Document.Updates
                 );
                 
                 //Cập nhật số thứ tự mới nhất của phân loại yêu cầu
-                Patch('ASDocument.DocumentIDGenerated',Defaults('ASDocument.DocumentIDGenerated'),{companyID:drp_rs_CompanyNameInput.Selected.ID,divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,documentTypeID:drp_rs_DocumentType.Selected.ID,lastAutoNumber:locNumberCountRequest});
+                Patch('ASDocument.DocumentIDGenerated',Defaults('ASDocument.DocumentIDGenerated'),{companyID:drp_rs_CompanyNameInput.Selected.ID,divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,documentTypeID:drp_rs_DocumentType.Selected.ID,lastAutoNumber:Value(locNumberCountRequest)});
                 
                 //Tạo luồng các dòng quy trình phê duyệt yêu cầu
-                'ASDocument.AddRequestApproveProcess'.Run(JSON(colApprovesPeopleProcess,JSONFormat.IncludeBinaryData));
+                //Sắp xếp thứ tự các dòng
+                ClearCollect(
+                    colRownumberApprovalProcess,
+                    ForAll(
+                        Sequence(CountRows(colApprovesPeopleProcess)),
+                        Patch(
+                            Last(FirstN(colApprovesPeopleProcess, Value)),
+                            {sort: Value}
+                        )
+                    )
+                );
+                //Tạo danh sách phê duyệt
+                'ASDocument.AddRequestApproveProcess'.Run(JSON(colRownumberApprovalProcess,JSONFormat.IncludeBinaryData));
                 
                 //Lưu tài liệu liên quan
                 Patch('ASDocument.RelatedDocument',Defaults('ASDocument.RelatedDocument'),{documentID:locDocumentIDGenerate,active:1},frm_rs_Attachment.Updates);
@@ -1047,6 +1063,10 @@
                     NotificationType.Success,
                     1500
                 );
+                
+                //Làm mới các trường
+                Reset(drp_rs_DocumentLevel);Reset(drp_rs_DocumentType);Reset(drp_rs_CompanyNameInput);Reset(drp_rs_CompanyNameInput_2);Reset(txt_rs_DocumentName);ResetForm(frm_rs_Document);Reset(txt_rs_SignPage);ResetForm(frm_rs_Attachment);Clear(colApprovesPeopleProcess);Clear(colMSDByDocumentLevel);
+                
                 UpdateContext({locSubmit: false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
@@ -1079,4 +1099,10 @@
             X: =781
             Y: =443
             ZIndex: =8
+
+    Label5 As label:
+        Text: =
+        X: =46
+        Y: =193
+        ZIndex: =27
 
