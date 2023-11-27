@@ -894,7 +894,7 @@
                                 userID: locInfoRequest.userID,
                                 documentID: locInfoRequest.documentID,
                                 createdDateValue: locInfoRequest.createdDateValue,
-                                currentApproveLevel:1,
+                                currentApproveLevel:If(locInfoRequest.currentApproveLevel = 3,2,1),
                                 description:locInfoRequest.description,
                                 documentName:locInfoRequest.documentName,
                                 maxApproveLevel:locInfoRequest.maxApproveLevel,
@@ -904,7 +904,7 @@
                                 companyID:locInfoRequest.companyID,
                                 divisionID:locInfoRequest.divisionID,
                                 active:1,
-                                lastSignNum:1
+                                lastSignNum:If(locInfoRequest.currentApproveLevel = 3,First(Filter('ASDocument.ProcessApproval',approveProcess = 2)).sort,1)
                             },frm_rds_Document_1.Updates
                         );
                         
