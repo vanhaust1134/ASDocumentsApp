@@ -606,7 +606,7 @@
                 Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1,status:3});
                 
                 //Gửi mail
-                'ASDocument.SendMail'.Run("hau.tran@bhk.vn","Yêu cầu ký duyệt văn bản " & locInfoRequest.documentID & " đã bị từ chối","");
+                'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = locInfoRequest.userID).email,"Yêu cầu ký duyệt văn bản " & locInfoRequest.documentID & " đã bị từ chối","Tên yêu cầu: " & locInfoRequest.documentName & "<br>" & "Thời gian tạo yêu cầu: " & locInfoRequest.Created);
                 
                 Notify("Từ chối thành công",NotificationType.Success,1500);
                 UpdateContext({locReject:false})
@@ -728,7 +728,13 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Notify("Tạo thành công",NotificationType.Success,1500);
+                =//Cập nhật lịch sử từ chối
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:1,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:Blank(),approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
+                
+                //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
+                If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).sort,Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{status:2}),Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1}));
+                
+                Notify("Tạo thành công",NotificationType.Success,1500);
                 UpdateContext({locApprove:false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
@@ -797,6 +803,10 @@
                   <tr>
                     <td style=width:100px><b>Ngày tạo</b></td>
                     <td>" & locInfoRequest.Created &"</td>
+                  </tr>
+                  <tr>
+                    <td style=width:100px><b>Trạng thái</b></td>
+                    <td>" & If(locInfoRequest.status = 1,"Đang duyệt",locInfoRequest.status = 2,"Đã duyệt",locInfoRequest.status = 3,"Đã từ chối") &"</td>
                   </tr>
                 </table>"
             Size: =13
