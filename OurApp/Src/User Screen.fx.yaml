@@ -670,6 +670,16 @@
 
         btn_us_Submit_12 As button:
             BorderThickness: =1
+            DisplayMode: |-
+                =If(
+                    Or(
+                        IsBlank(cbo_us_UsersEdit.Selected),
+                        IsBlank(cbo_us_RolesEdit.Selected),
+                        CountRows(DataCardValue1_2.Attachments) > 1
+                    ),
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )
             Fill: =RGBA(0, 89, 204, 1)
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
@@ -682,6 +692,9 @@
                 
                 //Tạo mới chữ ký
                 Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_UsersEdit.Selected.userID And active = 1),Form1_2.Updates);
+                
+                //
+                If(IsEmpty(DataCardValue1_2.Attachments), true);
                 
                 //Cập nhật lại MSD của tài liệu nếu role thay đổi
                 If(locInfoUser.roleID <> cbo_us_RolesEdit.Selected.ID,'ASDocument.UpdateMSDApproval'.Run(cbo_us_UsersEdit.Selected.userID));
@@ -697,6 +710,7 @@
                     );
                 
                 Notify("Thêm thành công",NotificationType.Success,1500);
+                ResetForm(Form1_2);
                 UpdateContext({locFunctionSignature:false});
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
@@ -772,8 +786,8 @@
                     DropTargetBorderThickness: =1
                     Height: =167
                     IsInDataCard: =true
-                    Items: =
-                    MaxAttachments: =1
+                    Items: =locInfoUser.'{Attachments}'
+                    MaxAttachments: =2
                     MaxAttachmentSize: =50
                     MaxAttachmentsText: ="Số lượng file đã đạt tối đa."
                     NoAttachmentsText: ="Không có file."
@@ -1077,6 +1091,15 @@
 
         btn_us_Submit_13 As button:
             BorderThickness: =1
+            DisplayMode: |-
+                =If(
+                    Or(
+                        IsBlank(cbo_us_Users.Selected),
+                        IsBlank(cbo_us_Roles.Selected)
+                    ),
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )
             Fill: =RGBA(0, 89, 204, 1)
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
@@ -1120,7 +1143,8 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =UpdateContext({locCreateUser:false})
+                =UpdateContext({locCreateUser:false});
+                Reset(cbo_us_Users);Reset(cbo_us_Roles);ResetForm(Form1_3);
             PressedColor: =RGBA(0,0,0,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
@@ -1261,10 +1285,10 @@
             BorderColor: =RGBA(116, 116, 116, 1)
             DisplayFields: =["fullName","email"]
             InputTextPlaceholder: ="Tìm người dùng"
-            Items: =gblColAllUser
+            Items: =Filter(gblColAllUser, IsBlank(roleID))
             NoSelectionText: ="Tìm người dùng"
             SearchFields: =["email"]
-            SearchItems: =Search(gblColAllUser,cbo_us_Users.SearchText,"email")
+            SearchItems: =Search(Filter(gblColAllUser, IsBlank(roleID)),cbo_us_Users.SearchText,"email")
             SelectMultiple: =false
             Template: =ListItemTemplate.Person
             X: =525
@@ -1300,7 +1324,6 @@
         Image3 As image:
             Height: =485
             Image: =locImageSign
-            ImagePosition: =ImagePosition.Center
             Width: =687
             X: =336
             Y: =159
