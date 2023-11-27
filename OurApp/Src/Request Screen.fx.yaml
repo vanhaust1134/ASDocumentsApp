@@ -618,12 +618,12 @@
                                     DisplayFields: =["fullName","email"]
                                     Height: =35
                                     InputTextPlaceholder: ="Chọn nhân viên"
-                                    Items: =If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4))
+                                    Items: =If(ThisItem.BaseID = 1,Filter(gblColAllUser,roleID = 2),ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4))
                                     OnChange: |-
                                         =Patch(colApprovesPeopleProcess,LookUp(colApprovesPeopleProcess,ID = ThisItem.ID And BaseID = ThisItem.BaseID),{userID:ComboBox1.Selected.userID})
                                     OnSelect: =Select(Parent)
                                     SearchFields: =["email"]
-                                    SearchItems: =Search(If(ThisItem.BaseID = 1,gblColDivisionDirector,ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4)),ComboBox1.SearchText,"email")
+                                    SearchItems: =Search(If(ThisItem.BaseID = 1,Filter(gblColAllUser,roleID = 2),ThisItem.BaseID = 2,Filter(gblColAllUser,roleID = 4)),ComboBox1.SearchText,"email")
                                     SelectMultiple: =false
                                     Template: =ListItemTemplate.Person
                                     X: =44
