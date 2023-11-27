@@ -1,6 +1,6 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
-    OnVisible: =ClearCollect(gblColApprovalByRequest,AddColumns('ASDocument.DocumentRequest' As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID))
+    OnVisible: =ClearCollect(gblColApprovalByRequest,AddColumns('ASDocument.DocumentRequest' As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID And sort = Temp.lastSignNum).userID))
 
     btn_as_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -173,7 +173,7 @@
             FillPortions: =1
             FontWeight: =FontWeight.Semibold
             Size: =15
-            Text: ="Có 10 yêu cầu đang chờ phê duyệt"
+            Text: ="Có " & CountRows(Filter(gblColApprovalByRequest,approvalUserID = gblRecUser.userID)) & " yêu cầu đang chờ phê duyệt"
             Width: =230
             ZIndex: =2
 
@@ -323,6 +323,7 @@
                             OnSelect: |-
                                 =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});
                             Text: =ThisItem.documentName
+                            Tooltip: =ThisItem.documentName
                             Wrap: =false
                             ZIndex: =1
 
@@ -598,7 +599,16 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Notify("Tạo thành công",NotificationType.Success,1500);
+                =//Cập nhật lịch sử từ chối
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:txt_as_RejectReason.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
+                
+                //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
+                Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1,status:3});
+                
+                //Gửi mail
+                'ASDocument.SendMail'.Run("hau.tran@bhk.vn","Yêu cầu ký duyệt văn bản " & locInfoRequest.documentID & " đã bị từ chối","");
+                
+                Notify("Từ chối thành công",NotificationType.Success,1500);
                 UpdateContext({locReject:false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
