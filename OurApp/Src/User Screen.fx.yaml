@@ -11,7 +11,22 @@
                 AddColumns(
                     ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
                     "roleID", 
-                    LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
+                    LookUp('ASDocument.Users_Roles', active = 1 && userID = temp.userID).roleID
+                )
+            );
+        
+            //Lấy tất cả role và chữ ký về + thông tin user app này
+            ClearCollect(
+                gblColAllUserRoles,
+                AddColumns(
+                    ShowColumns(Filter('ASDocument.Users_Roles', active = 1), "ID", "userID", "roleID", "{Attachments}") As temp,
+                    "roleName",
+                    LookUp('ASDocument.Role', ID = temp.roleID).name,
+                    "fullName",
+                    LookUp(gblColAllUser, userID = temp.userID).fullName,
+                    "jobTitle",
+                    LookUp(gblColAllUser, userID = temp.userID).jobTitle
+        
                 )
             );
         
@@ -372,7 +387,19 @@
                 gal_us_List As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: =Search(Filter(gblColAllUser,roleID <> Blank() And (roleID = drp_us_Employee_1.Selected.roleID || If(IsBlank(drp_us_Employee_1.Selected.roleID),true,false))),txt_us_Search.Text,"fullName")
+                    Items: |-
+                        =Search(
+                            Filter(
+                                gblColAllUserRoles,
+                                (roleID = drp_us_Employee_1.Selected.roleID || If(
+                                    IsBlank(drp_us_Employee_1.Selected.roleID),
+                                    true,
+                                    false
+                                ))
+                            ),
+                            txt_us_Search.Text,
+                            "fullName"
+                        )
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =0
@@ -429,7 +456,7 @@
                             LayoutMinHeight: =30
                             OnSelect: |-
                                 =UpdateContext({locDetailUser:true})
-                            Text: =LookUp('ASDocument.Role',roleID = ThisItem.roleID).name
+                            Text: =ThisItem.roleName
                             Wrap: =false
                             ZIndex: =3
 
@@ -691,7 +718,11 @@
                 Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_UsersEdit.Selected.userID,roleID:cbo_us_RolesEdit.Selected.ID,active:1});
                 
                 //Tạo mới chữ ký
-                Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_UsersEdit.Selected.userID And active = 1),Form1_2.Updates);
+                Patch(
+                    'ASDocument.Users_Roles',
+                    LookUp('ASDocument.Users_Roles',userID = cbo_us_UsersEdit.Selected.userID And active = 1),
+                    Form1_2.Updates
+                );
                 
                 //
                 If(IsEmpty(DataCardValue1_2.Attachments), true);
@@ -745,7 +776,7 @@
             ZIndex: =8
 
         Form1_2 As form:
-            DataSource: ='ASTakeLeave.Users'
+            DataSource: ='ASDocument.Users_Roles'
             DefaultMode: =FormMode.New
             Height: =244
             Width: =591
@@ -978,21 +1009,17 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật trạng thái cho user cũ
-                Patch('ASDocument.Users_Roles',LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID And roleID = locInfoUser.roleID And active = 1),{active:0});
-                
-                //Lấy tất cả user và role về
-                    //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
-                    ClearCollect(
-                        gblColAllUser,
-                        AddColumns(
-                            ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
-                            "roleID", 
-                            LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
-                        )
-                    );
+                Patch(
+                    'ASDocument.Users_Roles',
+                    LookUp('ASDocument.Users_Roles',userID = locInfoUser.userID And roleID = locInfoUser.roleID And active = 1),
+                    {active:0}
+                );
                 
                 //Cập nhật lại MSD của tài liệu nếu role thay đổi
                 'ASDocument.UpdateMSDApproval'.Run(locInfoUser.userID);
+                
+                //Xóa khỏi collection
+                RemoveIf(gblColAllUserRoles, userID = locInfoUser.userID);
                 
                 Notify("Xóa thành công",NotificationType.Success,1500);
                 UpdateContext({locDeleteDP:false})
@@ -1107,18 +1134,37 @@
                 =//Tạo mới vai trò cho user
                 Patch('ASDocument.Users_Roles',Defaults('ASDocument.Users_Roles'),{userID:cbo_us_Users.Selected.userID,roleID:cbo_us_Roles.Selected.ID,active:1});
                 
-                //Tạo mới chữ ký
-                Patch('ASTakeLeave.Users',LookUp('ASTakeLeave.Users',userID = cbo_us_Users.Selected.userID And active = 1),Form1_3.Updates);
+                //Tạo mới chữ ký  + thêm mới record vào col user role hiện tại
+                UpdateContext({
+                    locNewUser:
+                    Patch(
+                        'ASDocument.Users_Roles',
+                        Defaults('ASDocument.Users_Roles'),
+                        {
+                            userID: cbo_us_Users.Selected.userID,
+                            roleID: cbo_us_Roles.Selected.ID,
+                            active: 1
+                        },
+                        Form1_3.Updates
+                    )
+                });
                 
-                //Cập nhật lại bảng user
-                ClearCollect(
-                        gblColAllUser,
-                        AddColumns(
-                            ShowColumns(Filter('ASTakeLeave.Users',active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
-                            "roleID", 
-                            LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
-                        )
-                    );
+                Collect(
+                    gblColAllUserRoles,
+                    {
+                        ID: locNewUser.ID,
+                        userID: cbo_us_Users.Selected.userID,
+                        roleID: cbo_us_Roles.Selected.ID,
+                        active: 1,
+                        roleName: LookUp('ASDocument.Role', ID = cbo_us_Roles.Selected.ID).name,
+                        fullName: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).fullName,
+                        jobTitle: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).jobTitle,
+                        Attachments: locNewUser.Attachments
+                    }
+                );
+                
+                //roleName: LookUp('ASDocument.Role', ID = cbo_us_Roles.Selected.ID).name,
+                //fullName: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).fullName,
                 
                 Reset(cbo_us_Users);Reset(cbo_us_Roles);ResetForm(Form1_3);
                 
@@ -1158,7 +1204,7 @@
             ZIndex: =8
 
         Form1_3 As form:
-            DataSource: ='ASTakeLeave.Users'
+            DataSource: ='ASDocument.Users_Roles'
             DefaultMode: =FormMode.New
             Height: =244
             Width: =591
