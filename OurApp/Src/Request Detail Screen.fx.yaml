@@ -352,10 +352,10 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =DisplayMode.Disabled
+                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
                                 Height: =103
                                 IsInDataCard: =true
-                                Items: =locInfoRequest.Attachments
+                                Items: =If(locInfoRequest.status = 3,Parent.Default,locInfoRequest.Attachments)
                                 NoAttachmentsText: ="Không có tệp nào."
                                 PaddingBottom: =5
                                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
@@ -402,10 +402,10 @@
                     txt_rds_SignPage As text:
                         BorderColor: =RGBA(0, 0, 0, 1)
                         BorderThickness: =1
-                        Default: =locInfoRequest.pageSignNumber
+                        Default: =If(locInfoRequest.status <> 3,locInfoRequest.pageSignNumber)
                         DisabledColor: =RGBA(0, 0, 0, 1)
                         DisabledFill: =RGBA(255, 255, 255, 1)
-                        DisplayMode: =DisplayMode.Disabled
+                        DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
                         Format: =TextFormat.Number
                         HintText: ="Nhập số trang"
                         Mode: =TextMode.MultiLine
@@ -457,10 +457,10 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =DisplayMode.Disabled
+                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
                                 Height: =103
                                 IsInDataCard: =true
-                                Items: =LookUp('ASDocument.RelatedDocument',documentID = locInfoRequest.documentID).Attachments
+                                Items: =If(locInfoRequest.status = 3,Parent.Default,LookUp('ASDocument.RelatedDocument',documentID = locInfoRequest.documentID).Attachments)
                                 NoAttachmentsText: ="Không có tệp nào."
                                 PaddingBottom: =5
                                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
@@ -522,8 +522,7 @@
                 gal_rds_ApproveProcess As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: |-
-                        =Sort(Table({ID:1,Time:"15/10/2023",Content:"Phê duyệt bởi: Trần Văn Hậu",Reason:""},{ID:2,Time:"15/10/2023",Content:"Từ chối bởi: Trần Văn Hậu",Reason:"Lí do: đánh giá lại văn bản"}),ID,SortOrder.Descending)
+                    Items: =Sort(Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID),Created,SortOrder.Descending)
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
@@ -544,8 +543,7 @@
                         Fill: =RGBA(220, 228, 252, 1)
                         Height: =90
                         OnSelect: =Select(Parent)
-                        Visible: |-
-                            =If(ThisItem.ID = Last(Table({ID:1,Time:"Oct 02th, 2023",Content:"Phê duyệt bởi: Trần Văn Hậu",Reason:""},{ID:1,Time:"Oct 02th, 2023",Content:"Từ chối bởi: Trần Văn Hậu",Reason:"Lí do: lí do nghỉ không hợp lý"})).ID,false,true)
+                        Visible: =If(ThisItem.ID < Last(Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID)).ID,true,false)
                         Width: =2
                         X: =59
                         Y: =49
@@ -554,7 +552,7 @@
                     ico_rds_StatusApprove As icon.Cancel:
                         Color: =RGBA(73, 113, 215, 1)
                         Height: =47
-                        Icon: =Icon.Check
+                        Icon: =If(ThisItem.status = 1,Icon.Check,ThisItem.status = 2,Icon.Cancel,ThisItem.status = 3,Icon.Draw)
                         OnSelect: =Select(Parent)
                         Width: =21
                         X: =50
@@ -564,7 +562,7 @@
                     lbl_rds_ApproveBy As label:
                         Color: =RGBA(94, 94, 94, 1)
                         OnSelect: =Select(Parent)
-                        Text: =ThisItem.Content
+                        Text: =If(IsBlank(LookUp(gblColAllUser,userID = ThisItem.userID).fullName),"Hệ thống",LookUp(gblColAllUser,userID = ThisItem.userID).fullName) & If(ThisItem.status = 1," đã duyệt",ThisItem.status = 2," đã từ chối",ThisItem.status = 3," đã điều chỉnh")
                         Width: =270
                         X: =98
                         Y: =49
@@ -574,7 +572,7 @@
                         Color: =RGBA(94, 94, 94, 1)
                         FontWeight: =FontWeight.Bold
                         OnSelect: =Select(Parent)
-                        Text: =ThisItem.Time
+                        Text: =ThisItem.Created
                         Width: =270
                         X: =98
                         Y: =17
@@ -583,7 +581,9 @@
                     lbl_rds_ReasonReject As label:
                         Color: =RGBA(94, 94, 94, 1)
                         OnSelect: =Select(Parent)
-                        Text: =ThisItem.Reason
+                        Text: |-
+                            ="Lí do: " & ThisItem.comment
+                        Visible: =If(ThisItem.status = 1,false,true)
                         Width: =270
                         X: =98
                         Y: =80
@@ -707,6 +707,7 @@
 
                             Image9_1 As image:
                                 AlignInContainer: =AlignInContainer.Center
+                                Height: =30
                                 Image: =Eye
                                 LayoutMinHeight: =20
                                 OnSelect: |-
@@ -807,6 +808,26 @@
                 X: =137
                 ZIndex: =1
 
+                btn_rs_Create_2 As button:
+                    BorderStyle: =BorderStyle.None
+                    Color: =RGBA(94, 94, 94, 1)
+                    DisabledFill: =
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =28
+                    HoverFill: =ColorFade(RGBA(73, 113, 215, 1), -20%)
+                    OnSelect: =Back()
+                    PressedFill: =RGBA(73, 113, 215, 1)
+                    RadiusBottomLeft: =5
+                    RadiusBottomRight: =5
+                    RadiusTopLeft: =5
+                    RadiusTopRight: =5
+                    Size: =13
+                    Text: ="Trở về"
+                    Width: =104
+                    X: =117
+                    Y: =36
+                    ZIndex: =1
+
                 btn_rs_Create_1 As button:
                     BorderStyle: =BorderStyle.None
                     DisabledFill: =
@@ -826,7 +847,7 @@
                     Width: =104
                     X: =117
                     Y: =36
-                    ZIndex: =1
+                    ZIndex: =2
 
                 btn_rs_Overview_1 As button:
                     BorderStyle: =BorderStyle.None
@@ -845,7 +866,60 @@
                     Width: =104
                     X: =191
                     Y: =36
-                    ZIndex: =2
+                    ZIndex: =3
+
+                btn_rs_Overview_2 As button:
+                    BorderStyle: =BorderStyle.None
+                    Fill: =RGBA(109, 49, 162, 1)
+                    Height: =28
+                    HoverFill: =ColorFade(Self.Fill, -20%)
+                    OnSelect: |-
+                        =//Gửi mail thông báo cho cấp duyệt đầu
+                        'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = First(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).userID).email,"Yêu cầu ký duyệt cho văn bản " & locInfoRequest.documentName & " đã được trình duyệt lại","Mã yêu cầu: " & locInfoRequest.documentID & "<br>" & "Cấp tài liệu: " & LookUp(gblColDocumentLevel,levelID = locInfoRequest.levelID).name & "<br>" & "Loại văn bản: " & LookUp(gblColDocumentType,ID = locInfoRequest.levelID).name & "<br>" & "Công ty: " & LookUp(gblColCompany,ID = locInfoRequest.companyID).name & "<br>" & "Đơn vị: " & LookUp(gblColDivision,ID = locInfoRequest.divisionID).name & "<br>" & "Người tạo: " & gblRecUser.fullName & "<br>" & "Thời gian điều chỉnh: " & Now());
+                        
+                        //Cập nhật lại trạng thái hoạt động của yêu cầu cũ và tạo dòng yêu cầu mới
+                        Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{active:0});
+                        
+                        Patch(
+                            'ASDocument.DocumentRequest',
+                            Defaults('ASDocument.DocumentRequest'),
+                            {
+                                documentGroupID: locInfoRequest.documentGroupID,
+                                levelID: locInfoRequest.levelID,
+                                documentTypeID: locInfoRequest.documentTypeID,
+                                userID: locInfoRequest.userID,
+                                documentID: locInfoRequest.documentID,
+                                createdDateValue: locInfoRequest.createdDateValue,
+                                currentApproveLevel:1,
+                                description:locInfoRequest.description,
+                                documentName:locInfoRequest.documentName,
+                                maxApproveLevel:locInfoRequest.maxApproveLevel,
+                                status:1,
+                                pageSignNumber:Value(txt_rds_SignPage.Text),
+                                requestTimeNum:locInfoRequest.requestTimeNum,
+                                companyID:locInfoRequest.companyID,
+                                divisionID:locInfoRequest.divisionID,
+                                active:1,
+                                lastSignNum:1
+                            },frm_rds_Document_1.Updates
+                        );
+                        
+                        //Lưu tài liệu liên quan
+                        Patch('ASDocument.RelatedDocument',Defaults('ASDocument.RelatedDocument'),{documentID:locInfoRequest.documentID,active:1},frm_rds_Attachment_1.Updates);
+                        
+                        Notify("Điều chỉnh thành công",NotificationType.Success,1500)
+                    PressedColor: =Color.White
+                    PressedFill: =Self.Fill
+                    RadiusBottomLeft: =5
+                    RadiusBottomRight: =5
+                    RadiusTopLeft: =5
+                    RadiusTopRight: =5
+                    Size: =13
+                    Text: ="Điều chỉnh"
+                    Width: =104
+                    X: =191
+                    Y: =36
+                    ZIndex: =4
 
         ctn_rds_Info As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -974,7 +1048,7 @@
                     RadiusTopLeft: =20
                     RadiusTopRight: =20
                     Size: =13
-                    Text: ="Trần Văn Hậu"
+                    Text: =LookUp(gblColAllUser,userID = locInfoRequest.userID).fullName
                     Width: =140
                     ZIndex: =3
 
@@ -986,7 +1060,7 @@
                 LayoutMinHeight: =50
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Width: =150
+                Width: =200
                 ZIndex: =2
 
                 ctn_rds_CreatedTitle As groupContainer.horizontalAutoLayoutContainer:
@@ -999,9 +1073,12 @@
                     ZIndex: =1
 
                     img_rds_Created As image:
+                        AlignInContainer: =AlignInContainer.Center
+                        Height: =30
                         Image: =Clock
                         LayoutMinHeight: =30
-                        Width: =30
+                        PaddingLeft: =20
+                        Width: =50
                         ZIndex: =1
 
                     lbl_rds_Created As label:
@@ -1013,6 +1090,7 @@
                         ZIndex: =2
 
                 btn_rds_Created As button:
+                    AlignInContainer: =AlignInContainer.Center
                     BorderStyle: =BorderStyle.None
                     DisabledColor: =RGBA(0, 0, 0, 1)
                     DisabledFill: =RGBA(255, 255, 255, 1)
@@ -1025,8 +1103,8 @@
                     RadiusTopLeft: =20
                     RadiusTopRight: =20
                     Size: =13
-                    Text: ="15/10/2023"
-                    Width: =140
+                    Text: =locInfoRequest.Created
+                    Width: =190
                     ZIndex: =3
 
             ctn_rds_Status As groupContainer.verticalAutoLayoutContainer:
@@ -1077,8 +1155,8 @@
                     RadiusTopLeft: =20
                     RadiusTopRight: =20
                     Size: =13
-                    Text: ="✓ Đã duyệt"
-                    Width: =140
+                    Text: =If(locInfoRequest.status = 1,"Đang chờ duyệt",locInfoRequest.status = 2,"✓ Đã duyệt","☓ Từ chối")
+                    Width: =150
                     ZIndex: =3
 
     ctn_Navigate_4 As groupContainer.verticalAutoLayoutContainer:
