@@ -728,10 +728,13 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =//Cập nhật lịch sử từ chối
+                =//Cập nhật lịch sử phê duyệt
                 Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:1,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:Blank(),approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
                 
-                //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
+                //Ký duyệt văn bản
+                If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).sort,'ASDocument.DocumentSign'.Run(2,Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel)).sort,Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1)).sort,locInfoRequest.lastSignNum + 1),locInfoRequest.documentID,locInfoRequest.ID,{file:{contentBytes:First(locInfoRequest.Attachments).Value,name:"File van ban-" & Now()&".pdf"},file_1:{contentBytes:First(LookUp('ASDocument.Users_Roles',userID = gblRecUser.userID And active = 1).Attachments).Value,name:"Signature-" & Now()&".png"}}));
+                
+                //Cập nhật trạng thái yêu cầu thành đã duyệt
                 If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).sort,Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{status:2}),Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1}));
                 
                 Notify("Tạo thành công",NotificationType.Success,1500);
@@ -773,7 +776,7 @@
             HtmlText: |-
                 ="<table  width='100%' border='1' cellpadding='5' style='border:1px solid black; border-collapse:collapse'>
                 <tr>
-                    <td style=width:200px><b>Mã văn bản</b></td>
+                    <td style=width:200px><b>Mã tài liệu/hồ sơ</b></td>
                     <td>" & locInfoRequest.documentID &"</td>
                   </tr>
                   <tr>

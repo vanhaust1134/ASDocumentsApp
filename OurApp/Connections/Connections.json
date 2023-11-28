@@ -15,7 +15,8 @@
     ],
     "dependencies": {},
     "dependents": [
-      "565fde5b-e757-42a0-bc41-989d8bcf7d0f"
+      "565fde5b-e757-42a0-bc41-989d8bcf7d0f",
+      "7bc4c85b-1c47-41e8-b82b-5308664ed59d"
     ],
     "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
   },
@@ -120,6 +121,58 @@
     },
     "dependents": [],
     "id": "77ae9be0-1a6c-4b01-9bb0-78b7e8b41340"
+  },
+  "7bc4c85b-1c47-41e8-b82b-5308664ed59d": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
+          "value": "shared_office365"
+        },
+        "cf341574-441c-4f2a-a3b6-ead8c294cdc6": {
+          "value": "shared_sharepointonline"
+        },
+        "f1034dc4-2630-4154-8fbd-0bea120864c4": {
+          "value": "shared_plumsail_1"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "a1876159-9ebb-480c-b802-534f41307874"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_office365": {
+          "value": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
+        },
+        "shared_plumsail": {
+          "value": "f1034dc4-2630-4154-8fbd-0bea120864c4"
+        },
+        "shared_plumsail_1": {
+          "value": "f1034dc4-2630-4154-8fbd-0bea120864c4"
+        },
+        "shared_sharepointonline": {
+          "value": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "a1876159-9ebb-480c-b802-534f41307874"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ASDocument.DocumentSign"
+    ],
+    "dependencies": {
+      "shared_office365": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1",
+      "shared_plumsail": "f1034dc4-2630-4154-8fbd-0bea120864c4",
+      "shared_plumsail_1": "f1034dc4-2630-4154-8fbd-0bea120864c4",
+      "shared_sharepointonline": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+    },
+    "dependents": [],
+    "id": "7bc4c85b-1c47-41e8-b82b-5308664ed59d"
   },
   "85f36729-2cd6-4918-9eb0-8bb715103745": {
     "connectionRef": {
@@ -295,8 +348,31 @@
       "77ae9be0-1a6c-4b01-9bb0-78b7e8b41340",
       "63fcefea-d11f-487c-bec7-3b01f2d3a0a1",
       "976f243e-19ec-45cd-9aa5-bfeed8e99483",
-      "85f36729-2cd6-4918-9eb0-8bb715103745"
+      "85f36729-2cd6-4918-9eb0-8bb715103745",
+      "7bc4c85b-1c47-41e8-b82b-5308664ed59d"
     ],
     "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+  },
+  "f1034dc4-2630-4154-8fbd-0bea120864c4": {
+    "connectionRef": {
+      "displayName": "Plumsail Documents",
+      "executionRestrictions": {
+        "apiId": "unknown",
+        "appVer": "3.23105.18",
+        "modifiedOn": "2023-11-28 09:51:57",
+        "policy": "{\"type\":\"unused\"}",
+        "version": 1
+      },
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1622/1.0.1622.3199/plumsail/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_plumsail",
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_plumsail/connections/shared-plumsail-fcb76e14-bb72-436e-8d73-86088a2bd3da"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "7bc4c85b-1c47-41e8-b82b-5308664ed59d"
+    ],
+    "id": "f1034dc4-2630-4154-8fbd-0bea120864c4"
   }
 }
