@@ -30,6 +30,7 @@
       "documentGroupID": "documentGroupID",
       "Editor": "Modified By",
       "Editor#Claims": "Modified By Claims",
+      "folderName": "folderName",
       "ID": "ID",
       "levelID": "levelID",
       "Modified": "Modified",
