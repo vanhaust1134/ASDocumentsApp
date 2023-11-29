@@ -461,11 +461,11 @@
 
                 Gallery6_2 As gallery.galleryVertical:
                     DelayItemLoading: =true
-                    Height: =65 * CountRows(Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID && (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID"))
+                    Height: =65 * CountRows(Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID And documentTypeID = ThisItem.ID And userID = gblRecUser.userID And (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID"))
                     Items: |-
                         =With(
                             {
-                                records:Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID && (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID")
+                                records:Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID And documentTypeID = ThisItem.ID  And userID = gblRecUser.userID And (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID")
                             },
                             ForAll(
                                 Sequence(CountRows(records)),

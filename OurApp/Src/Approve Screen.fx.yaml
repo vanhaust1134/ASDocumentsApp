@@ -1,8 +1,8 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest',status = 1 And active = 1 And lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = documentID)).sort));
-        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID And sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
+        =ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
+        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
 
     btn_as_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -731,7 +731,7 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật lịch sử phê duyệt
-                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:1,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:Blank(),approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:1,approveTime:Value(Day(Today()) & Month(Today()) & Year(Today())),comment:Blank(),approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
                 
                 //Ký duyệt văn bản
                 If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).sort,'ASDocument.DocumentSign'.Run(2,Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel)).sort,Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1)).sort,locInfoRequest.lastSignNum + 1),locInfoRequest.documentID,locInfoRequest.ID,{file:{contentBytes:First(locInfoRequest.Attachments).Value,name:"File van ban-" & Now()&".pdf"},file_1:{contentBytes:First(LookUp('ASDocument.Users_Roles',userID = gblRecUser.userID And active = 1).Attachments).Value,name:"Signature-" & Now()&".png"}}));

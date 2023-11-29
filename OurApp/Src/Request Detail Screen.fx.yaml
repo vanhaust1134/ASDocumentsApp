@@ -160,60 +160,6 @@
                     PaddingRight: =12
                     ZIndex: =7
 
-                    ctn_rds_DocumentType_1 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        DropShadow: =DropShadow.None
-                        Height: =90
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutDirection: =LayoutDirection.Vertical
-                        LayoutMinHeight: =85
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        ZIndex: =1
-
-                        lbl_rds_DocumentType_1 As label:
-                            Color: =RGBA(94, 94, 94, 1)
-                            FontWeight: =FontWeight.Semibold
-                            Size: =15
-                            Text: ="Loại tài liệu"
-                            ZIndex: =1
-
-                        ctn_rds_DocumentTypeInput_1 As groupContainer.horizontalAutoLayoutContainer:
-                            AlignInContainer: =AlignInContainer.SetByContainer
-                            DropShadow: =DropShadow.None
-                            LayoutGap: =15
-                            LayoutMinHeight: =50
-                            LayoutMinWidth: =250
-                            LayoutMode: =LayoutMode.Auto
-                            PaddingLeft: =1
-                            PaddingRight: =1
-                            PaddingTop: =1
-                            ZIndex: =2
-
-                            drp_rds_DocumentLevel_1 As dropdown:
-                                BorderColor: =RGBA(0, 0, 0, 1)
-                                BorderThickness: =1
-                                ChevronBackground: =RGBA(73, 113, 215, 1)
-                                DisabledColor: =RGBA(0, 0, 0, 1)
-                                DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =DisplayMode.Disabled
-                                FillPortions: =1
-                                Items: =[LookUp(gblColDocumentLevel,levelID = locInfoRequest.levelID).name]
-                                LayoutMinWidth: =150
-                                ZIndex: =1
-
-                            drp_rds_DocumentType_1 As dropdown:
-                                BorderColor: =RGBA(0, 0, 0, 1)
-                                BorderThickness: =1
-                                ChevronBackground: =RGBA(73, 113, 215, 1)
-                                DisabledColor: =RGBA(0, 0, 0, 1)
-                                DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =DisplayMode.Disabled
-                                FillPortions: =1
-                                Items: =[LookUp(gblColDocumentType,ID = locInfoRequest.levelID).name]
-                                LayoutMinWidth: =150
-                                ZIndex: =2
-
                     ctn_rds_CompanyName_1 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         DropShadow: =DropShadow.None
@@ -223,7 +169,7 @@
                         LayoutMinHeight: =85
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
-                        ZIndex: =2
+                        ZIndex: =1
 
                         lbl_rds_CompanyName_1 As label:
                             Color: =RGBA(94, 94, 94, 1)
@@ -266,6 +212,60 @@
                                 FillPortions: =1
                                 Items: =[LookUp(gblColDivision,ID = locInfoRequest.divisionID).name]
                                 LayoutMinWidth: =50
+                                ZIndex: =2
+
+                    ctn_rds_DocumentType_1 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Height: =90
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =85
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        ZIndex: =2
+
+                        lbl_rds_DocumentType_1 As label:
+                            Color: =RGBA(94, 94, 94, 1)
+                            FontWeight: =FontWeight.Semibold
+                            Size: =15
+                            Text: ="Loại tài liệu"
+                            ZIndex: =1
+
+                        ctn_rds_DocumentTypeInput_1 As groupContainer.horizontalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            DropShadow: =DropShadow.None
+                            LayoutGap: =15
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            PaddingLeft: =1
+                            PaddingRight: =1
+                            PaddingTop: =1
+                            ZIndex: =2
+
+                            drp_rds_DocumentLevel_1 As dropdown:
+                                BorderColor: =RGBA(0, 0, 0, 1)
+                                BorderThickness: =1
+                                ChevronBackground: =RGBA(73, 113, 215, 1)
+                                DisabledColor: =RGBA(0, 0, 0, 1)
+                                DisabledFill: =RGBA(255, 255, 255, 1)
+                                DisplayMode: =DisplayMode.Disabled
+                                FillPortions: =1
+                                Items: =[LookUp(gblColDocumentLevel,levelID = locInfoRequest.levelID).name]
+                                LayoutMinWidth: =150
+                                ZIndex: =1
+
+                            drp_rds_DocumentType_1 As dropdown:
+                                BorderColor: =RGBA(0, 0, 0, 1)
+                                BorderThickness: =1
+                                ChevronBackground: =RGBA(73, 113, 215, 1)
+                                DisabledColor: =RGBA(0, 0, 0, 1)
+                                DisabledFill: =RGBA(255, 255, 255, 1)
+                                DisplayMode: =DisplayMode.Disabled
+                                FillPortions: =1
+                                Items: =[LookUp(gblColDocumentType,ID = locInfoRequest.levelID).name]
+                                LayoutMinWidth: =150
                                 ZIndex: =2
 
                     lbl_rds_FileCode As label:

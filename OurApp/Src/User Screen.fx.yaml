@@ -1,5 +1,31 @@
 "'User Screen' As screen":
     Fill: =RGBA(224,224,224,1)
+    OnHidden: |-
+        =//Lấy tất cả user và role về
+            //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
+            ClearCollect(
+                gblColAllUser,
+                AddColumns(
+                    ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
+                    "roleID", 
+                    LookUp('ASDocument.Users_Roles', active = 1 && userID = temp.userID).roleID
+                )
+            );
+        
+            //Lấy tất cả role và chữ ký về + thông tin user app này
+            ClearCollect(
+                gblColAllUserRoles,
+                AddColumns(
+                    Filter('ASDocument.Users_Roles', active = 1) As temp,
+                    "roleName",
+                    LookUp('ASDocument.Role', ID = temp.roleID).name,
+                    "fullName",
+                    LookUp(gblColAllUser, userID = temp.userID).fullName,
+                    "jobTitle",
+                    LookUp(gblColAllUser, userID = temp.userID).jobTitle
+        
+                )
+            );
     OnVisible: |-
         =//Nếu chưa có dữ liệu thì lấy về
         If(IsBlank(locGetData),Set(gblMenuFunctionSelected,1);
@@ -951,7 +977,7 @@
             InputTextPlaceholder: ="Chọn vai trò"
             IsSearchable: =false
             Items: |-
-                =Table({ID:2,name:"Người soạn thảo"},{ID:2,name:"Người xem xét"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
+                =Table({ID:1,name:"Người soạn thảo"},{ID:2,name:"Người xem xét"},{ID:3,name:"MSD"},{ID:4,name:"Người phê duyệt"},{ID:5,name:"Admin"})
             NoSelectionText: ="Chọn vai trò"
             SearchFields: =["name"]
             SearchItems: =[]
