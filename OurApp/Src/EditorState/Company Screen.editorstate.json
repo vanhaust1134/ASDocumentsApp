@@ -126,7 +126,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "blank_10",
-      "ParentIndex": 3,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -454,7 +454,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "blank_15",
-      "ParentIndex": 3,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -782,7 +782,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "blank_16",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1110,7 +1110,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "blank_9",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4266,7 +4266,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_ds_Document_2",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4814,7 +4814,14 @@
           "NameMapSourceSchema": "?"
         },
         "HoverColor",
-        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "DisplayMode.Edit",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -5628,7 +5635,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_ds_User_1",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6001,7 +6008,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_ds_User_3",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8209,7 +8216,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctn_ds_Info2_1",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11378,7 +11385,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "drp_ds_Company",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11733,7 +11740,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "drp_ds_Division",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14094,7 +14101,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Image1",
-      "ParentIndex": 0,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14395,7 +14402,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "img_ds_Avatar_1",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16190,7 +16197,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lb_ds_DocumentName_1",
-      "ParentIndex": 1,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18285,7 +18292,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ds_DocumentType/Level_1",
-      "ParentIndex": 0,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19173,7 +19180,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ds_DocumenTypeName_1",
-      "ParentIndex": 1,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19535,7 +19542,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ds_DocumenTypeNumber_1",
-      "ParentIndex": 0,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22996,7 +23003,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbt_ds_Level_1",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -23324,7 +23331,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbt_ds_Type_1",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

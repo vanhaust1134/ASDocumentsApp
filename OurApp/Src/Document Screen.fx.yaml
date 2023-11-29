@@ -917,7 +917,10 @@
             DisplayMode: |-
                 =If(
                     Or(
-                        IsBlank(txt_ds_DocuementLevelName.Text)
+                        CountRows(Filter(gal_ds_ListUpdateDocument.AllItems, Len(name) <= 0)) > 0,
+                        Len(txt_ds_DocumentType_3.Text) = 0,
+                        CountRows(Filter(gal_ds_ListUpdateDocument.AllItems, Len(shortName) <= 0)) > 0,
+                        Len(txt_ds_DocumentType.Text) = 0
                     ),
                     DisplayMode.Disabled,
                     DisplayMode.Edit
@@ -925,7 +928,7 @@
             Fill: =RGBA(0, 89, 204, 1)
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
-            OnSelect: |-
+            OnSelect: |
                 =//Cập nhật tên cấp tài liệu
                 Patch('ASDocument.DocumentLevel',LookUp('ASDocument.DocumentLevel',ID = locDocumentLevelID),{name:txt_ds_DocuementLevelName.Text});
                 
@@ -933,7 +936,12 @@
                 'ASDocument.AddDocument'.Run(locDocumentLevelID,JSON(Filter(colListDocumentType,Or(status = 2, status = 3, status = 4) And !IsBlank(name)),JSONFormat.IncludeBinaryData & JSONFormat.IgnoreUnsupportedTypes));
                 
                 //Reload
-                Select(Icon1_1);
+                Refresh('ASDocument.DocumentLevel');Refresh('ASDocument.DocumentType');
+                //Lấy danh sách cấp
+                Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
+                
+                //Lấy các loại văn bản
+                Clear(gblColDocumentType);ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
                 
                 //Lấy danh sách các cấp
                 //Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns//('ASDocument.DocumentLevel',"status",0));
@@ -942,7 +950,7 @@
                 //ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
                 
                 Notify("Sửa thành công",NotificationType.Success,1500);
-                UpdateContext({locUpdateDP:false})
+                UpdateContext({locUpdateDP:false});
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
@@ -1077,7 +1085,28 @@
                     HintText: ="Tên viết tắt"
                     OnChange: |-
                         =//Cập nhật thay đổi
-                        If(ThisItem.status <> 3,Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{shortName:Upper(txt_ds_DocumentType.Text),status:4}),Patch(colListDocumentType,LookUp(colListDocumentType,ID = ThisItem.ID),{shortName:Upper(txt_ds_DocumentType.Text)}))
+                        If(
+                            ThisItem.status <> 3,
+                            Patch(
+                                colListDocumentType,
+                                LookUp(
+                                    colListDocumentType,
+                                    ID = ThisItem.ID
+                                ),
+                                {
+                                    shortName: Upper(txt_ds_DocumentType.Text),
+                                    status: 4
+                                }
+                            ),
+                            Patch(
+                                colListDocumentType,
+                                LookUp(
+                                    colListDocumentType,
+                                    ID = ThisItem.ID
+                                ),
+                                {shortName: Upper(txt_ds_DocumentType.Text)}
+                            )
+                        )
                     OnSelect: =
                     Width: =150
                     X: =44
