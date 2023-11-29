@@ -635,6 +635,7 @@
                                     Height: =25
                                     Image: =Delete
                                     OnSelect: =RemoveIf(colApprovesPeopleProcess,ID = ThisItem.ID And BaseID = ThisItem.BaseID)
+                                    Visible: =If(ThisItem.BaseID = 2,false,true)
                                     Width: =47
                                     X: =381
                                     Y: =5
