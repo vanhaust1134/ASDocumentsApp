@@ -1,10 +1,10 @@
 [
   {
     "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
-    "FlowNameId": "92647bee-90ab-4690-9cc1-302a2af147c7",
+    "FlowNameId": "36a896f5-5766-4dbd-8850-bd4c94249eeb",
     "Name": "ASDocument.ManageDivision",
     "ServiceKind": "ConnectedWadl",
     "Type": "ServiceInfo",
-    "WorkflowEntityId": null
+    "WorkflowEntityId": "daf3a30c-578e-ee11-8179-000d3aa0d035"
   }
 ]

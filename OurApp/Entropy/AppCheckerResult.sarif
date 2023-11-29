@@ -294,6 +294,129 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Request Screen'.ctn_rs_Review.btn_ds_Submit_9.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Screen'.ctn_rs_Review.btn_ds_Submit_9.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 146,
+                  "charOffset": 1729,
+                  "snippet": {
+                    "text": "'ASDocument.AddRequestApproveProcess'.Run(JSON(Sort(colRownumberApprovalProcess,approveProcess,SortOrder.Ascending),JSONFormat.IncludeBinaryData))"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Request Screen",
+                "type": "'Request Screen'.ctn_rs_Review.btn_ds_Submit_9"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Run",
+              "'ASDocument.AddRequestApproveProcess'"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrUnknownNamespaceFunction",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Screen'.ctn_rs_Review.btn_ds_Submit_9.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Screen'.ctn_rs_Review.btn_ds_Submit_9.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 547,
+                  "charOffset": 2089,
+                  "snippet": {
+                    "text": "'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = First(colApprovesPeopleProcess).userID).email,\"Yêu cầu ký duyệt cho văn bản \" & txt_rs_DocumentName.Text,\"Mã tài liệu/hồ sơ: \" & locDocumentIDGenerate & \"<br>\" & \"Cấp tài liệu: \" & drp_rs_DocumentLevel.Selected.name & \"<br>\" & \"Loại văn bản: \" & drp_rs_DocumentType.Selected.name & \"<br>\" & \"Công ty: \" & drp_rs_CompanyNameInput.Selected.name & \"<br>\" & \"Đơn vị: \" & drp_rs_CompanyNameInput_2.Selected.name & \"<br>\" & \"Người tạo: \" & gblRecUser.fullName & \"<br>\" & \"Thời gian tạo: \" & Now())"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Request Screen",
+                "type": "'Request Screen'.ctn_rs_Review.btn_ds_Submit_9"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Run",
+              "'ASDocument.SendMail'"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrUnknownNamespaceFunction",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_as_Reject_1.btn_as_Submit_1.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_as_Reject_1.btn_as_Submit_1.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 268,
+                  "charOffset": 616,
+                  "snippet": {
+                    "text": "'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = locInfoRequest.userID).email,\"Yêu cầu ký duyệt văn bản \" & locInfoRequest.documentID & \" đã bị từ chối\",\"Tên yêu cầu: \" & locInfoRequest.documentName & \"<br>\" & \"Thời gian tạo yêu cầu: \" & locInfoRequest.Created)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_as_Reject_1.btn_as_Submit_1"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Run",
+              "'ASDocument.SendMail'"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrUnknownNamespaceFunction",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Create_1.OnSelect"
                 }
               ],
@@ -369,6 +492,47 @@
           },
           "ruleId": "app-ErrInvalidArgs-Func",
           "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 834,
+                  "charOffset": 39,
+                  "snippet": {
+                    "text": "'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = First(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).userID).email,\"Yêu cầu ký duyệt cho văn bản \" & locInfoRequest.documentName & \" đã được trình duyệt lại\",\"Mã tài liệu/hồ sơ: \" & locInfoRequest.documentID & \"<br>\" & \"Cấp tài liệu: \" & LookUp(gblColDocumentLevel,levelID = locInfoRequest.levelID).name & \"<br>\" & \"Loại văn bản: \" & LookUp(gblColDocumentType,ID = locInfoRequest.levelID).name & \"<br>\" & \"Công ty: \" & LookUp(gblColCompany,ID = locInfoRequest.companyID).name & \"<br>\" & \"Đơn vị: \" & LookUp(gblColDivision,ID = locInfoRequest.divisionID).name & \"<br>\" & \"Người tạo: \" & gblRecUser.fullName & \"<br>\" & \"Thời gian điều chỉnh: \" & Now(),{file:{contentBytes:First(locInfoRequest.Attachments).Value,name:\"File van ban-\" & Now()&\".pdf\"}})"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Run",
+              "'ASDocument.SendMail'"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrUnknownNamespaceFunction",
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1180,6 +1344,47 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Approve Screen'.ctn_as_Reject.btn_as_Submit.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Approve Screen'.ctn_as_Reject.btn_as_Submit.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 268,
+                  "charOffset": 628,
+                  "snippet": {
+                    "text": "'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = locInfoRequest.userID).email,\"Yêu cầu ký duyệt văn bản \" & locInfoRequest.documentID & \" đã bị từ chối\",\"Tên yêu cầu: \" & locInfoRequest.documentName & \"<br>\" & \"Thời gian tạo yêu cầu: \" & locInfoRequest.Created)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Approve Screen",
+                "type": "'Approve Screen'.ctn_as_Reject.btn_as_Submit"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Run",
+              "'ASDocument.SendMail'"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrUnknownNamespaceFunction",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Approve Screen'.ctn_as_Approve.btn_us_Submit_8.OnSelect"
                 }
               ],
@@ -1255,6 +1460,47 @@
           },
           "ruleId": "app-ErrInvalidArgs-Func",
           "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Approve Screen'.ctn_as_Transfer.btn_ds_Submit_7.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Approve Screen'.ctn_as_Transfer.btn_ds_Submit_7.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 342,
+                  "charOffset": 200,
+                  "snippet": {
+                    "text": "'ASDocument.SendMail'.Run(cbo_as_User.Selected.email,\"Yêu cầu ủy quyền ký duyệt cho văn bản \" & locInfoRequest.documentName,\"Tên yêu cầu: \" & locInfoRequest.documentName & \"<br>\" & \"Thời gian tạo yêu cầu: \" & locInfoRequest.Created & \"<br>\" & \"Người yêu cầu ủy quyền: \" & LookUp(gblColAllUser,userID = locInfoRequest.approvalUserID).fullName)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Approve Screen",
+                "type": "'Approve Screen'.ctn_as_Transfer.btn_ds_Submit_7"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Run",
+              "'ASDocument.SendMail'"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrUnknownNamespaceFunction",
+          "ruleIndex": 3
         },
         {
           "locations": [
