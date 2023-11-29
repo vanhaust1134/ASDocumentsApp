@@ -1,7 +1,9 @@
 "'Home Manager Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =//Nếu chưa có dữ liệu thì lấy về
+        =Set(gblMenuFunctionSelected,1);
+        
+        //Nếu chưa có dữ liệu thì lấy về
         If(IsBlank(locGetData),
         //Lấy danh sách cấp
         ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
@@ -15,7 +17,6 @@
         
         //Lấy danh sách đơn vị
         ClearCollect(gblColDivision,Filter('ASDocument.Division',active = 1));
-        Set(gblMenuFunctionSelected,1);
         
         //Lấy tất cả user và role về
             //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
@@ -40,11 +41,11 @@
                 gblRecUser,
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
             ));
-        
+            
         //Đã lấy data
         UpdateContext({locGetData:1});
 
-    btn_hs_BackGroundScreen_3 As button:
+    btn_hs_BackGroundScreen_1 As button:
         BorderStyle: =BorderStyle.None
         DisabledFill: =RGBA(241, 244, 250, 1)
         DisplayMode: =DisplayMode.Disabled
@@ -57,7 +58,7 @@
         Width: =1366
         ZIndex: =1
 
-    ctn_hs_Navigate_3 As groupContainer.verticalAutoLayoutContainer:
+    ctn_hs_Navigate_1 As groupContainer.verticalAutoLayoutContainer:
         BorderStyle: =BorderStyle.None
         DropShadow: =DropShadow.None
         Fill: =RGBA(255, 255, 255, 1)
@@ -73,7 +74,7 @@
         Width: =196
         ZIndex: =18
 
-        ctn_HeaderMenu_6 As groupContainer.horizontalAutoLayoutContainer:
+        ctn_HeaderMenu_2 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.None
             FillPortions: =0
@@ -86,7 +87,7 @@
             PaddingRight: =20
             ZIndex: =1
 
-            img_hs_Logo_4 As image:
+            img_hs_Logo_2 As image:
                 Height: =110
                 Image: =Name
                 Width: =50
@@ -94,7 +95,7 @@
                 Y: =13
                 ZIndex: =1
 
-            Label1_4 As label:
+            Label1_2 As label:
                 Color: =RGBA(73, 113, 215, 1)
                 FontWeight: =FontWeight.Bold
                 Size: =15
@@ -102,7 +103,7 @@
                 Width: =145
                 ZIndex: =2
 
-        ctn_NavigationMenu_5 As groupContainer.verticalAutoLayoutContainer:
+        ctn_NavigationMenu_1 As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.None
             Fill: =RGBA(255, 255, 255, 1)
@@ -118,13 +119,13 @@
             RadiusTopRight: =0
             ZIndex: =3
 
-            gal_NavigationMenu_5 As gallery.galleryVertical:
+            gal_NavigationMenu_1 As gallery.galleryVertical:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 DelayItemLoading: =true
                 Fill: =RGBA(255, 255, 255, 1)
                 Height: =652
                 Items: |-
-                    =If(gblRecUser.roleID = 1,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'}),gblRecUser.roleID = 2 Or gblRecUser.roleID = 4,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home User Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'}),gblRecUser.roleID = 3,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'},{ID:3,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}),gblRecUser.roleID = 5,Table({ID:1,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}))
+                    =If(gblRecUser.roleID = 1,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'}),gblRecUser.roleID = 2 Or gblRecUser.roleID = 4,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'}),gblRecUser.roleID = 3,Table({ID:1,Image:Home,Title:"Trang chủ",Navigate:'Home Manager Screen'},{ID:2,Image:'Admin Settings Male',Title:"Phê duyệt",Navigate:'Approve Screen'},{ID:3,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}),gblRecUser.roleID = 5,Table({ID:1,Image:'Data Recovery',Title:"Thiết lập",Navigate:'User Screen'}))
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =0
@@ -137,7 +138,7 @@
                 Y: =115
                 ZIndex: =1
 
-                img_MenuImage_5 As image:
+                img_MenuImage_1 As image:
                     Height: =30
                     Image: =ThisItem.Image
                     OnSelect: =Select(Parent)
@@ -146,7 +147,7 @@
                     Y: =10
                     ZIndex: =1
 
-                lbl_MenuTitle_5 As label:
+                lbl_MenuTitle_1 As label:
                     Color: =RGBA(149, 149, 149, 1)
                     FontWeight: =FontWeight.Semibold
                     Height: =29
@@ -157,7 +158,7 @@
                     Y: =10
                     ZIndex: =2
 
-                btn_Select_6 As button:
+                btn_Select_1 As button:
                     BorderThickness: =0
                     Fill: =If(ThisItem.ID = gblMenuFunctionSelected,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
                     Height: =50
@@ -189,7 +190,7 @@
                 Y: =682
                 ZIndex: =2
 
-    ctn_hs_Title_3 As groupContainer.verticalAutoLayoutContainer:
+    ctn_hs_Title_1 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.None
         Height: =41
         LayoutMode: =LayoutMode.Auto
@@ -200,7 +201,7 @@
         Y: =104
         ZIndex: =20
 
-        lbl_hs_Title_3 As label:
+        lbl_hs_Title_1 As label:
             AlignInContainer: =AlignInContainer.Stretch
             Color: =RGBA(43, 54, 74, 1)
             FillPortions: =1
@@ -213,7 +214,7 @@
             Y: =101
             ZIndex: =1
 
-    ctn_hs_MainContent_3 As groupContainer.horizontalAutoLayoutContainer:
+    ctn_hs_MainContent_1 As groupContainer.horizontalAutoLayoutContainer:
         DropShadow: =DropShadow.None
         Height: =623
         LayoutGap: =10
@@ -227,7 +228,7 @@
         Y: =145
         ZIndex: =23
 
-        ctn_hs_Statistical_3 As groupContainer.verticalAutoLayoutContainer:
+        ctn_hs_Statistical_1 As groupContainer.verticalAutoLayoutContainer:
             DropShadow: =DropShadow.None
             Fill: =RGBA(255, 255, 255, 1)
             FillPortions: =0.3
@@ -280,13 +281,13 @@
             Gallery9_1 As gallery.variableTemplateHeightGallery:
                 DelayItemLoading: =true
                 Height: =368
-                Items: =gblColDocumentLevel
+                Items: =Filter(gblColDocumentLevel,name <> "Tất cả")
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =243
                 LoadingSpinner: =LoadingSpinner.Data
                 ShowScrollbar: =false
-                TemplateSize: =35
+                TemplateSize: =32
                 Width: =581
                 X: =290
                 Y: =225
@@ -309,13 +310,13 @@
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |-
-                        =If(CountRows(Filter(colDocumentRequestType,ID = ThisItem.ID)) = 0,Collect(colDocumentRequestType,Table({ID:ThisItem.ID,Name:ThisItem.name})),RemoveIf(colDocumentRequestType,ID = ThisItem.ID))
+                        =If(CountRows(Filter(colDocumentRequestType,ID = ThisItem.ID)) = 0,Collect(colDocumentRequestType,Table({ID:ThisItem.ID,LevelID:ThisItem.levelID,Name:ThisItem.name})),RemoveIf(colDocumentRequestType,ID = ThisItem.ID))
                     ShowScrollbar: =false
                     TemplateSize: =36
                     Visible: =ThisItem.status = 1
                     Width: =198
                     X: =35
-                    Y: =30
+                    Y: =32
                     ZIndex: =2
 
                     Label10_3 As label:
@@ -328,7 +329,7 @@
                         Wrap: =false
                         ZIndex: =1
 
-                    btn_Select_13 As button:
+                    btn_Select_12 As button:
                         BorderStyle: =BorderStyle.None
                         BorderThickness: =0
                         Fill: =If(ThisItem.ID exactin (colDocumentRequestType).ID,RGBA(149, 149, 149,0.2),RGBA(0, 0, 0, 0))
@@ -355,7 +356,7 @@
                     Y: =5
                     ZIndex: =4
 
-        ctn_hs_List_3 As groupContainer.verticalAutoLayoutContainer:
+        ctn_hs_List_1 As groupContainer.verticalAutoLayoutContainer:
             DropShadow: =DropShadow.None
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
@@ -364,7 +365,7 @@
             LayoutMode: =LayoutMode.Auto
             ZIndex: =2
 
-            Container6_3 As groupContainer.horizontalAutoLayoutContainer:
+            Container6_1 As groupContainer.horizontalAutoLayoutContainer:
                 DropShadow: =DropShadow.None
                 Fill: =RGBA(255, 255, 255, 1)
                 FillPortions: =0
@@ -387,16 +388,15 @@
                 cbo_hs_Company_1 As combobox:
                     AlignInContainer: =AlignInContainer.Center
                     BorderColor: =RGBA(214, 221, 224, 1)
-                    DisplayFields: =["companyName"]
+                    DisplayFields: =["name"]
                     FillPortions: =1.5
                     Height: =35
                     InputTextPlaceholder: ="Chọn công ty"
                     IsSearchable: =false
-                    Items: |-
-                        =Table({ID:1,companyName:"AsiaShine",acronym:"AS"},{ID:2,companyName:"Sapharchems",acronym:"SPC"})
+                    Items: =Filter(gblColCompany,name <> "Tất cả")
                     LayoutMinWidth: =0
                     NoSelectionText: ="Chọn công ty"
-                    SearchFields: =["companyName"]
+                    SearchFields: =["ComplianceAssetId"]
                     SearchItems: =[]
                     SelectMultiple: =false
                     Width: =146
@@ -460,164 +460,11 @@
 
                 Gallery6_3 As gallery.galleryVertical:
                     DelayItemLoading: =true
-                    Height: |-
-                        =65 * CountRows(Search(Filter(Table(
-                            {
-                                ID: 1,
-                                Class: 1,
-                                Description: "Quy định nghỉ phép",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QĐNP",
-                                docuType:"ĐLCT"
-                            },
-                            {
-                                ID: 2,
-                                Class: 2,
-                                Description: "Quy trình đánh giá thử việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTDGTV",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 3,
-                                Class: 2,
-                                Description: "Quy trình phê duyệt hợp đồng",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTPDHD",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 4,
-                                Class: 2,
-                                Description: "Quy trình đánh giá năng lực",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTDGNL",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 5,
-                                Class: 7,
-                                Description: "Quy trình quản lý nội bộ",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTQLNB",
-                                docuType:"SĐTTCV"
-                            },
-                            {
-                                ID: 6,
-                                Class: 7,
-                                Description: "Văn bản hợp đồng lao động",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBHĐLĐ",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 7,
-                                Class: 8,
-                                Description: "Văn bản ký kết công việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBKKCV",
-                                docuType:"SĐCDCK"
-                            }
-                        ),Class = ThisItem.ID && (companyName = cbo_hs_Company_1.Selected.acronym || If(IsBlank(cbo_hs_Company_1.Selected.ID),true,false)) ),txt_has_Search_2.Text,"companyName","docuName","docuType"))
+                    Height: =65 * CountRows(Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID And documentTypeID = ThisItem.ID And userID = gblRecUser.userID And (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID"))
                     Items: |-
                         =With(
                             {
-                                records:Search(Filter(Table(
-                            {
-                                ID: 1,
-                                Class: 1,
-                                Description: "Quy định nghỉ phép",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đã từ chối",
-                                companyName:"SPC",
-                                docuName:"QTNP",
-                                docuType:"ĐLCT"
-                            },
-                            {
-                                ID: 2,
-                                Class: 2,
-                                Description: "Quy trình đánh giá thử việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTDGTV",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 3,
-                                Class: 2,
-                                Description: "Quy trình phê duyệt hợp đồng",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTPDHD",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 4,
-                                Class: 2,
-                                Description: "Quy trình đánh giá năng lực",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"SPC",
-                                docuName:"QTDGNL",
-                                docuType:"QCQTCT"
-                            },{
-                                ID: 5,
-                                Class: 7,
-                                Description: "Quy trình quản lý nội bộ",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"QTQLNB",
-                                docuType:"SĐTTCV"
-                            },
-                            {
-                                ID: 6,
-                                Class: 7,
-                                Description: "Văn bản hợp đồng lao động",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBHĐLĐ",
-                                docuType:"QCQTCT"
-                            },
-                            {
-                                ID: 7,
-                                Class: 8,
-                                Description: "Văn bản ký kết công việc",
-                                Date: Today(),
-                                Modified: Today() + 1,
-                                Status: "Đang phê duyệt",
-                                companyName:"AS",
-                                docuName:"VBKKCV",
-                                docuType:"SĐCDCK"
-                            }
-                        ),Class = ThisItem.ID && (companyName = cbo_hs_Company_1.Selected.acronym || If(IsBlank(cbo_hs_Company_1.Selected.ID),true,false)) ),txt_has_Search_2.Text,"companyName","docuName","docuType")
+                                records:Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID And documentTypeID = ThisItem.ID And (companyID = cbo_hs_Company_1.Selected.ID || If(IsBlank(cbo_hs_Company_1.Selected.ID),true,false))),txt_has_Search_2.Text,"documentID")
                             },
                             ForAll(
                                 Sequence(CountRows(records)),
@@ -675,7 +522,7 @@
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
-                            Text: =ThisItem.Description
+                            Text: =ThisItem.documentName
                             Width: =300
                             Wrap: =false
                             ZIndex: =2
@@ -686,7 +533,7 @@
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
-                            Text: =ThisItem.companyName
+                            Text: =LookUp(gblColCompany,ID = ThisItem.companyID).name
                             Wrap: =false
                             ZIndex: =3
 
@@ -718,28 +565,28 @@
                                 RadiusTopLeft: =20
                                 RadiusTopRight: =20
                                 Size: =12
-                                Text: =ThisItem.Status
+                                Text: =If(ThisItem.status = 1,"Đang chờ duyệt",ThisItem.status = 2,"Đã duyệt",ThisItem.status = 3,"Đã từ chối")
                                 Width: =161
                                 X: =1
                                 Y: =10
                                 ZIndex: =1
 
                             shp_has_Status_3 As circle:
-                                Fill: =If(ThisItem.ID <> 1,RGBA(173, 214, 116, 1),Color.Red)
+                                Fill: =If(ThisItem.status = 1,Color.LightGray,ThisItem.status = 2,RGBA(173, 214, 116, 1),ThisItem.status = 3,Color.Red)
                                 Height: =15
                                 Width: =15
                                 X: =12
                                 Y: =20
                                 ZIndex: =2
 
-                    Rectangle6_2 As rectangle:
+                    Rectangle6_1 As rectangle:
                         Fill: =RGBA(40, 134, 222, 1)
                         Height: =2
                         Width: =818
                         Y: =53
                         ZIndex: =2
 
-            ctn_hms_EmptyRequest As groupContainer.verticalAutoLayoutContainer:
+            ctn_hus_EmptyRequest_1 As groupContainer.verticalAutoLayoutContainer:
                 DropShadow: =DropShadow.None
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutJustifyContent: =LayoutJustifyContent.Center
@@ -749,14 +596,14 @@
                 Visible: =If(IsEmpty(Gallery1_2.AllItems),true,false)
                 ZIndex: =3
 
-                img_hms_EmptyList As image:
+                img_hus_EmptyList_1 As image:
                     AlignInContainer: =AlignInContainer.Center
                     Image: ='icons8-list-is-empty-100'
                     X: =
                     Y: =
                     ZIndex: =1
 
-                lbl_hms_EmptyList As label:
+                lbl_hus_EmptyList_1 As label:
                     Align: =Align.Center
                     AlignInContainer: =AlignInContainer.Center
                     FontWeight: =FontWeight.Bold
@@ -767,7 +614,7 @@
                     Y: =
                     ZIndex: =2
 
-    ctn_hs_Header_3 As groupContainer.horizontalAutoLayoutContainer:
+    ctn_hs_Header_1 As groupContainer.horizontalAutoLayoutContainer:
         DropShadow: =DropShadow.None
         Height: =104
         LayoutMode: =LayoutMode.Auto
@@ -775,7 +622,7 @@
         X: =196
         ZIndex: =24
 
-        ctn_hs_Tab_3 As groupContainer.horizontalAutoLayoutContainer:
+        ctn_hs_Tab_1 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.None
             Height: =101
@@ -789,7 +636,7 @@
             X: =137
             ZIndex: =1
 
-            btn_hs_Overview_2 As button:
+            btn_hs_Overview_1 As button:
                 BorderStyle: =BorderStyle.None
                 Fill: |-
                     =//RGBA(251, 137, 91, 1)
@@ -809,7 +656,7 @@
                 Y: =36
                 ZIndex: =1
 
-            btn_hs_Create_2 As button:
+            btn_hs_Create_1 As button:
                 BorderStyle: =BorderStyle.None
                 Color: =RGBA(94, 94, 94, 1)
                 DisabledFill: =
@@ -829,7 +676,7 @@
                 Y: =36
                 ZIndex: =2
 
-        ctn_hs_Info_3 As groupContainer.horizontalAutoLayoutContainer:
+        ctn_hs_Info_1 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.Start
             DropShadow: =DropShadow.None
             Fill: =RGBA(220, 228, 252, 1)
@@ -846,19 +693,19 @@
             RadiusTopRight: =20
             ZIndex: =2
 
-            img_hs_Avatar_5 As image:
+            img_hs_Avatar_2 As image:
                 AlignInContainer: =AlignInContainer.Center
                 Height: =50
                 Image: =User().Image
                 LayoutMinHeight: =50
-                RadiusBottomLeft: =img_hs_Avatar_5.Height
-                RadiusBottomRight: =img_hs_Avatar_5.Height
-                RadiusTopLeft: =img_hs_Avatar_5.Height
-                RadiusTopRight: =img_hs_Avatar_5.Height
+                RadiusBottomLeft: =img_hs_Avatar_2.Height
+                RadiusBottomRight: =img_hs_Avatar_2.Height
+                RadiusTopLeft: =img_hs_Avatar_2.Height
+                RadiusTopRight: =img_hs_Avatar_2.Height
                 Width: =50
                 ZIndex: =1
 
-            ctn_hs_Info2_5 As groupContainer.verticalAutoLayoutContainer:
+            ctn_hs_Info2_2 As groupContainer.verticalAutoLayoutContainer:
                 DropShadow: =DropShadow.None
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =0
@@ -867,7 +714,7 @@
                 PaddingLeft: =5
                 ZIndex: =2
 
-                lbl_hs_Name_5 As label:
+                lbl_hs_Name_2 As label:
                     FontWeight: =FontWeight.Bold
                     PaddingTop: =20
                     Size: =12
@@ -875,14 +722,14 @@
                     Wrap: =false
                     ZIndex: =1
 
-                lbl_hs_Mail_5 As label:
+                lbl_hs_Mail_2 As label:
                     PaddingBottom: =20
                     Size: =12
                     Text: =User().Email
                     Wrap: =false
                     ZIndex: =2
 
-    Button1_3 As button:
+    Button1_1 As button:
         OnSelect: =Launch(LookUp(Documents,'File name with extension' = "SignedDocuments").'Link to item' & "/VĂN BẢN TRÌNH DUYỆT.pdf")
         Text: ="Button"
         Visible: =false

@@ -2,7 +2,7 @@
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
         =ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest',status = 1 And active = 1 And lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = documentID)).sort));
-        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID And sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
+        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
 
     btn_as_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
