@@ -1,5 +1,9 @@
 "'Request Detail Screen' As screen":
     Fill: =RGBA(224,224,224,1)
+    OnHidden: |-
+        =//Cập nhật danh sách duyệt
+        ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
+        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID));
     OnVisible: |-
         =UpdateContext({locFuntionRequestDetail:1});
         ClearCollect(colHistorySign,Table({ID:1,Time:"15/10/2023 06:00 AM",Content:"MSD đã từ chối",Reason:"",status:1},{ID:2,Time:"17/10/2023 08:00 PM",Content:"Người xem xét đã từ chối",Reason:"Lí do: đánh giá lại văn bản",status:0},{ID:3,Time:"17/10/2023 08:00 PM",Content:"Người phê duyệt đã phê duyệt",Reason:"Lí do: đánh giá lại văn bản"}))
@@ -840,15 +844,164 @@
                     HoverFill: =ColorFade(Self.Fill, -20%)
                     OnSelect: |-
                         =//Cập nhật lịch sử phê duyệt
-                        Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:1,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:Blank(),approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
-                        
+                        Patch(
+                            'ASDocument.HistoryApprove',
+                            Defaults('ASDocument.HistoryApprove'),
+                            {
+                                documentID: locInfoRequest.documentID,
+                                userID: gblRecUser.userID,
+                                status: 1,
+                                approveTime: Value(Day(Today()) & Month(Today()) & Year(Today())),
+                                comment: Blank(),
+                                approveProcess: locInfoRequest.currentApproveLevel,
+                                requestTimeNum: locInfoRequest.requestTimeNum
+                            }
+                        );
                         //Ký duyệt văn bản
-                        If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).sort,'ASDocument.DocumentSign'.Run(2,Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel)).sort,Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1)).sort,locInfoRequest.lastSignNum + 1),locInfoRequest.documentID,locInfoRequest.ID,{file:{contentBytes:First(locInfoRequest.Attachments).Value,name:"File van ban-" & Now()&".pdf"},file_1:{contentBytes:First(LookUp('ASDocument.Users_Roles',userID = gblRecUser.userID And active = 1).Attachments).Value,name:"Signature-" & Now()&".png"}}));
-                        
+                        If(
+                            locInfoRequest.lastSignNum = Last(
+                                Filter(
+                                    'ASDocument.ProcessApproval',
+                                    documentID = locInfoRequest.documentID
+                                )
+                            ).sort,
+                            'ASDocument.DocumentSign'.Run(
+                                2,
+                                Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
+                                locInfoRequest.documentID,
+                                locInfoRequest.ID,
+                                If(
+                                    locInfoRequest.lastSignNum = Last(
+                                        Filter(
+                                            'ASDocument.ProcessApproval',
+                                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
+                                        )
+                                    ).sort,
+                                    Last(
+                                        Filter(
+                                            'ASDocument.ProcessApproval',
+                                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
+                                        )
+                                    ).sort,
+                                    locInfoRequest.lastSignNum + 1
+                                ),
+                                {
+                                    file: {
+                                        contentBytes: First(locInfoRequest.Attachments).Value,
+                                        name: "File van ban-" & Now() & ".pdf"
+                                    },
+                                    file_1: {
+                                        contentBytes: First(
+                                            LookUp(
+                                                'ASDocument.Users_Roles',
+                                                userID = gblRecUser.userID And active = 1
+                                            ).Attachments
+                                        ).Value,
+                                        name: "Signature-" & Now() & ".png"
+                                    }
+                                }
+                            ),
+                            'ASDocument.DocumentSign'.Run(
+                                1,
+                                Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
+                                locInfoRequest.documentID,
+                                locInfoRequest.ID,
+                                If(
+                                    locInfoRequest.lastSignNum = Last(
+                                        Filter(
+                                            'ASDocument.ProcessApproval',
+                                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
+                                        )
+                                    ).sort,
+                                    Last(
+                                        Filter(
+                                            'ASDocument.ProcessApproval',
+                                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
+                                        )
+                                    ).sort,
+                                    locInfoRequest.lastSignNum + 1
+                                ),
+                                {
+                                    file: {
+                                        contentBytes: First(locInfoRequest.Attachments).Value,
+                                        name: "File van ban-" & Now() & ".pdf"
+                                    },
+                                    file_1: {
+                                        contentBytes: First(
+                                            LookUp(
+                                                'ASDocument.Users_Roles',
+                                                userID = gblRecUser.userID And active = 1
+                                            ).Attachments
+                                        ).Value,
+                                        name: "Signature-" & Now() & ".png"
+                                    }
+                                }
+                            )
+                        );
                         //Cập nhật trạng thái yêu cầu thành đã duyệt
-                        If(locInfoRequest.lastSignNum = Last(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).sort,Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{status:2}),Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1}));
+                        If(
+                            locInfoRequest.lastSignNum = Last(
+                                Filter(
+                                    'ASDocument.ProcessApproval',
+                                    documentID = locInfoRequest.documentID
+                                )
+                            ).sort,
+                            Patch(
+                                'ASDocument.DocumentRequest',
+                                LookUp(
+                                    'ASDocument.DocumentRequest',
+                                    ID = locInfoRequest.ID
+                                ),
+                                {status: 2}
+                            )
+                        );
                         
-                        Notify("Phê duyệt thành công",NotificationType.Success,1500)
+                        //Cập nhật bước duyệt hiện tại
+                        If(
+                            locInfoRequest.lastSignNum = Last(
+                                Filter(
+                                    'ASDocument.ProcessApproval',
+                                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
+                                )
+                            ).sort,
+                            Patch(
+                                'ASDocument.DocumentRequest',
+                                LookUp(
+                                    'ASDocument.DocumentRequest',
+                                    ID = locInfoRequest.ID
+                                ),
+                                {currentApproveLevel: locInfoRequest.currentApproveLevel + 1}
+                            )
+                        );
+                        
+                        //Cập nhật danh sách duyệt
+                        ClearCollect(
+                            gblcolRequestOnProcess,
+                            Filter(
+                                'ASDocument.DocumentRequest' As Temp,
+                                Temp.lastSignNum exactin (Filter(
+                                    'ASDocument.ProcessApproval',
+                                    documentID = Temp.documentID
+                                )).sort And Temp.status = 1 And Temp.active = 1
+                            )
+                        );
+                        ClearCollect(
+                            gblColApprovalByRequest,
+                            AddColumns(
+                                gblcolRequestOnProcess As Temp,
+                                "approvalUserID",
+                                LookUp(
+                                    'ASDocument.ProcessApproval',
+                                    sort = Temp.lastSignNum And documentID = Temp.documentID
+                                ).userID
+                            )
+                        );
+                        Notify(
+                            "Duyệt thành công",
+                            NotificationType.Success,
+                            1500
+                        );
+                        UpdateContext({locApprove: false})
                     PressedColor: =RGBA(255,255,255,1)
                     PressedFill: =Self.Fill
                     RadiusBottomLeft: =5
