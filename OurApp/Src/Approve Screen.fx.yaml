@@ -1,6 +1,6 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
-    OnVisible: =ClearCollect(gblColApprovalByRequest,AddColumns('ASDocument.DocumentRequest' As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID And sort = Temp.lastSignNum).userID))
+    OnVisible: =ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1 And lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = documentID)).sort) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID And sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
 
     btn_as_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -600,7 +600,7 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật lịch sử từ chối
-                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:txt_as_RejectReason.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:txt_as_RejectReason.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum},Form1.Updates);
                 
                 //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
                 Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1,status:3});
@@ -893,7 +893,12 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Notify("Ủy quyền thành công",NotificationType.Success,1500);
+                =Patch('ASDocument.ProcessApproval',LookUp('ASDocument.ProcessApproval',sort = locInfoRequest.lastSignNum And userID = locInfoRequest.approvalUserID),{userID:cbo_as_User.Selected.userID});
+                
+                //Gửi mail
+                'ASDocument.SendMail'.Run(cbo_as_User.Selected.email,"Yêu cầu ủy quyền ký duyệt cho văn bản " & locInfoRequest.documentName,"Tên yêu cầu: " & locInfoRequest.documentName & "<br>" & "Thời gian tạo yêu cầu: " & locInfoRequest.Created & "<br>" & "Người yêu cầu ủy quyền: " & LookUp(gblColAllUser,userID = locInfoRequest.approvalUserID).fullName);
+                
+                Notify("Ủy quyền thành công",NotificationType.Success,1500);
                 UpdateContext({locTransfer:false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
@@ -940,7 +945,7 @@
         lbl_ds_DepartmentName_14 As label:
             Align: =Align.Right
             FontWeight: =FontWeight.Semibold
-            Text: ="Nhân viên"
+            Text: ="Ủy quyền"
             X: =387
             Y: =385
             ZIndex: =15
@@ -948,13 +953,89 @@
         cbo_as_User As combobox:
             BorderColor: =RGBA(116, 116, 116, 1)
             ChevronBackground: =RGBA(0, 89, 204, 1)
-            DisplayFields: =["Value"]
-            IsSearchable: =false
-            Items: =["Trần Văn Hậu"]
-            SearchFields: =["Value"]
-            SearchItems: =[]
-            Width: =231
+            DisplayFields: =["fullName","email"]
+            InputTextPlaceholder: ="Chọn người ủy quyền"
+            Items: =Filter(gblColAllUser,userID exactin (Filter('ASDocument.ProcessApproval',approveProcess = locInfoRequest.currentApproveLevel And documentID = locInfoRequest.documentID)).userID)
+            NoSelectionText: ="Chọn người ủy quyền"
+            SearchFields: =["email"]
+            SearchItems: =Search(Filter(gblColAllUser,userID exactin (Filter('ASDocument.ProcessApproval',approveProcess = locInfoRequest.currentApproveLevel And documentID = locInfoRequest.documentID)).userID),cbo_as_User.SearchText,"email")
+            SelectMultiple: =false
+            Template: =ListItemTemplate.Person
+            Width: =303
             X: =548
             Y: =385
             ZIndex: =17
+
+    Form1 As form:
+        DataSource: ='ASDocument.HistoryApprove'
+        Height: =199
+        Visible: =false
+        Width: =141
+        ZIndex: =10
+
+        Attachments_DataCard1 As typedDataCard.attachmentsEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="{Attachments}"
+            Default: =ThisItem.Attachments
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'ASDocument.DocumentRequest'],DataSourceInfo.DisplayName,"{Attachments}")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =171
+            Required: =false
+            Update: =DataCardValue1.Attachments
+            Width: =47
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey1 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue1 As attachments:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                Height: =142
+                IsInDataCard: =true
+                Items: =Last(locInfoRequest.Attachments)
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Tooltip: =Parent.DisplayName
+                Width: =91
+                X: =30
+                Y: =DataCardKey1.Y + DataCardKey1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue1.Y + DataCardValue1.Height
+                ZIndex: =3
+
+            StarVisible1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey1.Y
+                ZIndex: =4
 

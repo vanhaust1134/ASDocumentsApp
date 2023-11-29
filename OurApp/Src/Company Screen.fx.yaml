@@ -827,7 +827,7 @@
             Fill: =RGBA(139, 154, 159, 1)
             Height: =28
             OnSelect: |-
-                =Collect(colListDivisionEdit,Table({ID:Max(colListDocumentType,ID) + 1,name:"",shortName:"",status:3}))
+                =Collect(colListDivisionEdit,Table({ID:Max(colListDivisionEdit,ID) + 1,name:"",shortName:"",status:3}))
             RadiusBottomLeft: =5
             RadiusBottomRight: =5
             RadiusTopLeft: =5
@@ -1018,7 +1018,7 @@
                 'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(colListDivision,JSONFormat.IgnoreBinaryData),1);
                 
                 Clear(colListDivision);
-                Reset(txt_ds_DocuementLevelName_2);
+                Reset(txt_ds_DocuementLevelName_2);Reset(txt_ds_DocuementLevelName_3);
                 
                 //Lấy danh sách công ty
                 If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1)));

@@ -742,6 +742,7 @@
                     Patch(
                         locEditUser,
                         {
+                            roleID: cbo_us_RolesEdit.Selected.ID,
                             roleName: LookUp('ASDocument.Role', ID = cbo_us_RolesEdit.Selected.ID).name,
                             fullName: LookUp(gblColAllUser, userID = cbo_us_UsersEdit.Selected.userID).fullName,
                             jobTitle: LookUp(gblColAllUser, userID = cbo_us_UsersEdit.Selected.userID).jobTitle
@@ -1043,8 +1044,16 @@
                 //Cập nhật lại MSD của tài liệu nếu role thay đổi
                 'ASDocument.UpdateMSDApproval'.Run(locInfoUser.userID);
                 
-                //Xóa khỏi collection
-                RemoveIf(gblColAllUserRoles, userID = locInfoUser.userID);
+                //Lấy tất cả user và role về
+                    //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
+                    ClearCollect(
+                        gblColAllUser,
+                        AddColumns(
+                            ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
+                            "roleID", 
+                            LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
+                        )
+                    );
                 
                 Notify("Xóa thành công",NotificationType.Success,1500);
                 UpdateContext({locDeleteDP:false})
@@ -1176,6 +1185,7 @@
                     Patch(
                         locNewUser,
                         {
+                            roleID: cbo_us_Roles.Selected.ID,
                             roleName: LookUp('ASDocument.Role', ID = cbo_us_Roles.Selected.ID).name,
                             fullName: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).fullName,
                             jobTitle: LookUp(gblColAllUser, userID = cbo_us_Users.Selected.userID).jobTitle
