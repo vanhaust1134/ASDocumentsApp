@@ -1,6 +1,10 @@
 "'History Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
-    OnVisible: =ClearCollect(gblColApprovalByRequest,AddColumns('ASDocument.DocumentRequest' As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID))
+    OnVisible: |-
+        =//ClearCollect(gblColApprovalByRequest,AddColumns('ASDocument.DocumentRequest' As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID))
+        
+        ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status <> 1 And Temp.active = 1));
+        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
 
     btn_has_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
