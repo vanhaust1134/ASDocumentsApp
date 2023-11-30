@@ -1053,6 +1053,7 @@
                         )
                     )
                 );
+                
                 //Cập nhật mã tài liệu
                 ForAll(Sequence(CountRows(colRownumberApprovalProcess),1) As Temp,Patch(colRownumberApprovalProcess,LookUp(colRownumberApprovalProcess,sort = Temp.Value),{documentID:locDocumentIDGenerate}));
                 //Tạo danh sách phê duyệt
