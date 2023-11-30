@@ -5,7 +5,7 @@
       "DataflowAnalysisEnabled": false,
       "DataflowAnalysisFlagStateToggledByUser": false
     },
-    "DocVersion": "1.335",
+    "DocVersion": "1.336",
     "MinVersionToLoad": "1.331",
     "MSAppStructureVersion": "2.0"
   },
@@ -41,6 +41,7 @@
       "enableexcelonlinebusinessv2connector": true,
       "enableexperimentaldataverseoffline": true,
       "enableideaspanel": true,
+      "enablelargefilesindataverseoffline": false,
       "enablelegacybarcodescanner": false,
       "enableonstart": true,
       "enableonstartnavigate": true,
@@ -76,6 +77,7 @@
       "pdffunction": false,
       "powerfxdecimal": false,
       "powerfxv1": false,
+      "primaryoutputpropertycoerciondeprecated": false,
       "projectionmapping": true,
       "reactformulabar": false,
       "reliableconcurrent": true,
@@ -96,7 +98,7 @@
       "zeroalltabindexes": false
     },
     "Author": "",
-    "BindingErrorCount": 9,
+    "BindingErrorCount": 0,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "DesktopOrTablet",
@@ -109,7 +111,7 @@
     "DocumentType": "App",
     "EnableInstrumentation": false,
     "FileID": "306ef002-5c1f-4d60-b80f-a4dc85a4c3ce",
-    "Id": "f5ddcc48-f2bd-4693-ae12-fd69e8a44ba1",
+    "Id": "cfe16712-c8c4-4b77-ae53-fb45250fc5a8",
     "InstrumentationKey": "",
     "LocalDatabaseReferences": "{}",
     "ManualOfflineProfileId": "",

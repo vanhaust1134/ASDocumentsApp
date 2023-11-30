@@ -1,8 +1,10 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
-        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
+        =ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID))
+        
+        //ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
+        //ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
 
     btn_as_BackGroundScreen As button:
         BorderStyle: =BorderStyle.None
@@ -291,7 +293,7 @@
                 gal_as_List As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: =Filter(gblColApprovalByRequest,approvalUserID = gblRecUser.userID)
+                    Items: =Sort(Filter(gblColApprovalByRequest,approvalUserID = gblRecUser.userID),ID,SortOrder.Descending)
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =0
@@ -762,19 +764,19 @@
                         locInfoRequest.documentID,
                         locInfoRequest.ID,
                         If(
-                            locInfoRequest.lastSignNum = Last(
+                            locInfoRequest.lastSignNum > Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                                 )
                             ).sort,
-                            Last(
+                            First(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
                                 )
                             ).sort,
-                            locInfoRequest.lastSignNum + 1
+                            locInfoRequest.lastSignNum
                         ),
                         {
                             file: {
@@ -798,19 +800,19 @@
                         locInfoRequest.documentID,
                         locInfoRequest.ID,
                         If(
-                            locInfoRequest.lastSignNum = Last(
+                            locInfoRequest.lastSignNum > Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                                 )
                             ).sort,
-                            Last(
+                            First(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
                                 )
                             ).sort,
-                            locInfoRequest.lastSignNum + 1
+                            locInfoRequest.lastSignNum
                         ),
                         {
                             file: {
@@ -844,6 +846,24 @@
                             ID = locInfoRequest.ID
                         ),
                         {status: 2}
+                    ),
+                    Patch(
+                        'ASDocument.DocumentRequest',
+                        LookUp(
+                            'ASDocument.DocumentRequest',
+                            ID = locInfoRequest.ID
+                        ),
+                        {lastSignNum: If(locInfoRequest.lastSignNum > Last(
+                                Filter(
+                                    'ASDocument.ProcessApproval',
+                                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
+                                )
+                            ).sort,First(
+                                Filter(
+                                    'ASDocument.ProcessApproval',
+                                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
+                                )
+                            ).sort,locInfoRequest.lastSignNum + 1)}
                     )
                 );
                 //Cập nhật bước duyệt hiện tại
@@ -863,7 +883,6 @@
                         {currentApproveLevel: locInfoRequest.currentApproveLevel + 1}
                     )
                 );
-                
                 //Cập nhật danh sách duyệt
                 ClearCollect(
                     gblcolRequestOnProcess,
@@ -886,7 +905,6 @@
                         ).userID
                     )
                 );
-                
                 Notify(
                     "Duyệt thành công",
                     NotificationType.Success,

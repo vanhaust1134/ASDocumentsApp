@@ -111,7 +111,7 @@
                 HoverFill: =ColorFade(Self.Fill, -20%)
                 OnSelect: |-
                     =UpdateContext({locFuntionRequestDetail:2});
-                    ClearCollect(colDetailHistory,AddColumns(Distinct(Filter('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID),requestTimeNum),"status",0))
+                    ClearCollect(colDetailHistory,AddColumns(Filter('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID),"OpenStatus",0))
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
                 RadiusBottomLeft: =0
@@ -662,7 +662,7 @@
                             Align: =Align.Center
                             AlignInContainer: =AlignInContainer.Center
                             FontWeight: =FontWeight.Semibold
-                            Text: ="Lần " & ThisItem.Value
+                            Text: ="Lần " & ThisItem.requestTimeNum
                             Width: =70
                             ZIndex: =1
 
@@ -696,7 +696,7 @@
                                 OnSelect: |-
                                     =If(ThisItem.status = 0,Patch(colHistorySign,LookUp(colHistorySign,ID = ThisItem.ID),{status:1}),Patch(colHistorySign,LookUp(colHistorySign,ID = ThisItem.ID),{status:0}))
                                 Size: =12
-                                Text: =ThisItem.Content
+                                Text: =If(ThisItem.status = 2,"Yêu cầu đã bị từ chối",ThisItem.status = 3,"Yêu cầu đã được duyệt")
                                 ZIndex: =2
 
                             Label12_4 As label:
@@ -728,7 +728,7 @@
                         Height: =93
                         Items: |-
                             =//Sort(Table({ID:1,Time:"15/10/2023 06:00 AM",Content:"Người ký: Trần Văn Hậu",Reason:""},{ID:2,Time:"17/10/2023 08:00 PM",Content:"Người ký: Võ Đỗ Thi Nhân",Reason:"Lí do: đánh giá lại văn bản"}),ID,SortOrder.Descending)
-                            Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.Value + 1)
+                            Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1)
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         ShowScrollbar: =false
@@ -871,19 +871,19 @@
                                 locInfoRequest.documentID,
                                 locInfoRequest.ID,
                                 If(
-                                    locInfoRequest.lastSignNum = Last(
+                                    locInfoRequest.lastSignNum > Last(
                                         Filter(
                                             'ASDocument.ProcessApproval',
                                             documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                                         )
                                     ).sort,
-                                    Last(
+                                    First(
                                         Filter(
                                             'ASDocument.ProcessApproval',
                                             documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
                                         )
                                     ).sort,
-                                    locInfoRequest.lastSignNum + 1
+                                    locInfoRequest.lastSignNum
                                 ),
                                 {
                                     file: {
@@ -907,19 +907,19 @@
                                 locInfoRequest.documentID,
                                 locInfoRequest.ID,
                                 If(
-                                    locInfoRequest.lastSignNum = Last(
+                                    locInfoRequest.lastSignNum > Last(
                                         Filter(
                                             'ASDocument.ProcessApproval',
                                             documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                                         )
                                     ).sort,
-                                    Last(
+                                    First(
                                         Filter(
                                             'ASDocument.ProcessApproval',
                                             documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
                                         )
                                     ).sort,
-                                    locInfoRequest.lastSignNum + 1
+                                    locInfoRequest.lastSignNum
                                 ),
                                 {
                                     file: {
@@ -953,9 +953,26 @@
                                     ID = locInfoRequest.ID
                                 ),
                                 {status: 2}
+                            ),
+                            Patch(
+                                'ASDocument.DocumentRequest',
+                                LookUp(
+                                    'ASDocument.DocumentRequest',
+                                    ID = locInfoRequest.ID
+                                ),
+                                {lastSignNum: If(locInfoRequest.lastSignNum > Last(
+                                        Filter(
+                                            'ASDocument.ProcessApproval',
+                                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
+                                        )
+                                    ).sort,First(
+                                        Filter(
+                                            'ASDocument.ProcessApproval',
+                                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1
+                                        )
+                                    ).sort,locInfoRequest.lastSignNum + 1)}
                             )
                         );
-                        
                         //Cập nhật bước duyệt hiện tại
                         If(
                             locInfoRequest.lastSignNum = Last(
@@ -973,7 +990,6 @@
                                 {currentApproveLevel: locInfoRequest.currentApproveLevel + 1}
                             )
                         );
-                        
                         //Cập nhật danh sách duyệt
                         ClearCollect(
                             gblcolRequestOnProcess,
@@ -1010,6 +1026,7 @@
                     RadiusTopRight: =5
                     Size: =13
                     Text: ="Phê duyệt"
+                    Visible: =If(locInfoRequest.status = 1,true,false)
                     Width: =104
                     X: =117
                     Y: =36
@@ -1030,6 +1047,7 @@
                     RadiusTopRight: =5
                     Size: =13
                     Text: ="Từ chối"
+                    Visible: =If(locInfoRequest.status = 1,true,false)
                     Width: =104
                     X: =191
                     Y: =36
@@ -1083,6 +1101,7 @@
                     RadiusTopRight: =5
                     Size: =13
                     Text: ="Điều chỉnh"
+                    Visible: =If(locInfoRequest.status = 3,true,false)
                     Width: =104
                     X: =191
                     Y: =36
