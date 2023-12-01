@@ -1049,7 +1049,7 @@
                         Sequence(CountRows(colApprovesPeopleProcess)),
                         Patch(
                             Last(FirstN(colApprovesPeopleProcess, Value)),
-                            {sort: Value,documentID:locDocumentIDGenerate}
+                            {documentID:locDocumentIDGenerate}
                         )
                     )
                 );
