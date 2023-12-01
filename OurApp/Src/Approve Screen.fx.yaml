@@ -1,7 +1,8 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
+        =//Lấy danh sách phê duyệt
+        ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
         
         //ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
         //ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
@@ -406,7 +407,11 @@
                             LayoutMinHeight: =0
                             LayoutMinWidth: =0
                             OnSelect: |-
-                                =UpdateContext({locApprove:true});
+                                =//Lấy danh sách phê duyệt
+                                Refresh('ASDocument.DocumentRequest');
+                                ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID));
+                                
+                                UpdateContext({locApprove:true});
                                 UpdateContext({locInfoRequest:ThisItem})
                             Width: =50
                             ZIndex: =7
@@ -905,6 +910,7 @@
                         ).userID
                     )
                 );
+                
                 Notify(
                     "Duyệt thành công",
                     NotificationType.Success,

@@ -1038,7 +1038,7 @@
                     },frm_rs_Document.Updates
                 );
                 
-                //Cập nhật số thứ tự mới nhất của phân loại yêu cầu
+                //Cập nhật số thứ tự tự tăng của phân loại yêu cầu
                 Patch('ASDocument.DocumentIDGenerated',Defaults('ASDocument.DocumentIDGenerated'),{companyID:drp_rs_CompanyNameInput.Selected.ID,divisionID:drp_rs_CompanyNameInput_2.Selected.companyID,documentTypeID:drp_rs_DocumentType.Selected.ID,lastAutoNumber:Value(locNumberCountRequest)});
                 
                 //Tạo luồng các dòng quy trình phê duyệt yêu cầu
@@ -1049,13 +1049,11 @@
                         Sequence(CountRows(colApprovesPeopleProcess)),
                         Patch(
                             Last(FirstN(colApprovesPeopleProcess, Value)),
-                            {sort: Value}
+                            {sort: Value,documentID:locDocumentIDGenerate}
                         )
                     )
                 );
                 
-                //Cập nhật mã tài liệu
-                ForAll(Sequence(CountRows(colRownumberApprovalProcess),1) As Temp,Patch(colRownumberApprovalProcess,LookUp(colRownumberApprovalProcess,sort = Temp.Value),{documentID:locDocumentIDGenerate}));
                 //Tạo danh sách phê duyệt
                 'ASDocument.AddRequestApproveProcess'.Run(JSON(Sort(colRownumberApprovalProcess,approveProcess,SortOrder.Ascending),JSONFormat.IncludeBinaryData));
                 
