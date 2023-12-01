@@ -862,7 +862,7 @@
                             locInfoRequest.lastSignNum = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
-                                    documentID = locInfoRequest.documentID
+                                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                                 )
                             ).sort,
                             'ASDocument.DocumentSign'.Run(
@@ -887,7 +887,7 @@
                                 ),
                                 {
                                     file: {
-                                        contentBytes: First(locInfoRequest.Attachments).Value,
+                                        contentBytes: Last(locInfoRequest.Attachments).Value,
                                         name: "File van ban-" & Now() & ".pdf"
                                     },
                                     file_1: {
@@ -923,7 +923,7 @@
                                 ),
                                 {
                                     file: {
-                                        contentBytes: First(locInfoRequest.Attachments).Value,
+                                        contentBytes: Last(locInfoRequest.Attachments).Value,
                                         name: "File van ban-" & Now() & ".pdf"
                                     },
                                     file_1: {
@@ -943,7 +943,7 @@
                             locInfoRequest.lastSignNum = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
-                                    documentID = locInfoRequest.documentID
+                                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                                 )
                             ).sort,
                             Patch(
@@ -1012,6 +1012,7 @@
                                 ).userID
                             )
                         );
+                        
                         Notify(
                             "Duyệt thành công",
                             NotificationType.Success,

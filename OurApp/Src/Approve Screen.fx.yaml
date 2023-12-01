@@ -371,7 +371,7 @@
                                 DelayItemLoading: =true
                                 Height: |
                                     =30
-                                Items: =Sequence(ThisItem.maxApproveLevel,1)
+                                Items: =AddColumns(Sequence(ThisItem.maxApproveLevel,1),"documentID",ThisItem.documentID,"approveProccess",ThisItem.currentApproveLevel,"requestTimeNum",ThisItem.requestTimeNum)
                                 LayoutMinHeight: =0
                                 LayoutMinWidth: =0
                                 LoadingSpinner: =LoadingSpinner.Data
@@ -383,7 +383,7 @@
                                 Rectangle15_8 As rectangle:
                                     BorderColor: =RGBA(255, 255, 255, 1)
                                     BorderThickness: =1
-                                    Fill: =RGBA(204, 231, 246, 1)
+                                    Fill: =If(Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.approveProccess)).status = 1,Color.LightGreen,Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.approveProccess)).status = 2,Color.Red,RGBA(204, 231, 246, 1))
                                     Height: =Parent.TemplateHeight
                                     OnSelect: =Select(Parent)
                                     Width: =Parent.TemplateWidth
@@ -760,7 +760,7 @@
                     locInfoRequest.lastSignNum = Last(
                         Filter(
                             'ASDocument.ProcessApproval',
-                            documentID = locInfoRequest.documentID
+                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                         )
                     ).sort,
                     'ASDocument.DocumentSign'.Run(
@@ -1216,4 +1216,11 @@
                 Wrap: =false
                 Y: =DataCardKey1.Y
                 ZIndex: =4
+
+    Button2 As button:
+        OnSelect: =Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.HistoryApprove')
+        Text: ="Button"
+        X: =18
+        Y: =321
+        ZIndex: =11
 
