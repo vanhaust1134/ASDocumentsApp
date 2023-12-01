@@ -841,7 +841,7 @@
                     locInfoRequest.lastSignNum = Last(
                         Filter(
                             'ASDocument.ProcessApproval',
-                            documentID = locInfoRequest.documentID
+                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
                         )
                     ).sort,
                     Patch(
