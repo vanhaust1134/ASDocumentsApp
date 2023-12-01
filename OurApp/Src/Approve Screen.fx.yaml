@@ -783,6 +783,7 @@
                             ).sort,
                             locInfoRequest.lastSignNum
                         ),
+                        locInfoRequest.pageSignNumber,
                         {
                             file: {
                                 contentBytes: Last(locInfoRequest.Attachments).Value,
@@ -819,6 +820,7 @@
                             ).sort,
                             locInfoRequest.lastSignNum
                         ),
+                        locInfoRequest.pageSignNumber,
                         {
                             file: {
                                 contentBytes: Last(locInfoRequest.Attachments).Value,
@@ -1216,11 +1218,4 @@
                 Wrap: =false
                 Y: =DataCardKey1.Y
                 ZIndex: =4
-
-    Button2 As button:
-        OnSelect: =Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.HistoryApprove')
-        Text: ="Button"
-        X: =18
-        Y: =321
-        ZIndex: =11
 

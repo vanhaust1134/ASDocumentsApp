@@ -264,7 +264,7 @@
                 },
                 "region": {
                   "charLength": 7,
-                  "charOffset": 5092,
+                  "charOffset": 5170,
                   "snippet": {
                     "text": "exactin"
                   }
@@ -304,7 +304,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5208,
+                  "charOffset": 5286,
                   "snippet": {
                     "text": "And"
                   }
@@ -344,7 +344,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5228,
+                  "charOffset": 5306,
                   "snippet": {
                     "text": "And"
                   }
@@ -502,10 +502,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 12,
-                  "charOffset": 289,
+                  "charLength": 46,
+                  "charOffset": 270,
                   "snippet": {
-                    "text": "\"documentID\""
+                    "text": "Value(Right(Left(Text(createdDateValue),4),2))"
                   }
                 }
               },
@@ -518,7 +518,87 @@
           ],
           "message": {
             "arguments": [
-              "Search"
+              "Value"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home Manager Screen'.ctn_hs_MainContent_1.ctn_hs_List_1.Gallery1_2.Gallery6_3.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home Manager Screen'.ctn_hs_MainContent_1.ctn_hs_List_1.Gallery1_2.Gallery6_3.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 317,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Home Manager Screen",
+                "type": "'Home Manager Screen'.ctn_hs_MainContent_1.ctn_hs_List_1.Gallery1_2.Gallery6_3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home Manager Screen'.ctn_hs_MainContent_1.ctn_hs_List_1.Gallery1_2.Gallery6_3.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home Manager Screen'.ctn_hs_MainContent_1.ctn_hs_List_1.Gallery1_2.Gallery6_3.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 3,
+                  "charOffset": 266,
+                  "snippet": {
+                    "text": "And"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Home Manager Screen",
+                "type": "'Home Manager Screen'.ctn_hs_MainContent_1.ctn_hs_List_1.Gallery1_2.Gallery6_3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
             ],
             "id": "issue"
           },
@@ -943,7 +1023,7 @@
                 },
                 "region": {
                   "charLength": 7,
-                  "charOffset": 5092,
+                  "charOffset": 5170,
                   "snippet": {
                     "text": "exactin"
                   }
@@ -983,7 +1063,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5208,
+                  "charOffset": 5286,
                   "snippet": {
                     "text": "And"
                   }
@@ -1023,7 +1103,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5228,
+                  "charOffset": 5306,
                   "snippet": {
                     "text": "And"
                   }

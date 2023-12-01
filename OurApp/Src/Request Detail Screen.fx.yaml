@@ -885,6 +885,7 @@
                                     ).sort,
                                     locInfoRequest.lastSignNum
                                 ),
+                                locInfoRequest.pageSignNumber,
                                 {
                                     file: {
                                         contentBytes: Last(locInfoRequest.Attachments).Value,
@@ -921,6 +922,7 @@
                                     ).sort,
                                     locInfoRequest.lastSignNum
                                 ),
+                                locInfoRequest.pageSignNumber,
                                 {
                                     file: {
                                         contentBytes: Last(locInfoRequest.Attachments).Value,
