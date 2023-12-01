@@ -1093,25 +1093,27 @@
             Fill: =RGBA(0, 89, 204, 1)
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
-            OnSelect: |-
+            OnSelect: |+
                 =//Concat(Split(User().FullName, " "), Left(Result, 1));
                 
                 Set(gblCompanyID,Patch('ASDocument.Company',Defaults('ASDocument.Company'),{name:txt_ds_DocuementLevelName_2.Text,shortName:Upper(txt_ds_DocuementLevelName_3.Text),active:1}));
                 
-                'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(colListDivision,JSONFormat.IgnoreBinaryData),1);
+                If(
+                    'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(colListDivision,JSONFormat.IgnoreBinaryData),1).status = "done",
+                    Clear(colListDivision);
+                    Reset(txt_ds_DocuementLevelName_2);Reset(txt_ds_DocuementLevelName_3);
                 
-                Clear(colListDivision);
-                Reset(txt_ds_DocuementLevelName_2);Reset(txt_ds_DocuementLevelName_3);
+                    Refresh('ASDocument.Company');Refresh('ASDocument.Division');
+                    //Lấy danh sách công ty
+                    Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1));
                 
-                Refresh('ASDocument.Company');Refresh('ASDocument.Division');
-                //Lấy danh sách công ty
-                Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1));
+                    //Lấy danh sách đơn vị
+                    Clear(gblColDivision);Collect(gblColDivision,Table({name:"Tất cả"}));Collect(gblColDivision,Filter('ASDocument.Division',active = 1));
                 
-                //Lấy danh sách đơn vị
-                Clear(gblColDivision);Collect(gblColDivision,Table({name:"Tất cả"}));Collect(gblColDivision,Filter('ASDocument.Division',active = 1));
+                    Notify("Thêm thành công",NotificationType.Success,1500);
+                    UpdateContext({locCreateDP:false})
+                )
                 
-                Notify("Thêm thành công",NotificationType.Success,1500);
-                UpdateContext({locCreateDP:false})
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
