@@ -10,7 +10,10 @@
       "ASDocument.DocumentRequest"
     ],
     "dependencies": {},
-    "dependents": [],
+    "dependents": [
+      "2174058b-4f02-4b90-b7f7-f1de16ca3bc9",
+      "2caf10e2-d6b8-4b0d-b28f-5f26909b9def"
+    ],
     "id": "057daa16-c2b5-479e-8044-c22dd0b0b593"
   },
   "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
@@ -28,8 +31,57 @@
       "Office365Outlook"
     ],
     "dependencies": {},
-    "dependents": [],
+    "dependents": [
+      "4bf7695e-5e79-445d-b807-27c57280f308",
+      "2caf10e2-d6b8-4b0d-b28f-5f26909b9def"
+    ],
     "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
+  },
+  "7aa6cc4f-e3f8-4275-99f5-af3b9b16a1a5": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "daf3a30c-578e-ee11-8179-000d3aa0d035"
+        },
+        "workflowName": {
+          "value": "92647bee-90ab-4690-9cc1-302a2af147c7"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "daf3a30c-578e-ee11-8179-000d3aa0d035"
+        },
+        "workflowName": {
+          "value": "92647bee-90ab-4690-9cc1-302a2af147c7"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ASDocument.ManageDivision"
+    ],
+    "dependencies": {
+      "shared_sharepointonline_1": "7db268e8-d704-415e-9efc-9b15bd1f4c94"
+    },
+    "dependents": [],
+    "id": "7aa6cc4f-e3f8-4275-99f5-af3b9b16a1a5"
+  },
+  "7db268e8-d704-415e-9efc-9b15bd1f4c94": {
+    "connectionRef": {
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "7aa6cc4f-e3f8-4275-99f5-af3b9b16a1a5"
+    ],
+    "id": "7db268e8-d704-415e-9efc-9b15bd1f4c94"
   },
   "cf341574-441c-4f2a-a3b6-ead8c294cdc6": {
     "appActions": [
@@ -133,7 +185,11 @@
       "ASTakeLeave.Division"
     ],
     "dependencies": {},
-    "dependents": [],
+    "dependents": [
+      "4560223b-6cb6-4800-8e52-7af70b9c657c",
+      "3913d1e4-5f87-4c34-a3ca-fd0cd2eb332e",
+      "45324b12-9101-4fcd-b69d-f7c7b8c3b0e9"
+    ],
     "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
   }
 }
