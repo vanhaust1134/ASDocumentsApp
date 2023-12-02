@@ -657,7 +657,19 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Patch('ASDocument.Company',LookUp('ASDocument.Company',ID = locInfoCompany.ID),{active:0});
+                =Concurrent(
+                    Patch('ASDocument.Company', LookUp('ASDocument.Company',ID = locInfoCompany.ID),{active:0}),
+                    ForAll(
+                        Filter(gblColDivision, companyID = locInfoCompany.ID, active = 1) As temp,
+                        Patch(
+                            'ASDocument.Division',
+                            LookUp('ASDocument.Division', ID = temp.ID),
+                            {
+                                active: 0
+                            }
+                        )
+                    )
+                );
                 
                 Refresh('ASDocument.Company');Refresh('ASDocument.Division');
                 //Lấy danh sách công ty
@@ -789,7 +801,7 @@
             Fill: =RGBA(0, 89, 204, 1)
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
-            OnSelect: |-
+            OnSelect: |+
                 =If(
                     locInfoCompany.name <> txt_ds_DocuementLevelName_1.Text Or locInfoCompany.shortName <> txt_ds_DocuementLevelName_4.Text,
                     Patch(
@@ -804,38 +816,43 @@
                         }
                     )
                 );
-                'ASDocument.ManageDivision'.Run(
-                    locInfoCompany.ID,
-                    JSON(
-                        Filter(
-                            colListDivisionEdit,
-                            Or(
-                                status = 2,
-                                status = 3,
-                                status = 4
-                            ) And !IsBlank(name)
+                
+                If(
+                    'ASDocument.ManageDivision'.Run(
+                        locInfoCompany.ID,
+                        JSON(
+                            Filter(
+                                colListDivisionEdit,
+                                Or(
+                                    status = 2,
+                                    status = 3,
+                                    status = 4
+                                ) And !IsBlank(name)
+                            ),
+                            JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes
                         ),
-                        JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes
-                    ),
-                    2
+                        2
+                    ).status = "done",
+                    
+                    //Reload
+                    Refresh('ASDocument.Company');Refresh('ASDocument.Division');
+                    //Re collect
+                    //Lấy danh sách công ty
+                    Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1));
+                
+                    //Lấy danh sách đơn vị
+                    Clear(gblColDivision);Collect(gblColDivision,Table({name:"Tất cả"}));Collect(gblColDivision,Filter('ASDocument.Division',active = 1));
+                
+                    Notify(
+                        "Sửa thành công",
+                        NotificationType.Success,
+                        1500
+                    );
+                    UpdateContext({locUpdateDP: false});
                 );
                 
-                //Reload
-                Refresh('ASDocument.Company');Refresh('ASDocument.Division');
                 
-                Notify(
-                    "Sửa thành công",
-                    NotificationType.Success,
-                    1500
-                );
-                UpdateContext({locUpdateDP: false});
                 
-                //Re collect
-                //Lấy danh sách công ty
-                Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1));
-                
-                //Lấy danh sách đơn vị
-                Clear(gblColDivision);Collect(gblColDivision,Table({name:"Tất cả"}));Collect(gblColDivision,Filter('ASDocument.Division',active = 1));
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
