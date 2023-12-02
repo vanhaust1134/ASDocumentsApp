@@ -370,7 +370,7 @@
                                 AlignInContainer: =AlignInContainer.Center
                                 FillPortions: =2
                                 PaddingLeft: =27
-                                Text: =ThisItem.name
+                                Text: =ThisItem.name & " (" & ThisItem.shortName & ")"
                                 Tooltip: =ThisItem.name
                                 Wrap: =false
                                 ZIndex: =2

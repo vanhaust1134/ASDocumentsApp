@@ -5,6 +5,7 @@
         
         //Nếu chưa có dữ liệu thì lấy về
         If(IsBlank(locGetData),
+        
         //Lấy danh sách cấp
         ClearCollect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
         Patch(gblColDocumentLevel,LookUp(gblColDocumentLevel,levelID = 1),{status:1});
@@ -671,6 +672,7 @@
                 RadiusTopRight: =5
                 Size: =13
                 Text: ="Tạo mới"
+                Visible: =If(gblRecUser.roleID = 1,true,false)
                 Width: =104
                 X: =117
                 Y: =36
