@@ -7712,7 +7712,7 @@
       "MetaDataIDKey": "",
       "Name": "ctn_as_Info2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13555,7 +13555,7 @@
       "MetaDataIDKey": "",
       "Name": "img_as_Avatar",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
