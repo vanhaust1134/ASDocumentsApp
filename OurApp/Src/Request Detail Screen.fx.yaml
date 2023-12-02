@@ -314,7 +314,7 @@
 
                     frm_rds_Document_1 As form:
                         AlignInContainer: =AlignInContainer.SetByContainer
-                        DataSource: ='ASDocument.DocumentApproveRequest'
+                        DataSource: ='ASDocument.DocumentRequest'
                         DefaultMode: =FormMode.New
                         Height: =165
                         LayoutMinHeight: =165
@@ -421,7 +421,7 @@
 
                     frm_rds_Attachment_1 As form:
                         AlignInContainer: =AlignInContainer.SetByContainer
-                        DataSource: ='ASDocument.DocumentApproveRequest'
+                        DataSource: ='ASDocument.RelatedDocument'
                         DefaultMode: =FormMode.New
                         Height: =165
                         LayoutMinHeight: =165
@@ -464,7 +464,9 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
+                                DisplayMode: |-
+                                    =//If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
+                                    DisplayMode.View
                                 Height: =103
                                 IsInDataCard: =true
                                 Items: =If(locInfoRequest.status = 3,Parent.Default,LookUp('ASDocument.RelatedDocument',documentID = locInfoRequest.documentID).Attachments)
