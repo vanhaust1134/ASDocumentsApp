@@ -928,29 +928,27 @@
             Fill: =RGBA(0, 89, 204, 1)
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
-            OnSelect: |
+            OnSelect: |+
                 =//Cập nhật tên cấp tài liệu
                 Patch('ASDocument.DocumentLevel',LookUp('ASDocument.DocumentLevel',ID = locDocumentLevelID),{name:txt_ds_DocuementLevelName.Text});
                 
                 //Cập nhật danh sách loại tài liệu
-                'ASDocument.AddDocument'.Run(locDocumentLevelID,JSON(Filter(colListDocumentType,Or(status = 2, status = 3, status = 4) And !IsBlank(name)),JSONFormat.IncludeBinaryData & JSONFormat.IgnoreUnsupportedTypes));
+                If(
+                    'ASDocument.AddDocument'.Run(locDocumentLevelID,JSON(Filter(colListDocumentType,Or(status = 2, status = 3, status = 4) And !IsBlank(name)),JSONFormat.IncludeBinaryData & JSONFormat.IgnoreUnsupportedTypes)).status = "done",
+                    
+                    //Reload
+                    Refresh('ASDocument.DocumentLevel');Refresh('ASDocument.DocumentType');
+                    //Lấy danh sách cấp
+                    Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
                 
-                //Reload
-                Refresh('ASDocument.DocumentLevel');Refresh('ASDocument.DocumentType');
-                //Lấy danh sách cấp
-                Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns('ASDocument.DocumentLevel',"status",0));
+                    //Lấy các loại văn bản
+                    Clear(gblColDocumentType);ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
                 
-                //Lấy các loại văn bản
-                Clear(gblColDocumentType);ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
+                    Notify("Sửa thành công",NotificationType.Success,1500);
+                    UpdateContext({locUpdateDP:false});
+                );
                 
-                //Lấy danh sách các cấp
-                //Clear(gblColDocumentLevel);Collect(gblColDocumentLevel,Table({name:"Tất cả"}));Collect(gblColDocumentLevel,AddColumns//('ASDocument.DocumentLevel',"status",0));
                 
-                //Lấy các loại văn bản
-                //ClearCollect(gblColDocumentType,Filter('ASDocument.DocumentType',active = 1));
-                
-                Notify("Sửa thành công",NotificationType.Success,1500);
-                UpdateContext({locUpdateDP:false});
             PressedColor: =RGBA(255,255,255,1)
             PressedFill: =Self.Fill
             RadiusBottomLeft: =5
