@@ -6,11 +6,10 @@
       "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
     },
     "datasets": {},
-    "dataSources": [
-      "ASDocument.DocumentRequest"
-    ],
+    "dataSources": [],
     "dependencies": {},
     "dependents": [
+      "2174058b-4f02-4b90-b7f7-f1de16ca3bc9",
       "2caf10e2-d6b8-4b0d-b28f-5f26909b9def"
     ],
     "id": "057daa16-c2b5-479e-8044-c22dd0b0b593"
@@ -49,7 +48,7 @@
           "value": "shared_office365"
         },
         "7de324ff-699b-4a08-8c2a-bbc29619ff63": {
-          "value": "shared_plumsail_1"
+          "value": "shared_plumsail"
         },
         "workflowEntityId": {
           "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
@@ -250,7 +249,7 @@
       "executionRestrictions": {
         "apiId": "unknown",
         "appVer": "3.23113.20",
-        "modifiedOn": "2023-12-02 06:55:21",
+        "modifiedOn": "2023-12-01 10:08:24",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },
