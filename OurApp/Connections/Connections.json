@@ -6,7 +6,9 @@
       "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
     },
     "datasets": {},
-    "dataSources": [],
+    "dataSources": [
+      "ASDocument.DocumentRequest"
+    ],
     "dependencies": {},
     "dependents": [
       "2174058b-4f02-4b90-b7f7-f1de16ca3bc9",
@@ -287,7 +289,7 @@
       "executionRestrictions": {
         "apiId": "unknown",
         "appVer": "3.23113.20",
-        "modifiedOn": "2023-12-02 05:04:03",
+        "modifiedOn": "2023-12-02 06:24:44",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },

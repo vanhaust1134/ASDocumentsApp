@@ -17694,7 +17694,7 @@
       "Properties": [
         {
           "Category": "Data",
-          "NameMap": "{\"Value\":\"name\"}",
+          "NameMap": "{\"Value\":\"Value\"}",
           "PropertyName": "Items",
           "RuleProviderType": "Unknown"
         },
@@ -28870,7 +28870,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_rds_ReasonReject_4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -30193,7 +30193,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_rds_TimeApprove_4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
