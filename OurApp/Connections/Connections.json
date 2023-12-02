@@ -10,10 +10,7 @@
       "ASDocument.DocumentRequest"
     ],
     "dependencies": {},
-    "dependents": [
-      "2174058b-4f02-4b90-b7f7-f1de16ca3bc9",
-      "2caf10e2-d6b8-4b0d-b28f-5f26909b9def"
-    ],
+    "dependents": [],
     "id": "057daa16-c2b5-479e-8044-c22dd0b0b593"
   },
   "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
@@ -31,10 +28,7 @@
       "Office365Outlook"
     ],
     "dependencies": {},
-    "dependents": [
-      "4bf7695e-5e79-445d-b807-27c57280f308",
-      "2caf10e2-d6b8-4b0d-b28f-5f26909b9def"
-    ],
+    "dependents": [],
     "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
   },
   "cf341574-441c-4f2a-a3b6-ead8c294cdc6": {
@@ -139,11 +133,7 @@
       "ASTakeLeave.Division"
     ],
     "dependencies": {},
-    "dependents": [
-      "4560223b-6cb6-4800-8e52-7af70b9c657c",
-      "3913d1e4-5f87-4c34-a3ca-fd0cd2eb332e",
-      "45324b12-9101-4fcd-b69d-f7c7b8c3b0e9"
-    ],
+    "dependents": [],
     "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
   }
 }
