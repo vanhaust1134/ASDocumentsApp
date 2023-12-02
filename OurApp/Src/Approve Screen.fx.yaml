@@ -382,9 +382,8 @@
                                 Rectangle15_8 As rectangle:
                                     BorderColor: =RGBA(255, 255, 255, 1)
                                     BorderThickness: =1
-                                    Fill: |-
-                                        =//If(Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.approveProccess)).status = 1,Color.LightGreen,Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.approveProccess)).status = 2,Color.Red,RGBA(204, 231, 246, 1))
-                                        RGBA(204, 231, 246, 1)
+                                    Fill: |
+                                        =If(Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.Value)).status = 1,Color.LightGreen,Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.Value)).status = 2,Color.Red,RGBA(204, 231, 246, 1))
                                     Height: =Parent.TemplateHeight
                                     OnSelect: =Select(Parent)
                                     Width: =Parent.TemplateWidth
