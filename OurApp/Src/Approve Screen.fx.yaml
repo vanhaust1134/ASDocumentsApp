@@ -752,7 +752,7 @@
                         approveTime: Value(Day(Today()) & Month(Today()) & Year(Today())),
                         comment: Blank(),
                         approveProcess: locInfoRequest.currentApproveLevel,
-                        requestTimeNum: locInfoRequest.requestTimeNum
+                        requestTimeNum: locInfoRequest.requestTimeNum + 1
                     }
                 );
                 //Ký duyệt văn bản

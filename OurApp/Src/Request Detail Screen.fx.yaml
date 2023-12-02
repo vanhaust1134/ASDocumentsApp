@@ -357,7 +357,9 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
+                                DisplayMode: |-
+                                    =//If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
+                                    DisplayMode.View
                                 Height: =103
                                 IsInDataCard: =true
                                 Items: =If(locInfoRequest.status = 3,Parent.Default,locInfoRequest.Attachments)
@@ -703,10 +705,11 @@
                                 AlignInContainer: =AlignInContainer.Center
                                 Color: =RGBA(15, 108, 189, 1)
                                 Height: =26
-                                OnSelect: =
+                                OnSelect: |-
+                                    =Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& locInfoRequest.ID & "/" & First(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName)
                                 PaddingLeft: =30
                                 Size: =12
-                                Text: ="📝" & "  File.pdf"
+                                Text: ="📝 " & First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).DisplayName
                                 Width: =270
                                 X: =16
                                 Y: =22
@@ -718,7 +721,8 @@
                                 Image: =Eye
                                 LayoutMinHeight: =20
                                 OnSelect: |-
-                                    =UpdateContext({locReviewFile:true})
+                                    =UpdateContext({locReviewFile:true});
+                                    UpdateContext({locFileReadPDF:LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments})
                                 X: =40
                                 Y: =18
                                 ZIndex: =4
@@ -1559,7 +1563,7 @@
 
     PdfViewer1 As pdfViewer:
         BorderColor: =RGBA(0, 0, 0, 1)
-        Document: =First(First('ASDocument.SignedDocument').Attachments).Value
+        Document: =First(locFileReadPDF).Value
         Fill: =RGBA(0, 0, 0, 0.5)
         Height: =537
         Visible: =locReviewFile
