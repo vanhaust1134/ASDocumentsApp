@@ -169,7 +169,7 @@
             FontWeight: =FontWeight.Bold
             Height: =41
             Size: =18
-            Text: ="Quản lý phân cấp tài liệu"
+            Text: ="Quản lý phân cấp văn bản"
             Width: =350
             X: =191
             Y: =101

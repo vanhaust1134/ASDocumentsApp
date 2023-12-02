@@ -374,7 +374,6 @@
                                 Items: =AddColumns(Sequence(ThisItem.maxApproveLevel,1),"documentID",ThisItem.documentID,"approveProccess",ThisItem.currentApproveLevel,"requestTimeNum",ThisItem.requestTimeNum)
                                 LayoutMinHeight: =0
                                 LayoutMinWidth: =0
-                                LoadingSpinner: =LoadingSpinner.Data
                                 ShowScrollbar: =false
                                 TemplatePadding: =0
                                 TemplateSize: =Gallery11_8.Width/3
@@ -757,6 +756,7 @@
                         requestTimeNum: locInfoRequest.requestTimeNum + 1
                     }
                 );
+                
                 //Ký duyệt văn bản
                 If(
                     locInfoRequest.lastSignNum = Last(
@@ -802,7 +802,7 @@
                             }
                         }
                     ),
-                    'ASDocument.DocumentSign'.Run(
+                    'ASDocument.DocumentSign'.Run(  
                         1,
                         Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
                         locInfoRequest.documentID,
@@ -840,6 +840,7 @@
                         }
                     )
                 );
+                
                 //Cập nhật trạng thái yêu cầu thành đã duyệt
                 If(
                     locInfoRequest.lastSignNum = Last(
@@ -875,6 +876,7 @@
                             ).sort,locInfoRequest.lastSignNum + 1)}
                     )
                 );
+                
                 //Cập nhật bước duyệt hiện tại
                 If(
                     locInfoRequest.lastSignNum = Last(
@@ -892,6 +894,7 @@
                         {currentApproveLevel: locInfoRequest.currentApproveLevel + 1}
                     )
                 );
+                
                 //Cập nhật danh sách duyệt
                 ClearCollect(
                     gblcolRequestOnProcess,
