@@ -308,7 +308,6 @@
                     Height: =35 * CountRows(Filter(gblColDocumentType,levelID = ThisItem.levelID))
                     Items: =Filter(gblColDocumentType,levelID = ThisItem.levelID)
                     Layout: =Layout.Vertical
-                    LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |-
                         =If(CountRows(Filter(colDocumentRequestType,ID = ThisItem.ID)) = 0,Collect(colDocumentRequestType,Table({ID:ThisItem.ID,LevelID:ThisItem.levelID,Name:ThisItem.name})),RemoveIf(colDocumentRequestType,ID = ThisItem.ID))
                     ShowScrollbar: =false

@@ -7991,7 +7991,14 @@
         "Layout",
         "Transition",
         "DelayItemLoading",
-        "LoadingSpinner",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "LoadingSpinner.Data",
+          "InvariantPropertyName": "LoadingSpinner",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "LoadingSpinnerColor",
         "DisplayMode",
         "BorderColor",
