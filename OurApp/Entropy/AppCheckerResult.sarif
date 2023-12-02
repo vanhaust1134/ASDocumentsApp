@@ -509,7 +509,7 @@
                 },
                 "region": {
                   "charLength": 1323,
-                  "charOffset": 700,
+                  "charOffset": 701,
                   "snippet": {
                     "text": "'ASDocument.DocumentSign'.Run(\n        2,\n        Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,\n        locInfoRequest.documentID,\n        locInfoRequest.ID,\n        If(\n            locInfoRequest.lastSignNum > Last(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n                )\n            ).sort,\n            First(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1\n                )\n            ).sort,\n            locInfoRequest.lastSignNum\n        ),\n        locInfoRequest.pageSignNumber,\n        {\n            file: {\n                contentBytes: Last(locInfoRequest.Attachments).Value,\n                name: \"File van ban-\" & Now() & \".pdf\"\n            },\n            file_1: {\n                contentBytes: First(\n                    LookUp(\n                        'ASDocument.Users_Roles',\n                        userID = gblRecUser.userID And active = 1\n                    ).Attachments\n                ).Value,\n                name: \"Signature-\" & Now() & \".png\"\n            }\n        }\n    )"
                   }
@@ -549,10 +549,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1323,
-                  "charOffset": 2029,
+                  "charLength": 1325,
+                  "charOffset": 2030,
                   "snippet": {
-                    "text": "'ASDocument.DocumentSign'.Run(\n        1,\n        Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,\n        locInfoRequest.documentID,\n        locInfoRequest.ID,\n        If(\n            locInfoRequest.lastSignNum > Last(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n                )\n            ).sort,\n            First(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1\n                )\n            ).sort,\n            locInfoRequest.lastSignNum\n        ),\n        locInfoRequest.pageSignNumber,\n        {\n            file: {\n                contentBytes: Last(locInfoRequest.Attachments).Value,\n                name: \"File van ban-\" & Now() & \".pdf\"\n            },\n            file_1: {\n                contentBytes: First(\n                    LookUp(\n                        'ASDocument.Users_Roles',\n                        userID = gblRecUser.userID And active = 1\n                    ).Attachments\n                ).Value,\n                name: \"Signature-\" & Now() & \".png\"\n            }\n        }\n    )"
+                    "text": "'ASDocument.DocumentSign'.Run(  \n        1,\n        Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,\n        locInfoRequest.documentID,\n        locInfoRequest.ID,\n        If(\n            locInfoRequest.lastSignNum > Last(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n                )\n            ).sort,\n            First(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1\n                )\n            ).sort,\n            locInfoRequest.lastSignNum\n        ),\n        locInfoRequest.pageSignNumber,\n        {\n            file: {\n                contentBytes: Last(locInfoRequest.Attachments).Value,\n                name: \"File van ban-\" & Now() & \".pdf\"\n            },\n            file_1: {\n                contentBytes: First(\n                    LookUp(\n                        'ASDocument.Users_Roles',\n                        userID = gblRecUser.userID And active = 1\n                    ).Attachments\n                ).Value,\n                name: \"Signature-\" & Now() & \".png\"\n            }\n        }\n    )"
                   }
                 }
               },
@@ -590,10 +590,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2888,
-                  "charOffset": 466,
+                  "charLength": 2890,
+                  "charOffset": 467,
                   "snippet": {
-                    "text": "If(\n    locInfoRequest.lastSignNum = Last(\n        Filter(\n            'ASDocument.ProcessApproval',\n            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n        )\n    ).sort,\n    'ASDocument.DocumentSign'.Run(\n        2,\n        Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,\n        locInfoRequest.documentID,\n        locInfoRequest.ID,\n        If(\n            locInfoRequest.lastSignNum > Last(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n                )\n            ).sort,\n            First(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1\n                )\n            ).sort,\n            locInfoRequest.lastSignNum\n        ),\n        locInfoRequest.pageSignNumber,\n        {\n            file: {\n                contentBytes: Last(locInfoRequest.Attachments).Value,\n                name: \"File van ban-\" & Now() & \".pdf\"\n            },\n            file_1: {\n                contentBytes: First(\n                    LookUp(\n                        'ASDocument.Users_Roles',\n                        userID = gblRecUser.userID And active = 1\n                    ).Attachments\n                ).Value,\n                name: \"Signature-\" & Now() & \".png\"\n            }\n        }\n    ),\n    'ASDocument.DocumentSign'.Run(\n        1,\n        Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,\n        locInfoRequest.documentID,\n        locInfoRequest.ID,\n        If(\n            locInfoRequest.lastSignNum > Last(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n                )\n            ).sort,\n            First(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1\n                )\n            ).sort,\n            locInfoRequest.lastSignNum\n        ),\n        locInfoRequest.pageSignNumber,\n        {\n            file: {\n                contentBytes: Last(locInfoRequest.Attachments).Value,\n                name: \"File van ban-\" & Now() & \".pdf\"\n            },\n            file_1: {\n                contentBytes: First(\n                    LookUp(\n                        'ASDocument.Users_Roles',\n                        userID = gblRecUser.userID And active = 1\n                    ).Attachments\n                ).Value,\n                name: \"Signature-\" & Now() & \".png\"\n            }\n        }\n    )\n)"
+                    "text": "If(\n    locInfoRequest.lastSignNum = Last(\n        Filter(\n            'ASDocument.ProcessApproval',\n            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n        )\n    ).sort,\n    'ASDocument.DocumentSign'.Run(\n        2,\n        Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,\n        locInfoRequest.documentID,\n        locInfoRequest.ID,\n        If(\n            locInfoRequest.lastSignNum > Last(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n                )\n            ).sort,\n            First(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1\n                )\n            ).sort,\n            locInfoRequest.lastSignNum\n        ),\n        locInfoRequest.pageSignNumber,\n        {\n            file: {\n                contentBytes: Last(locInfoRequest.Attachments).Value,\n                name: \"File van ban-\" & Now() & \".pdf\"\n            },\n            file_1: {\n                contentBytes: First(\n                    LookUp(\n                        'ASDocument.Users_Roles',\n                        userID = gblRecUser.userID And active = 1\n                    ).Attachments\n                ).Value,\n                name: \"Signature-\" & Now() & \".png\"\n            }\n        }\n    ),\n    'ASDocument.DocumentSign'.Run(  \n        1,\n        Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,\n        locInfoRequest.documentID,\n        locInfoRequest.ID,\n        If(\n            locInfoRequest.lastSignNum > Last(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel\n                )\n            ).sort,\n            First(\n                Filter(\n                    'ASDocument.ProcessApproval',\n                    documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel + 1\n                )\n            ).sort,\n            locInfoRequest.lastSignNum\n        ),\n        locInfoRequest.pageSignNumber,\n        {\n            file: {\n                contentBytes: Last(locInfoRequest.Attachments).Value,\n                name: \"File van ban-\" & Now() & \".pdf\"\n            },\n            file_1: {\n                contentBytes: First(\n                    LookUp(\n                        'ASDocument.Users_Roles',\n                        userID = gblRecUser.userID And active = 1\n                    ).Attachments\n                ).Value,\n                name: \"Signature-\" & Now() & \".png\"\n            }\n        }\n    )\n)"
                   }
                 }
               },
@@ -631,7 +631,7 @@
                 },
                 "region": {
                   "charLength": 7,
-                  "charOffset": 5174,
+                  "charOffset": 5180,
                   "snippet": {
                     "text": "exactin"
                   }
@@ -671,7 +671,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5290,
+                  "charOffset": 5296,
                   "snippet": {
                     "text": "And"
                   }
@@ -711,7 +711,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5310,
+                  "charOffset": 5316,
                   "snippet": {
                     "text": "And"
                   }
@@ -776,244 +776,6 @@
           },
           "ruleId": "app-ErrUnknownNamespaceFunction",
           "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 400,
-                  "charOffset": 419,
-                  "snippet": {
-                    "text": "'ASDocument.ManageDivision'.Run(\n        locInfoCompany.ID,\n        JSON(\n            Filter(\n                colListDivisionEdit,\n                Or(\n                    status = 2,\n                    status = 3,\n                    status = 4\n                ) And !IsBlank(name)\n            ),\n            JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes\n        ),\n        2\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Run",
-              "'ASDocument.ManageDivision'"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 819,
-                  "snippet": {
-                    "text": ".status"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 827,
-                  "snippet": {
-                    "text": "="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_UpdateDocument_1.btn_ds_Submit_3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Error",
-              "Text"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 100,
-                  "charOffset": 243,
-                  "snippet": {
-                    "text": "'ASDocument.ManageDivision'.Run(gblCompanyID.ID,JSON(colListDivision,JSONFormat.IgnoreBinaryData),1)"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Run",
-              "'ASDocument.ManageDivision'"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 343,
-                  "snippet": {
-                    "text": ".status"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidDot",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 351,
-                  "snippet": {
-                    "text": "="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_UpdateDocument_2.btn_ds_Submit_4"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Error",
-              "Text"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1741,47 +1503,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 834,
-                  "charOffset": 39,
-                  "snippet": {
-                    "text": "'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = First(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).userID).email,\"Yêu cầu ký duyệt cho văn bản \" & locInfoRequest.documentName & \" đã được trình duyệt lại\",\"Mã tài liệu/hồ sơ: \" & locInfoRequest.documentID & \"<br>\" & \"Cấp tài liệu: \" & LookUp(gblColDocumentLevel,levelID = locInfoRequest.levelID).name & \"<br>\" & \"Loại văn bản: \" & LookUp(gblColDocumentType,ID = locInfoRequest.levelID).name & \"<br>\" & \"Công ty: \" & LookUp(gblColCompany,ID = locInfoRequest.companyID).name & \"<br>\" & \"Đơn vị: \" & LookUp(gblColDivision,ID = locInfoRequest.divisionID).name & \"<br>\" & \"Người tạo: \" & gblRecUser.fullName & \"<br>\" & \"Thời gian điều chỉnh: \" & Now(),{file:{contentBytes:First(locInfoRequest.Attachments).Value,name:\"File van ban-\" & Now()&\".pdf\"}})"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Run",
-              "'ASDocument.SendMail'"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrUnknownNamespaceFunction",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Create_1.OnSelect"
                 }
               ],
@@ -2018,6 +1739,47 @@
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
           "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 834,
+                  "charOffset": 39,
+                  "snippet": {
+                    "text": "'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = First(Filter('ASDocument.ProcessApproval',documentID = locInfoRequest.documentID)).userID).email,\"Yêu cầu ký duyệt cho văn bản \" & locInfoRequest.documentName & \" đã được trình duyệt lại\",\"Mã tài liệu/hồ sơ: \" & locInfoRequest.documentID & \"<br>\" & \"Cấp tài liệu: \" & LookUp(gblColDocumentLevel,levelID = locInfoRequest.levelID).name & \"<br>\" & \"Loại văn bản: \" & LookUp(gblColDocumentType,ID = locInfoRequest.levelID).name & \"<br>\" & \"Công ty: \" & LookUp(gblColCompany,ID = locInfoRequest.companyID).name & \"<br>\" & \"Đơn vị: \" & LookUp(gblColDivision,ID = locInfoRequest.divisionID).name & \"<br>\" & \"Người tạo: \" & gblRecUser.fullName & \"<br>\" & \"Thời gian điều chỉnh: \" & Now(),{file:{contentBytes:First(locInfoRequest.Attachments).Value,name:\"File van ban-\" & Now()&\".pdf\"}})"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Overview_2"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Run",
+              "'ASDocument.SendMail'"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrUnknownNamespaceFunction",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -5264,66 +5026,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_Filter_1.Image1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Company Screen",
-                "type": "'Company Screen'.ctn_ds_Filter_1.Image1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.drp_ds_Company.AccessibleLabel"
                 }
               ],
@@ -5378,6 +5080,66 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Company Screen",
+                "type": "'Company Screen'.ctn_ds_Filter_1.Image1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Company Screen'.ctn_ds_Filter_1.Image1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Company Screen",
+                "type": "'Company Screen'.ctn_ds_Filter_1.Image1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -8744,6 +8506,336 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentLevel_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentLevel_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentLevel_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentType_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentType_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentType_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_DocumentName_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_DocumentName_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_DocumentName_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Document_1.Attachments_DataCard2_1.DataCardValue5_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Document_1.Attachments_DataCard2_1.DataCardValue5_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Document_1.Attachments_DataCard2_1.DataCardValue5_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_SignPage.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_SignPage.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_SignPage"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Attachment_1.Attachments_DataCard2_3.DataCardValue5_3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Attachment_1.Attachments_DataCard2_3.DataCardValue5_3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Attachment_1.Attachments_DataCard2_3.DataCardValue5_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.AccessibleLabel"
                 }
               ],
@@ -9087,336 +9179,6 @@
                 "member": "TabIndex",
                 "module": "Request Detail Screen",
                 "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentLevel_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentLevel_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentLevel_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentType_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentType_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentType_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_DocumentName_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_DocumentName_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_DocumentName_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Document_1.Attachments_DataCard2_1.DataCardValue5_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Document_1.Attachments_DataCard2_1.DataCardValue5_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Document_1.Attachments_DataCard2_1.DataCardValue5_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_SignPage.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_SignPage.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_SignPage"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Attachment_1.Attachments_DataCard2_3.DataCardValue5_3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Attachment_1.Attachments_DataCard2_3.DataCardValue5_3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.frm_rds_Attachment_1.Attachments_DataCard2_3.DataCardValue5_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2.gal_rds_ApproveProcess"
               }
             }
           ],
