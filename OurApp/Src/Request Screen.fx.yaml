@@ -379,7 +379,7 @@
                         Color: =RGBA(94, 94, 94, 1)
                         FontWeight: =FontWeight.Semibold
                         Size: =15
-                        Text: ="Số trang ký"
+                        Text: ="Số trang thực hiện ký"
                         ZIndex: =8
 
                     txt_rs_SignPage As text:
