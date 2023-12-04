@@ -10113,6 +10113,14 @@
           "InvariantPropertyName": "AddAttachmentText",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "OnAddFile",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "HasDynamicProperties": false,
@@ -10412,6 +10420,11 @@
         {
           "Category": "Design",
           "PropertyName": "PaddingBottom",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnAddFile",
           "RuleProviderType": "Unknown"
         }
       ],

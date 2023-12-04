@@ -340,6 +340,22 @@
                                 IsInDataCard: =true
                                 Items: =Parent.Default
                                 NoAttachmentsText: ="Không có tệp nào."
+                                OnAddFile: |-
+                                    =If(
+                                        Not(
+                                            Or(
+                                                EndsWith(
+                                                    Lower(Last(Self.Attachments).Name),
+                                                    ".pdf"
+                                                )
+                                            )
+                                        ),
+                                        Notify(
+                                            "Only PDF files are allowed",
+                                            NotificationType.Error
+                                        );
+                                        Reset(Self)
+                                    )
                                 PaddingBottom: =5
                                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                                 PaddingRight: =5

@@ -1,7 +1,8 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =//Lấy danh sách phê duyệt
+        =Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
+        //Lấy danh sách phê duyệt
         ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID))
         
         //ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
@@ -407,7 +408,7 @@
                             LayoutMinWidth: =0
                             OnSelect: |-
                                 =//Lấy danh sách phê duyệt
-                                Refresh('ASDocument.DocumentRequest');
+                                Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
                                 //Lấy danh sách phê duyệt
                                 ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID));
                                 
@@ -622,7 +623,7 @@
                 ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID));
                 
                 //Lấy danh sách phê duyệt
-                Refresh('ASDocument.DocumentRequest');
+                Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
                 //Lấy danh sách phê duyệt
                 ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID));
                 
@@ -771,7 +772,7 @@
                         Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
                         locInfoRequest.documentID,
                         locInfoRequest.ID,
-                        If(
+                        /*If(
                             locInfoRequest.lastSignNum = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
@@ -785,7 +786,8 @@
                                 )
                             ).sort,
                             locInfoRequest.lastSignNum
-                        ),
+                        )*/
+                        locInfoRequest.lastSignNum,
                         locInfoRequest.pageSignNumber,
                         {
                             file: {
@@ -808,7 +810,7 @@
                         Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
                         locInfoRequest.documentID,
                         locInfoRequest.ID,
-                        If(
+                        /*If(
                             locInfoRequest.lastSignNum = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
@@ -822,7 +824,8 @@
                                 )
                             ).sort,
                             locInfoRequest.lastSignNum
-                        ),
+                        )*/
+                        locInfoRequest.lastSignNum,
                         locInfoRequest.pageSignNumber,
                         {
                             file: {
@@ -844,12 +847,12 @@
                 
                 //Cập nhật trạng thái yêu cầu thành đã duyệt
                 If(
-                    locInfoRequest.lastSignNum = Last(
+                    locInfoRequest.approvalUserID = Last(
                         Filter(
                             'ASDocument.ProcessApproval',
                             documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.maxApproveLevel
                         )
-                    ).sort,
+                    ).userID,
                     Patch(
                         'ASDocument.DocumentRequest',
                         LookUp(
@@ -919,6 +922,11 @@
                     )
                 );
                 
+                //Lấy danh sách phê duyệt
+                Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
+                //Lấy danh sách phê duyệt
+                ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID));
+                
                 Notify(
                     "Duyệt thành công",
                     NotificationType.Success,
@@ -983,7 +991,7 @@
                   </tr>
                   <tr>
                     <td style=width:100px><b>Loại văn bản</b></td>
-                    <td>" & LookUp('ASDocument.DocumentType',ID = locInfoRequest.ID).name &"</td>
+                    <td>" & LookUp('ASDocument.DocumentType',ID = locInfoRequest.documentTypeID).name &"</td>
                   </tr>
                   <tr>
                     <td style=width:100px><b>Người tạo</b></td>

@@ -1,9 +1,9 @@
 "'Request Detail Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnHidden: |-
-        =//Cập nhật danh sách duyệt
-        ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
-        ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID));
+        =Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
+        //Lấy danh sách phê duyệt
+        ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID))
     OnVisible: |-
         =UpdateContext({locFuntionRequestDetail:1});
         ClearCollect(colHistorySign,Table({ID:1,Time:"15/10/2023 06:00 AM",Content:"MSD đã từ chối",Reason:"",status:1},{ID:2,Time:"17/10/2023 08:00 PM",Content:"Người xem xét đã từ chối",Reason:"Lí do: đánh giá lại văn bản",status:0},{ID:3,Time:"17/10/2023 08:00 PM",Content:"Người phê duyệt đã phê duyệt",Reason:"Lí do: đánh giá lại văn bản"}))
@@ -357,11 +357,27 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
+                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.View)
                                 Height: =103
                                 IsInDataCard: =true
                                 Items: =If(locInfoRequest.status = 3,Parent.Default,locInfoRequest.Attachments)
                                 NoAttachmentsText: ="Không có tệp nào."
+                                OnAddFile: |-
+                                    =If(
+                                        Not(
+                                            Or(
+                                                EndsWith(
+                                                    Lower(Last(Self.Attachments).Name),
+                                                    ".pdf"
+                                                )
+                                            )
+                                        ),
+                                        Notify(
+                                            "Only PDF files are allowed",
+                                            NotificationType.Error
+                                        );
+                                        Reset(Self)
+                                    )
                                 PaddingBottom: =5
                                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                                 PaddingRight: =5
@@ -462,7 +478,7 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
+                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.View)
                                 Height: =103
                                 IsInDataCard: =true
                                 Items: =If(locInfoRequest.status = 3,Parent.Default,LookUp('ASDocument.RelatedDocument',documentID = locInfoRequest.documentID).Attachments)
@@ -943,12 +959,12 @@
                         
                         //Cập nhật trạng thái yêu cầu thành đã duyệt
                         If(
-                            locInfoRequest.lastSignNum = Last(
+                            locInfoRequest.approvalUserID = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.maxApproveLevel
                                 )
-                            ).sort,
+                            ).userID,
                             Patch(
                                 'ASDocument.DocumentRequest',
                                 LookUp(
