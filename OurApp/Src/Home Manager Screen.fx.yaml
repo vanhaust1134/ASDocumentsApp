@@ -504,7 +504,8 @@
                             BorderStyle: =BorderStyle.None
                             Fill: =RGBA(73, 113, 215, 1)
                             Height: =25
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
+                            OnSelect: |-
+                                =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});
                             RadiusBottomLeft: =100
                             RadiusBottomRight: =100
                             RadiusTopLeft: =100
@@ -521,7 +522,8 @@
                             FillPortions: =2.5
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
+                            OnSelect: |-
+                                =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});
                             Text: =ThisItem.documentName
                             Width: =300
                             Wrap: =false
@@ -532,7 +534,8 @@
                             FillPortions: =0.5
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
+                            OnSelect: |-
+                                =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});
                             Text: =LookUp(gblColCompany,ID = ThisItem.companyID).name
                             Wrap: =false
                             ZIndex: =3
@@ -541,7 +544,8 @@
                             AlignInContainer: =AlignInContainer.Center
                             FillPortions: =1
                             LayoutMinWidth: =0
-                            OnSelect: =If(ThisItem.ID <> 1,Navigate('Request Detail Screen'),Navigate('Request Detail Screen'))
+                            OnSelect: |-
+                                =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});
                             Text: =ThisItem.Modified
                             Wrap: =false
                             ZIndex: =4
