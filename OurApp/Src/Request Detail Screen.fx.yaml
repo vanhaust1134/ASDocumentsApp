@@ -323,7 +323,7 @@
 
                         Attachments_DataCard2_1 As typedDataCard.attachmentsEditCard:
                             BorderStyle: =BorderStyle.Solid
-                            DataField: ="Attachments"
+                            DataField: ="{Attachments}"
                             Default: =ThisItem.Attachments
                             DisplayMode: =Parent.DisplayMode
                             DisplayName: ="File văn bản"
@@ -357,9 +357,7 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: |-
-                                    =//If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
-                                    DisplayMode.View
+                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
                                 Height: =103
                                 IsInDataCard: =true
                                 Items: =If(locInfoRequest.status = 3,Parent.Default,locInfoRequest.Attachments)
@@ -430,7 +428,7 @@
 
                         Attachments_DataCard2_3 As typedDataCard.attachmentsEditCard:
                             BorderStyle: =BorderStyle.Solid
-                            DataField: ="Attachments"
+                            DataField: ="{Attachments}"
                             Default: =ThisItem.Attachments
                             DisplayMode: =Parent.DisplayMode
                             DisplayName: ="Phụ lục đính kèm"
@@ -464,9 +462,7 @@
                                 BorderThickness: =1
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(255, 255, 255, 1)
-                                DisplayMode: |-
-                                    =//If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
-                                    DisplayMode.View
+                                DisplayMode: =If(locInfoRequest.status = 3,DisplayMode.Edit,DisplayMode.Disabled)
                                 Height: =103
                                 IsInDataCard: =true
                                 Items: =If(locInfoRequest.status = 3,Parent.Default,LookUp('ASDocument.RelatedDocument',documentID = locInfoRequest.documentID).Attachments)
@@ -531,7 +527,7 @@
                 gal_rds_ApproveProcess As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: =Sort(Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID),Created,SortOrder.Descending)
+                    Items: =Sort(Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = locInfoRequest.requestTimeNum + 1),Created,SortOrder.Descending)
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
@@ -591,7 +587,7 @@
                         Color: =RGBA(94, 94, 94, 1)
                         OnSelect: =Select(Parent)
                         Text: |-
-                            ="Lí do: " & ThisItem.comment
+                            ="Lí do: " & If(IsBlank(ThisItem.comment),"Không có",ThisItem.comment)
                         Visible: =If(ThisItem.status = 1,false,true)
                         Width: =270
                         X: =98
@@ -640,7 +636,7 @@
                     DelayItemLoading: =true
                     Items: |-
                         =//colHistorySign
-                        colDetailHistory
+                        Filter(colDetailHistory,requestTimeNum > 0)
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
@@ -666,7 +662,7 @@
                             Align: =Align.Center
                             AlignInContainer: =AlignInContainer.Center
                             FontWeight: =FontWeight.Semibold
-                            Text: ="Lần " & ThisItem.requestTimeNum + 1
+                            Text: ="Lần " & ThisItem.requestTimeNum
                             Width: =70
                             ZIndex: =1
 
@@ -700,7 +696,7 @@
                                 OnSelect: |-
                                     =If(ThisItem.status = 0,Patch(colHistorySign,LookUp(colHistorySign,ID = ThisItem.ID),{status:1}),Patch(colHistorySign,LookUp(colHistorySign,ID = ThisItem.ID),{status:0}))
                                 Size: =12
-                                Text: =If(ThisItem.status = 2,"Yêu cầu đã bị từ chối",ThisItem.status = 3,"Yêu cầu đã được duyệt")
+                                Text: =If(ThisItem.status = 3,"Yêu cầu đã bị từ chối",ThisItem.status = 2,"Yêu cầu đã được duyệt")
                                 ZIndex: =2
 
                             Label12_4 As label:
@@ -726,6 +722,7 @@
                                 OnSelect: |-
                                     =UpdateContext({locReviewFile:true});
                                     UpdateContext({locFileReadPDF:LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments})
+                                Visible: =If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
                                 X: =40
                                 Y: =18
                                 ZIndex: =4
@@ -1101,7 +1098,8 @@
                         //Lưu tài liệu liên quan
                         Patch('ASDocument.RelatedDocument',Defaults('ASDocument.RelatedDocument'),{documentID:locInfoRequest.documentID,active:1},frm_rds_Attachment_1.Updates);
                         
-                        Notify("Điều chỉnh thành công",NotificationType.Success,1500)
+                        Notify("Điều chỉnh thành công",NotificationType.Success,1500);
+                        Back();
                     PressedColor: =Color.White
                     PressedFill: =Self.Fill
                     RadiusBottomLeft: =5
@@ -1642,7 +1640,7 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật lịch sử từ chối
-                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:txt_as_RejectReason_1.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today()) & Month(Today()) & Year(Today())),comment:txt_as_RejectReason_1.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
                 
                 //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
                 Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1,status:3});

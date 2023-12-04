@@ -609,7 +609,7 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật lịch sử từ chối
-                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today() & Month(Today()) & Year(Today()))),comment:txt_as_RejectReason.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum},Form1.Updates);
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today()) & Month(Today()) & Year(Today())),comment:txt_as_RejectReason.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum + 1},Form1.Updates);
                 
                 //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
                 Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1,status:3});
@@ -621,6 +621,13 @@
                 ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));
                 ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID));
                 
+                //Lấy danh sách phê duyệt
+                Refresh('ASDocument.DocumentRequest');
+                //Lấy danh sách phê duyệt
+                ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID));
+                
+                //Từ chối
+                Reset(txt_as_RejectReason);
                 Notify("Từ chối thành công",NotificationType.Success,1500);
                 UpdateContext({locReject:false})
             PressedColor: =RGBA(255,255,255,1)
