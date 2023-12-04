@@ -1151,7 +1151,7 @@
       "MetaDataIDKey": "",
       "Name": "btn_hs_Create_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1508,7 +1508,7 @@
       "MetaDataIDKey": "",
       "Name": "btn_hs_Overview_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

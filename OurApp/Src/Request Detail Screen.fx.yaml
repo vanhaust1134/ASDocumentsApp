@@ -666,7 +666,7 @@
                             Align: =Align.Center
                             AlignInContainer: =AlignInContainer.Center
                             FontWeight: =FontWeight.Semibold
-                            Text: ="Lần " & ThisItem.requestTimeNum
+                            Text: ="Lần " & ThisItem.requestTimeNum + 1
                             Width: =70
                             ZIndex: =1
 
