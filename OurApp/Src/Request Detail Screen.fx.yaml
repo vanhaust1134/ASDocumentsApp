@@ -1110,7 +1110,7 @@
                     RadiusTopRight: =5
                     Size: =13
                     Text: ="Điều chỉnh"
-                    Visible: =If(locInfoRequest.status = 3,true,false)
+                    Visible: =If(locInfoRequest.status = 3,If(locInfoRequest.currentApproveLevel < 3,If(gblRecUser.userID = locInfoRequest.userID,true,false),If(gblRecUser.roleID = 3,true,false),false),false)
                     Width: =104
                     X: =191
                     Y: =36

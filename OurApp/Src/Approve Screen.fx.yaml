@@ -758,12 +758,7 @@
                 
                 //Ký duyệt văn bản
                 If(
-                    locInfoRequest.lastSignNum = Last(
-                        Filter(
-                            'ASDocument.ProcessApproval',
-                            documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
-                        )
-                    ).sort,
+                    locInfoRequest.currentApproveLevel = locInfoRequest.maxApproveLevel,
                     'ASDocument.DocumentSign'.Run(
                         2,
                         Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
