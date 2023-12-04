@@ -856,7 +856,7 @@
                             'ASDocument.DocumentRequest',
                             ID = locInfoRequest.ID
                         ),
-                        {lastSignNum: If(locInfoRequest.lastSignNum > Last(
+                        {lastSignNum: If(locInfoRequest.lastSignNum = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
