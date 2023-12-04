@@ -9,14 +9,14 @@ App As appinfo:
                     'ASTakeLeave.Users',
                     email = User().Email And active = 1
                 ).userID And active = 1
-            ).roleID = 5 Or LookUp(
+            ).roleID = 5,Navigate('User Screen'),LookUp(
                 'ASDocument.Users_Roles',
                 userID = LookUp(
                     'ASTakeLeave.Users',
                     email = User().Email And active = 1
                 ).userID And active = 1
             ).roleID = 3,
-            Navigate('User Screen'),
+            Navigate('Home Manager Screen'),
             LookUp(
                 'ASDocument.Users_Roles',
                 userID = LookUp(

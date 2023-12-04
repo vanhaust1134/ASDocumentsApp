@@ -24,7 +24,7 @@
                 },
                 "region": {
                   "charLength": 13,
-                  "charOffset": 441,
+                  "charOffset": 236,
                   "snippet": {
                     "text": "'User Screen'"
                   }
@@ -63,8 +63,48 @@
                   "relativeAddress": 0
                 },
                 "region": {
+                  "charLength": 21,
+                  "charOffset": 462,
+                  "snippet": {
+                    "text": "'Home Manager Screen'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnStart",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Navigate"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-WrnNoNavigateInOnStart",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.OnStart"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.OnStart",
+                  "relativeAddress": 0
+                },
+                "region": {
                   "charLength": 18,
-                  "charOffset": 672,
+                  "charOffset": 701,
                   "snippet": {
                     "text": "'Home User Screen'"
                   }
@@ -104,7 +144,7 @@
                 },
                 "region": {
                   "charLength": 21,
-                  "charOffset": 706,
+                  "charOffset": 735,
                   "snippet": {
                     "text": "'Home Manager Screen'"
                   }
