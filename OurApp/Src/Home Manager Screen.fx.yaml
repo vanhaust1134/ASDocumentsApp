@@ -42,7 +42,7 @@
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
             );
             //Lấy danh sách hiện có
-        Collect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả"})););
+        Collect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả yêu cầu"})););
             
         //Đã lấy data
         UpdateContext({locGetData:1});
