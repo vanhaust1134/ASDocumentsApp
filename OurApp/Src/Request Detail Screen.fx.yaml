@@ -111,7 +111,7 @@
                 HoverFill: =ColorFade(Self.Fill, -20%)
                 OnSelect: |-
                     =UpdateContext({locFuntionRequestDetail:2});
-                    ClearCollect(colDetailHistory,AddColumns(Filter('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID),"OpenStatus",0))
+                    ClearCollect(colDetailHistory,AddColumns(Filter('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID And status <> 1),"OpenStatus",0))
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
                 RadiusBottomLeft: =0
@@ -708,10 +708,11 @@
                                 Color: =RGBA(15, 108, 189, 1)
                                 Height: =26
                                 OnSelect: |-
-                                    =Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& locInfoRequest.ID & "/" & First(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName)
+                                    =Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).ID & "/" & Last(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName)
                                 PaddingLeft: =30
                                 Size: =12
                                 Text: ="📝 " & First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).DisplayName
+                                Visible: =If(ThisItem.status = 2,false,true)
                                 Width: =270
                                 X: =16
                                 Y: =22

@@ -1061,7 +1061,7 @@
                 Patch('ASDocument.RelatedDocument',Defaults('ASDocument.RelatedDocument'),{documentID:locDocumentIDGenerate,active:1},frm_rs_Attachment.Updates);
                 
                 //Gửi mail thông báo cho cấp duyệt đầu
-                'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = First(colRownumberApprovalProcess).userID).email,"Yêu cầu ký duyệt cho văn bản " & txt_rs_DocumentName.Text,"Mã tài liệu/hồ sơ: " & locDocumentIDGenerate & "<br>" & "Cấp tài liệu: " & drp_rs_DocumentLevel.Selected.name & "<br>" & "Loại văn bản: " & drp_rs_DocumentType.Selected.name & "<br>" & "Công ty: " & drp_rs_CompanyNameInput.Selected.name & "<br>" & "Đơn vị: " & drp_rs_CompanyNameInput_2.Selected.name & "<br>" & "Người tạo: " & gblRecUser.fullName & "<br>" & "Thời gian tạo: " & Now());
+                'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = First(Sort(colRownumberApprovalProcess,approveProcess,SortOrder.Ascending)).userID).email,"Yêu cầu ký duyệt cho văn bản " & txt_rs_DocumentName.Text,"Mã tài liệu/hồ sơ: " & locDocumentIDGenerate & "<br>" & "Cấp tài liệu: " & drp_rs_DocumentLevel.Selected.name & "<br>" & "Loại văn bản: " & drp_rs_DocumentType.Selected.name & "<br>" & "Công ty: " & drp_rs_CompanyNameInput.Selected.name & "<br>" & "Đơn vị: " & drp_rs_CompanyNameInput_2.Selected.name & "<br>" & "Người tạo: " & gblRecUser.fullName & "<br>" & "Thời gian tạo: " & Now());
                 
                 Notify(
                     "Gửi thành công",

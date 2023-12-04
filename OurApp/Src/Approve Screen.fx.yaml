@@ -382,8 +382,7 @@
                                 Rectangle15_8 As rectangle:
                                     BorderColor: =RGBA(255, 255, 255, 1)
                                     BorderThickness: =1
-                                    Fill: |
-                                        =If(Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.Value)).status = 1,Color.LightGreen,Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.Value)).status = 2,Color.Red,RGBA(204, 231, 246, 1))
+                                    Fill: =If(ThisItem.approveProccess > ThisItem.Value,Color.LightGreen,Last(Filter('ASDocument.HistoryApprove',documentID = ThisItem.documentID And requestTimeNum = ThisItem.requestTimeNum + 1 And approveProcess = ThisItem.Value)).status = 2,Color.Red,RGBA(204, 231, 246, 1))
                                     Height: =Parent.TemplateHeight
                                     OnSelect: =Select(Parent)
                                     Width: =Parent.TemplateWidth
@@ -765,7 +764,7 @@
                         locInfoRequest.documentID,
                         locInfoRequest.ID,
                         If(
-                            locInfoRequest.lastSignNum > Last(
+                            locInfoRequest.lastSignNum = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
@@ -782,7 +781,7 @@
                         locInfoRequest.pageSignNumber,
                         {
                             file: {
-                                contentBytes: Last(locInfoRequest.Attachments).Value,
+                                contentBytes: First(locInfoRequest.Attachments).Value,
                                 name: "File van ban-" & Now() & ".pdf"
                             },
                             file_1: {
@@ -802,7 +801,7 @@
                         locInfoRequest.documentID,
                         locInfoRequest.ID,
                         If(
-                            locInfoRequest.lastSignNum > Last(
+                            locInfoRequest.lastSignNum = Last(
                                 Filter(
                                     'ASDocument.ProcessApproval',
                                     documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel
@@ -819,7 +818,7 @@
                         locInfoRequest.pageSignNumber,
                         {
                             file: {
-                                contentBytes: Last(locInfoRequest.Attachments).Value,
+                                contentBytes: First(locInfoRequest.Attachments).Value,
                                 name: "File van ban-" & Now() & ".pdf"
                             },
                             file_1: {
