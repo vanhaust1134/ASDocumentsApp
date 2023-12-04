@@ -544,7 +544,7 @@
                 },
                 "region": {
                   "charLength": 12,
-                  "charOffset": 253,
+                  "charOffset": 340,
                   "snippet": {
                     "text": "\"documentID\""
                   }
@@ -745,7 +745,7 @@
                 },
                 "region": {
                   "charLength": 46,
-                  "charOffset": 270,
+                  "charOffset": 356,
                   "snippet": {
                     "text": "Value(Right(Left(Text(createdDateValue),4),2))"
                   }
@@ -785,7 +785,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 317,
+                  "charOffset": 403,
                   "snippet": {
                     "text": "="
                   }
@@ -825,7 +825,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 266,
+                  "charOffset": 352,
                   "snippet": {
                     "text": "And"
                   }

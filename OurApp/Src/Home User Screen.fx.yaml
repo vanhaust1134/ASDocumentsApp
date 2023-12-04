@@ -41,7 +41,9 @@
             Set(
                 gblRecUser,
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
-            ));
+            );
+            //Lấy danh sách hiện có
+        Collect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả"})););
             
         //Đã lấy data
         UpdateContext({locGetData:1});
@@ -465,7 +467,7 @@
                     Items: |-
                         =With(
                             {
-                                records:Search(Filter('ASDocument.DocumentRequest',levelID = ThisItem.LevelID And documentTypeID = ThisItem.ID And (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID")
+                                records:Search(Filter('ASDocument.DocumentRequest',(levelID = ThisItem.LevelID || If(IsBlank(ThisItem.LevelID),true,false)) And (documentTypeID = ThisItem.ID || If(IsBlank(ThisItem.ID),true,false)) And (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false))),txt_has_Search_1.Text,"documentID")
                             },
                             ForAll(
                                 Sequence(CountRows(records)),
