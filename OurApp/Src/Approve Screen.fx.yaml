@@ -408,7 +408,8 @@
                             OnSelect: |-
                                 =//Lấy danh sách phê duyệt
                                 Refresh('ASDocument.DocumentRequest');
-                                ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID));
+                                //Lấy danh sách phê duyệt
+                                ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID));
                                 
                                 UpdateContext({locApprove:true});
                                 UpdateContext({locInfoRequest:ThisItem})
@@ -1071,7 +1072,7 @@
             Height: =36
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
-                =Patch('ASDocument.ProcessApproval',LookUp('ASDocument.ProcessApproval',sort = locInfoRequest.lastSignNum And userID = locInfoRequest.approvalUserID),{userID:cbo_as_User.Selected.userID});
+                =Patch('ASDocument.ProcessApproval',LookUp('ASDocument.ProcessApproval',sort = locInfoRequest.lastSignNum And approveProcess = locInfoRequest.currentApproveLevel),{userID:cbo_as_User.Selected.userID});
                 
                 //Gửi mail
                 'ASDocument.SendMail'.Run(cbo_as_User.Selected.email,"Yêu cầu ủy quyền ký duyệt cho văn bản " & locInfoRequest.documentName,"Tên yêu cầu: " & locInfoRequest.documentName & "<br>" & "Thời gian tạo yêu cầu: " & locInfoRequest.Created & "<br>" & "Người yêu cầu ủy quyền: " & LookUp(gblColAllUser,userID = locInfoRequest.approvalUserID).fullName);

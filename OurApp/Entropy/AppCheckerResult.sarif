@@ -944,7 +944,7 @@
                 },
                 "region": {
                   "charLength": 7,
-                  "charOffset": 5170,
+                  "charOffset": 5025,
                   "snippet": {
                     "text": "exactin"
                   }
@@ -984,7 +984,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5286,
+                  "charOffset": 5141,
                   "snippet": {
                     "text": "And"
                   }
@@ -1024,7 +1024,7 @@
                 },
                 "region": {
                   "charLength": 3,
-                  "charOffset": 5306,
+                  "charOffset": 5161,
                   "snippet": {
                     "text": "And"
                   }
