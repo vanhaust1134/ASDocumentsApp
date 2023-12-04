@@ -610,13 +610,13 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật lịch sử từ chối
-                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today()) & Month(Today()) & Year(Today())),comment:txt_as_RejectReason.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum + 1},Form1.Updates);
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today()) & Month(Today()) & Year(Today())),comment:If(IsBlank(txt_as_RejectReason.Text),"Không có",txt_as_RejectReason.Text),approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum + 1},Form1.Updates);
                 
                 //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
                 Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1,status:3});
                 
                 //Gửi mail
-                'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = locInfoRequest.userID).email,"Yêu cầu ký duyệt văn bản " & locInfoRequest.documentID & " đã bị từ chối","Tên yêu cầu: " & locInfoRequest.documentName & "<br>" & "Thời gian tạo yêu cầu: " & locInfoRequest.Created);
+                'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = locInfoRequest.userID).email,"Yêu cầu ký duyệt văn bản " & locInfoRequest.documentID & " đã bị từ chối","Tên yêu cầu: " & locInfoRequest.documentName & "<br>" & "Thời gian tạo yêu cầu: " & locInfoRequest.Created & "<br>" & "Lí do: " & If(IsBlank(txt_as_RejectReason.Text),"Không có",txt_as_RejectReason.Text));
                 
                 //Cập nhật danh sách duyệt
                 ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status = 1 And Temp.active = 1));

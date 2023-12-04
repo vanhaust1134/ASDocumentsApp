@@ -886,7 +886,7 @@
                                 Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
                                 locInfoRequest.documentID,
                                 locInfoRequest.ID,
-                                If(
+                                /*If(
                                     locInfoRequest.lastSignNum = Last(
                                         Filter(
                                             'ASDocument.ProcessApproval',
@@ -900,7 +900,8 @@
                                         )
                                     ).sort,
                                     locInfoRequest.lastSignNum
-                                ),
+                                )*/
+                                locInfoRequest.lastSignNum,
                                 locInfoRequest.pageSignNumber,
                                 {
                                     file: {
@@ -923,7 +924,7 @@
                                 Now() & Char(10) & gblRecUser.fullName & Char(10) & gblRecUser.jobTitle,
                                 locInfoRequest.documentID,
                                 locInfoRequest.ID,
-                                If(
+                                /*If(
                                     locInfoRequest.lastSignNum = Last(
                                         Filter(
                                             'ASDocument.ProcessApproval',
@@ -937,7 +938,8 @@
                                         )
                                     ).sort,
                                     locInfoRequest.lastSignNum
-                                ),
+                                )*/
+                                locInfoRequest.lastSignNum,
                                 locInfoRequest.pageSignNumber,
                                 {
                                     file: {
@@ -1033,6 +1035,11 @@
                                 ).userID
                             )
                         );
+                        
+                        //Lấy danh sách phê duyệt
+                        Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
+                        //Lấy danh sách phê duyệt
+                        ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID));
                         
                         Notify(
                             "Duyệt thành công",
@@ -1656,13 +1663,13 @@
             HoverFill: =ColorFade(Self.Fill, -20%)
             OnSelect: |-
                 =//Cập nhật lịch sử từ chối
-                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today()) & Month(Today()) & Year(Today())),comment:txt_as_RejectReason_1.Text,approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
+                Patch('ASDocument.HistoryApprove',Defaults('ASDocument.HistoryApprove'),{documentID:locInfoRequest.documentID,userID:gblRecUser.userID,status:2,approveTime:Value(Day(Today()) & Month(Today()) & Year(Today())),comment:If(IsBlank(txt_as_RejectReason_1.Text),"Không có",txt_as_RejectReason_1.Text),approveProcess:locInfoRequest.currentApproveLevel,requestTimeNum:locInfoRequest.requestTimeNum});
                 
                 //Cập nhật trạng thái yêu cầu thành từ chối và số lần bị từ chối của yêu cầu
                 Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',ID = locInfoRequest.ID),{requestTimeNum:locInfoRequest.requestTimeNum + 1,status:3});
                 
                 //Gửi mail
-                'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = locInfoRequest.userID).email,"Yêu cầu ký duyệt văn bản " & locInfoRequest.documentID & " đã bị từ chối","Tên yêu cầu: " & locInfoRequest.documentName & "<br>" & "Thời gian tạo yêu cầu: " & locInfoRequest.Created);
+                'ASDocument.SendMail'.Run(LookUp(gblColAllUser,userID = locInfoRequest.userID).email,"Yêu cầu ký duyệt văn bản " & locInfoRequest.documentID & " đã bị từ chối","Tên yêu cầu: " & locInfoRequest.documentName & "<br>" & "Thời gian tạo yêu cầu: " & locInfoRequest.Created & "<br>" & "Lí do: " & If(IsBlank(txt_as_RejectReason_1.Text),"Không có",txt_as_RejectReason_1.Text));
                 
                 Notify("Từ chối thành công",NotificationType.Success,1500);
                 UpdateContext({locReject:false})
