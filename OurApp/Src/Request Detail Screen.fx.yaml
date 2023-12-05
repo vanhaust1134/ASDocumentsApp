@@ -306,9 +306,13 @@
                         Default: =locInfoRequest.documentName
                         DisabledColor: =RGBA(0, 0, 0, 1)
                         DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =If(locInfoRequest.status = 2 ,DisplayMode.Edit,DisplayMode.Disabled)
                         Height: =100
                         HintText: ="Nhập tên văn bản"
                         Mode: =TextMode.MultiLine
+                        OnChange: |-
+                            =Patch('ASDocument.DocumentRequest',LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID),{documentID:txt_rds_DocumentName_1.Text});
+                            'ASDocument.UpdateDocumentID'.Run(locInfoRequest.documentID)
                         PaddingTop: =10
                         ZIndex: =6
 
@@ -724,7 +728,9 @@
                                 PaddingLeft: =30
                                 Size: =12
                                 Text: ="📝 " & First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).DisplayName
-                                Visible: =If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
+                                Visible: |-
+                                    =//If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
+                                    true
                                 Width: =270
                                 X: =16
                                 Y: =22
@@ -1649,7 +1655,7 @@
 
     PdfViewer1 As pdfViewer:
         BorderColor: =RGBA(0, 0, 0, 1)
-        Document: =First(locFileReadPDF).Value
+        Document: =First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).Value
         Fill: =RGBA(0, 0, 0, 0.5)
         Height: =537
         Visible: =locReviewFile

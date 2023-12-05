@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "c2fee289-51fb-422c-8347-8bba0bfa902a",
+    "Name": "ASDocument.UpdateDocumentID",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "ce5a80b8-1293-ee11-be37-000d3aa0d035"
+  }
+]
