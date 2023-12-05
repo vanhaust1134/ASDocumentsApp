@@ -515,7 +515,7 @@
                             RadiusBottomRight: =100
                             RadiusTopLeft: =100
                             RadiusTopRight: =100
-                            Size: =12
+                            Size: =8
                             Text: =ThisItem.rowNumber
                             Width: =25
                             X: =61
@@ -524,7 +524,7 @@
 
                         Label9_7 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            FillPortions: =2.5
+                            FillPortions: =2
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: |-
@@ -536,7 +536,7 @@
 
                         Label9_10 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            FillPortions: =0.5
+                            FillPortions: =1
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: |-
@@ -547,7 +547,7 @@
 
                         Label9_11 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            FillPortions: =1
+                            FillPortions: =1.5
                             LayoutMinWidth: =0
                             OnSelect: |-
                                 =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});
