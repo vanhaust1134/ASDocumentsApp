@@ -652,7 +652,7 @@
                     DelayItemLoading: =true
                     Items: |-
                         =//colHistorySign
-                        Filter(colDetailHistory,requestTimeNum > 0)
+                        colDetailHistory
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
@@ -678,7 +678,7 @@
                             Align: =Align.Center
                             AlignInContainer: =AlignInContainer.Center
                             FontWeight: =FontWeight.Semibold
-                            Text: ="Lần " & ThisItem.requestTimeNum
+                            Text: ="Lần " & If(ThisItem.requestTimeNum = 0,ThisItem.requestTimeNum+1,ThisItem.requestTimeNum)
                             Width: =70
                             ZIndex: =1
 
@@ -720,11 +720,11 @@
                                 Color: =RGBA(15, 108, 189, 1)
                                 Height: =26
                                 OnSelect: |-
-                                    =Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).ID & "/" & Last(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName)
+                                    =If(ThisItem.status = 2,LookUp(Documents,'Folder path' = If(locInfoRequest.levelID = 1,"TaiLieuCap1",locInfoRequest.levelID = 2,"TaiLieuCap2",locInfoRequest.levelID = 3,"TaiLieuCap3","HoSoCongTy")),Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).ID & "/" & Last(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName))
                                 PaddingLeft: =30
                                 Size: =12
                                 Text: ="📝 " & First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).DisplayName
-                                Visible: =If(ThisItem.status = 2,false,true)
+                                Visible: =If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
                                 Width: =270
                                 X: =16
                                 Y: =22
@@ -738,7 +738,7 @@
                                 OnSelect: |-
                                     =UpdateContext({locReviewFile:true});
                                     UpdateContext({locFileReadPDF:LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments})
-                                Visible: =If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
+                                Visible: =If(ThisItem.status = 2,false,true)
                                 X: =40
                                 Y: =18
                                 ZIndex: =4
