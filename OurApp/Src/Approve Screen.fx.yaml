@@ -927,7 +927,7 @@
                 );
                 //Cập nhật bước duyệt hiện tại
                 If(
-                    locInfoRequest.approvalUserID = Last(
+                    locInfoRequest.approvalUserID <> Last(
                         Filter(
                             'ASDocument.ProcessApproval',
                             documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.maxApproveLevel

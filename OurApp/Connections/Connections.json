@@ -9,7 +9,8 @@
     "dataSources": [
       "ASDocument.DocumentRequest",
       "ASDocument.Division",
-      "ASDocument.SignedDocument"
+      "ASDocument.SignedDocument",
+      "ASDocument.HistoryApprove"
     ],
     "dependencies": {},
     "dependents": [
@@ -48,7 +49,7 @@
       "executionRestrictions": {
         "apiId": "/providers/microsoft.powerapps/apis/shared_plumsail",
         "appVer": "3.23113.20",
-        "modifiedOn": "2023-12-05 02:11:38",
+        "modifiedOn": "2023-12-05 02:51:54",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },
