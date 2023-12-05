@@ -48,7 +48,7 @@
       "executionRestrictions": {
         "apiId": "/providers/microsoft.powerapps/apis/shared_plumsail",
         "appVer": "3.23113.20",
-        "modifiedOn": "2023-12-05 02:05:45",
+        "modifiedOn": "2023-12-05 02:11:23",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },
@@ -111,6 +111,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "057daa16-c2b5-479e-8044-c22dd0b0b593": {
+          "value": "shared_sharepointonline"
+        },
         "workflowEntityId": {
           "value": "ce5a80b8-1293-ee11-be37-000d3aa0d035"
         },
@@ -119,6 +122,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
+        },
         "workflowEntityId": {
           "value": "ce5a80b8-1293-ee11-be37-000d3aa0d035"
         },
