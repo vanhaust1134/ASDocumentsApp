@@ -20,6 +20,7 @@
       <number name="ManualTriggerInput_number_1_def" />
       <number name="ManualTriggerInput_number_2_def" />
       <number name="ManualTriggerInput_number_3_def" />
+      <string name="ManualTriggerInput_text_1_def" />
       <object name="ManualTriggerInput">
         <property name="file" typeRef="ManualTriggerInput_file_def" />
         <property name="file_1" typeRef="ManualTriggerInput_file_1_def" />
@@ -29,6 +30,7 @@
         <property name="number_1" type="number" />
         <property name="number_2" type="number" />
         <property name="number_3" type="number" />
+        <property name="text_1" type="string" />
       </object>
     </jsonTypes>
   </grammars>
@@ -65,6 +67,9 @@
             </param>
             <param style="plain" name="number_3" path="/number_3" type="xs:double" required="true">
               <doc title="page" />
+            </param>
+            <param style="plain" name="text_1" path="/text_1" type="xs:string" required="true">
+              <doc title="userID" />
             </param>
           </representation>
         </request>

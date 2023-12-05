@@ -1,7 +1,9 @@
 "'History Approve Screen' As screen":
     Fill: =RGBA(224,224,224,1)
     OnVisible: |-
-        =ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status <> 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID))
+        =//ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status <> 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID));
+        
+        ClearCollect(gblHistoryApprove,Filter('ASDocument.DocumentRequest',status <> 1 And active = 1 And documentID exactin (Filter('ASDocument.ProcessApproval',userID = gblRecUser.userID)).documentID));
         
         //ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status <> 1 And Temp.active = 1));
         //ClearCollect(gblColApprovalByRequest,AddColumns(gblcolRequestOnProcess As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And documentID = Temp.documentID).userID))
@@ -229,7 +231,7 @@
                 gal_has_List As gallery.galleryVertical:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DelayItemLoading: =true
-                    Items: =Search(Sort(Filter(gblColApprovalByRequest,approvalUserID = gblRecUser.userID And Created > dtp_has_FromDate.SelectedDate And Created > dtp_has_ToDate.SelectedDate And (userID = drp_as_UserCreated.Selected.ID || If(IsBlank(drp_as_UserCreated.Selected.userID),true,false))),ID,SortOrder.Descending),"txt_has_Search.text","description")
+                    Items: =Search(Sort(Filter(gblHistoryApprove,Created > dtp_has_FromDate.SelectedDate And Created < dtp_has_ToDate.SelectedDate And (userID = drp_as_UserCreated.Selected.userID || If(IsBlank(drp_as_UserCreated.Selected.userID),true,false))),ID,SortOrder.Descending),txt_has_Search.Text,"description")
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =0
