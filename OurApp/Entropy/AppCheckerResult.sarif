@@ -303,10 +303,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 13,
-                  "charOffset": 40,
+                  "charLength": 26,
+                  "charOffset": 47,
                   "snippet": {
-                    "text": "'Folder path'"
+                    "text": "'File name with extension'"
                   }
                 }
               },
@@ -319,7 +319,7 @@
           ],
           "message": {
             "arguments": [
-              "Folder path"
+              "File name with extension"
             ],
             "id": "issue"
           },
@@ -344,7 +344,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 54,
+                  "charOffset": 74,
                   "snippet": {
                     "text": "="
                   }

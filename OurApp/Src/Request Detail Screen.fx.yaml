@@ -720,7 +720,7 @@
                                 Color: =RGBA(15, 108, 189, 1)
                                 Height: =26
                                 OnSelect: |-
-                                    =If(ThisItem.status = 2,LookUp(Documents,'Folder path' = If(locInfoRequest.levelID = 1,"TaiLieuCap1",locInfoRequest.levelID = 2,"TaiLieuCap2",locInfoRequest.levelID = 3,"TaiLieuCap3","HoSoCongTy")),Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).ID & "/" & Last(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName))
+                                    =If(ThisItem.status = 2,Launch(LookUp(Documents,'File name with extension' = If(locInfoRequest.levelID = 1,"TaiLieuCap1",locInfoRequest.levelID = 2,"TaiLieuCap2",locInfoRequest.levelID = 3,"TaiLieuCap3","HoSoCongTy")).'Link to item' & "/" & locInfoRequest.documentID & ".pdf"),Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).ID & "/" & Last(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName))
                                 PaddingLeft: =30
                                 Size: =12
                                 Text: ="📝 " & First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).DisplayName
