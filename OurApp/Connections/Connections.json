@@ -49,7 +49,7 @@
       "executionRestrictions": {
         "apiId": "/providers/microsoft.powerapps/apis/shared_plumsail",
         "appVer": "3.23114.19",
-        "modifiedOn": "2023-12-06 09:30:35",
+        "modifiedOn": "2023-12-06 09:35:47",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },
