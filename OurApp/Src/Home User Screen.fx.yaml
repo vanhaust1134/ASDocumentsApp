@@ -1,5 +1,5 @@
 "'Home User Screen' As screen":
-    Fill: =RGBA(224,224,224,1)
+    Fill: =RGBA(80,80,80,1)
     OnVisible: |-
         =Set(gblMenuFunctionSelected,1);
         
@@ -42,9 +42,9 @@
                 gblRecUser,
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
             );
-            //Lấy danh sách hiện có
-        ClearCollect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả yêu cầu"})););
-            
+        //Lấy danh sách hiện có
+        ClearCollect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả yêu cầu"})));
+        
         //Đã lấy data
         UpdateContext({locGetData:1});
 
@@ -52,7 +52,7 @@
         BorderStyle: =BorderStyle.None
         DisabledFill: =RGBA(241, 244, 250, 1)
         DisplayMode: =DisplayMode.Disabled
-        Height: =767
+        Height: =768
         RadiusBottomLeft: =20
         RadiusBottomRight: =20
         RadiusTopLeft: =20
@@ -277,6 +277,8 @@
                     LayoutMinHeight: =40
                     OnSelect: |-
                         =Clear(colDocumentRequestType);
+                        //Lấy danh sách hiện có
+                        ClearCollect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả yêu cầu"}));
                         Reset(cbo_hs_Company);
                         Reset(txt_has_Search_1)
                     ZIndex: =2
@@ -481,6 +483,9 @@
                                     )
                                 )
                         )
+                        
+                        //Filter('ASDocument.DocumentRequest',status <> 1 And active = 1 And documentID exactin (Filter('ASDocument.ProcessApproval',userID = gblRecUser.userID)).documentID)
+                        //Filter('ASDocument.DocumentRequest',userID = gblRecUser.userID And (levelID = ThisItem.LevelID || If(IsBlank(ThisItem.LevelID),true,false)) And (documentTypeID = ThisItem.ID || If(IsBlank(ThisItem.ID),true,false)) And (companyID = cbo_hs_Company.Selected.ID || If(IsBlank(cbo_hs_Company.Selected.ID),true,false)))
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     ShowScrollbar: =false
@@ -516,7 +521,7 @@
                             RadiusBottomRight: =100
                             RadiusTopLeft: =100
                             RadiusTopRight: =100
-                            Size: =12
+                            Size: =8
                             Text: =ThisItem.rowNumber
                             Width: =25
                             X: =61
@@ -525,7 +530,7 @@
 
                         Label9_6 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            FillPortions: =2.5
+                            FillPortions: =2
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: |-
@@ -537,18 +542,19 @@
 
                         Label9_9 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            FillPortions: =0.5
+                            FillPortions: =1
                             FontWeight: =FontWeight.Semibold
                             LayoutMinWidth: =0
                             OnSelect: |-
                                 =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});
                             Text: =LookUp(gblColCompany,ID = ThisItem.companyID).name
+                            Tooltip: =LookUp(gblColCompany,ID = ThisItem.companyID).name
                             Wrap: =false
                             ZIndex: =3
 
                         Label9_8 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            FillPortions: =1
+                            FillPortions: =1.5
                             LayoutMinWidth: =0
                             OnSelect: |-
                                 =Navigate('Request Detail Screen',ScreenTransition.Fade,{locInfoRequest:ThisItem});

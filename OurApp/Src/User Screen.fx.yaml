@@ -1,5 +1,5 @@
 "'User Screen' As screen":
-    Fill: =RGBA(224,224,224,1)
+    Fill: =RGBA(80,80,80,1)
     OnHidden: |-
         =//Lấy tất cả user và role về
             //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
@@ -68,7 +68,7 @@
         BorderStyle: =BorderStyle.None
         DisabledFill: =RGBA(241, 244, 250, 1)
         DisplayMode: =DisplayMode.Disabled
-        Height: =767
+        Height: =768
         RadiusBottomLeft: =20
         RadiusBottomRight: =20
         RadiusTopLeft: =20

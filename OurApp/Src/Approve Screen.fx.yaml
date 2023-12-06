@@ -1,5 +1,5 @@
 "'Approve Screen' As screen":
-    Fill: =RGBA(224,224,224,1)
+    Fill: =RGBA(80,80,80,1)
     OnVisible: |-
         =Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
         //Lấy danh sách phê duyệt
@@ -12,7 +12,7 @@
         BorderStyle: =BorderStyle.None
         DisabledFill: =RGBA(241, 244, 250, 1)
         DisplayMode: =DisplayMode.Disabled
-        Height: =767
+        Height: =768
         RadiusBottomLeft: =20
         RadiusBottomRight: =20
         RadiusTopLeft: =20

@@ -1,5 +1,5 @@
 "'Company Screen' As screen":
-    Fill: =RGBA(224,224,224,1)
+    Fill: =RGBA(80,80,80,1)
     OnVisible: |+
         =//Lấy danh sách công ty
         If(CountRows(Filter(gblColCompany,name = "Tất cả")) = 0,Clear(gblColCompany);Collect(gblColCompany,Table({name:"Tất cả"}));Collect(gblColCompany,Filter('ASDocument.Company',active = 1)));
@@ -12,7 +12,7 @@
         BorderStyle: =BorderStyle.None
         DisabledFill: =RGBA(241, 244, 250, 1)
         DisplayMode: =DisplayMode.Disabled
-        Height: =767
+        Height: =768
         RadiusBottomLeft: =20
         RadiusBottomRight: =20
         RadiusTopLeft: =20

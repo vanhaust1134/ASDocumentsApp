@@ -1,8 +1,9 @@
 "'History Approve Screen' As screen":
-    Fill: =RGBA(224,224,224,1)
+    Fill: =RGBA(80,80,80,1)
     OnVisible: |-
         =//ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status <> 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',userID = Temp.userID).userID));
         
+        //Lấy danh sách lịch sử các yêu cầu đã hoàn thành hoặc từ chối
         ClearCollect(gblHistoryApprove,Filter('ASDocument.DocumentRequest',status <> 1 And active = 1 And documentID exactin (Filter('ASDocument.ProcessApproval',userID = gblRecUser.userID)).documentID));
         
         //ClearCollect(gblcolRequestOnProcess,Filter('ASDocument.DocumentRequest' As Temp,Temp.lastSignNum exactin (Filter('ASDocument.ProcessApproval',documentID = Temp.documentID)).sort And Temp.status <> 1 And Temp.active = 1));
@@ -12,7 +13,7 @@
         BorderStyle: =BorderStyle.None
         DisabledFill: =RGBA(241, 244, 250, 1)
         DisplayMode: =DisplayMode.Disabled
-        Height: =767
+        Height: =768
         RadiusBottomLeft: =20
         RadiusBottomRight: =20
         RadiusTopLeft: =20
