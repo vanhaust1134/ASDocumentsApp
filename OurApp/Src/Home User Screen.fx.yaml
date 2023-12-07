@@ -278,7 +278,7 @@
                     OnSelect: |-
                         =Clear(colDocumentRequestType);
                         //Lấy danh sách hiện có
-                        ClearCollect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả yêu cầu"}));
+                        //ClearCollect(colDocumentRequestType,Table({ID:Blank(),LevelID:Blank(),Name:"Tất cả yêu cầu"}));
                         Reset(cbo_hs_Company);
                         Reset(txt_has_Search_1)
                     ZIndex: =2
