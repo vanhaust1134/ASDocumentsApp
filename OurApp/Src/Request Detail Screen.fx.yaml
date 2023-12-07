@@ -751,9 +751,16 @@
                                 Y: =18
                                 ZIndex: =4
 
+                            Label2 As label:
+                                AlignInContainer: =AlignInContainer.Center
+                                Text: =""
+                                Visible: =If(ThisItem.status = 2,true,false)
+                                Width: =100
+                                ZIndex: =5
+
                     Gallery5_2 As gallery.galleryVertical:
                         DelayItemLoading: =true
-                        Height: =93
+                        Height: =45 * CountRows(Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1))
                         Items: |-
                             =//Sort(Table({ID:1,Time:"15/10/2023 06:00 AM",Content:"Người ký: Trần Văn Hậu",Reason:""},{ID:2,Time:"17/10/2023 08:00 PM",Content:"Người ký: Võ Đỗ Thi Nhân",Reason:"Lí do: đánh giá lại văn bản"}),ID,SortOrder.Descending)
                             Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1)
@@ -800,6 +807,22 @@
                                 X: =290
                                 Y: =18
                                 ZIndex: =2
+
+                            lbl_rds_ReasonReject_5 As label:
+                                AlignInContainer: =AlignInContainer.Center
+                                Color: =RGBA(94, 94, 94, 1)
+                                Height: =30
+                                OnSelect: =
+                                Size: =12
+                                Text: |-
+                                    ="Lí do: " & ThisItem.comment
+                                Tooltip: |-
+                                    ="Lí do: " & ThisItem.comment
+                                Visible: =If(IsBlank(ThisItem.comment),false,true)
+                                Width: =270
+                                X: =290
+                                Y: =18
+                                ZIndex: =3
 
             Rectangle1 As rectangle:
                 AlignInContainer: =AlignInContainer.Center
