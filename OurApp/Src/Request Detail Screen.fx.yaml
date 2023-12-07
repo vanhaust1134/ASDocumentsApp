@@ -728,9 +728,7 @@
                                 PaddingLeft: =30
                                 Size: =12
                                 Text: ="📝 " & First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).DisplayName
-                                Visible: |-
-                                    =//If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
-                                    true
+                                Visible: =If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
                                 Width: =270
                                 Wrap: =false
                                 X: =16
