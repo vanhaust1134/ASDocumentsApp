@@ -361,7 +361,7 @@
                                 PaddingRight: =5
                                 PaddingTop: =5
                                 Tooltip: =Parent.DisplayName
-                                Width: =480
+                                Width: =478
                                 X: =2
                                 Y: =DataCardKey6.Y + DataCardKey6.Height + 5
                                 ZIndex: =2
@@ -465,7 +465,7 @@
                                 PaddingRight: =5
                                 PaddingTop: =5
                                 Tooltip: =Parent.DisplayName
-                                Width: =480
+                                Width: =478
                                 X: =2
                                 Y: =DataCardKey6_2.Y + DataCardKey6_2.Height + 5
                                 ZIndex: =2
