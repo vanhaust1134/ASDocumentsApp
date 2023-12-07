@@ -682,7 +682,7 @@
                             Align: =Align.Center
                             AlignInContainer: =AlignInContainer.Center
                             FontWeight: =FontWeight.Semibold
-                            Text: ="Lần " & If(ThisItem.requestTimeNum = 0,ThisItem.requestTimeNum+1,ThisItem.requestTimeNum)
+                            Text: ="Lần " & ThisItem.requestTimeNum + 1
                             Width: =70
                             ZIndex: =1
 
@@ -724,7 +724,7 @@
                                 Color: =RGBA(15, 108, 189, 1)
                                 Height: =26
                                 OnSelect: |-
-                                    =If(ThisItem.status = 2,Launch(LookUp(Documents,'File name with extension' = If(locInfoRequest.levelID = 1,"TaiLieuCap1",locInfoRequest.levelID = 2,"TaiLieuCap2",locInfoRequest.levelID = 3,"TaiLieuCap3","HoSoCongTy")).'Link to item' & "/" & locInfoRequest.documentID & ".pdf"),Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentHistoryApprove/Attachments/"& LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).ID & "/" & Last(LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments).DisplayName))
+                                    =If(ThisItem.status = 2,Launch(LookUp(Documents,'File name with extension' = If(locInfoRequest.levelID = 1,"TaiLieuCap1",locInfoRequest.levelID = 2,"TaiLieuCap2",locInfoRequest.levelID = 3,"TaiLieuCap3","HoSoCongTy")).'Link to item' & "/" & locInfoRequest.documentID & "_signed.pdf"),Launch("https://bhktechcorp.sharepoint.com/sites/Dev-Powerapp/Lists/ASDocumentDocumentRequest/Attachments/"& LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum).ID & "/" & locInfoRequest.documentID & ".pdf"))
                                 PaddingLeft: =30
                                 Size: =12
                                 Text: ="📝 " & First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).DisplayName
@@ -732,6 +732,7 @@
                                     =//If(locInfoRequest.status = 2,If(gblRecUser.roleID = 3,true,gblRecUser.roleID = 4,true,false),true)
                                     true
                                 Width: =270
+                                Wrap: =false
                                 X: =16
                                 Y: =22
                                 ZIndex: =3
@@ -743,7 +744,8 @@
                                 LayoutMinHeight: =20
                                 OnSelect: |-
                                     =UpdateContext({locReviewFile:true});
-                                    UpdateContext({locFileReadPDF:LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments})
+                                    UpdateContext({locFileReadPDF:LookUp('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1).Attachments});
+                                    UpdateContext({locRequestTimeNum:ThisItem.requestTimeNum})
                                 Visible: =If(ThisItem.status = 2,false,true)
                                 X: =40
                                 Y: =18
@@ -1655,7 +1657,7 @@
 
     PdfViewer1 As pdfViewer:
         BorderColor: =RGBA(0, 0, 0, 1)
-        Document: =First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID).Attachments).Value
+        Document: =First(LookUp('ASDocument.DocumentRequest',documentID = locInfoRequest.documentID And requestTimeNum = 0).Attachments).Value
         Fill: =RGBA(0, 0, 0, 0.5)
         Height: =537
         Visible: =locReviewFile
