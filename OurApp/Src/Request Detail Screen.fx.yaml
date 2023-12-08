@@ -214,7 +214,7 @@
                                 DisabledFill: =RGBA(255, 255, 255, 1)
                                 DisplayMode: =DisplayMode.Disabled
                                 FillPortions: =1
-                                Items: =[LookUp(gblColDivision,ID = locInfoRequest.divisionID).name]
+                                Items: =[LookUp('ASDocument.Division',ID = locInfoRequest.divisionID).name]
                                 LayoutMinWidth: =50
                                 ZIndex: =2
 
