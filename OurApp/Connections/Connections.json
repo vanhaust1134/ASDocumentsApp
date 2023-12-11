@@ -43,29 +43,6 @@
     ],
     "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
   },
-  "36e7ea85-b654-42f9-875e-dfd13bd619b8": {
-    "connectionRef": {
-      "displayName": "Plumsail Documents",
-      "executionRestrictions": {
-        "apiId": "/providers/microsoft.powerapps/apis/shared_plumsail",
-        "appVer": "3.23114.24",
-        "modifiedOn": "2023-12-11 04:38:12",
-        "policy": "{\"type\":\"unused\"}",
-        "version": 1
-      },
-      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/version-mismatches-special-train/1.0.1670.3520/plumsail/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_plumsail",
-      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_plumsail/connections/shared-plumsail-78784834-b0b3-46fb-9e65-460f39bac962",
-      "xrmConnectionReferenceLogicalName": "tvh123_sharedplumsail_67756"
-    },
-    "datasets": {},
-    "dataSources": [
-      "PlumsailDocuments"
-    ],
-    "dependencies": {},
-    "dependents": [],
-    "id": "36e7ea85-b654-42f9-875e-dfd13bd619b8"
-  },
   "49a9d252-942b-4d0b-bb82-4a9085385104": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -475,7 +452,7 @@
       "executionRestrictions": {
         "apiId": "unknown",
         "appVer": "3.23114.24",
-        "modifiedOn": "2023-12-11 04:38:12",
+        "modifiedOn": "2023-12-11 09:35:02",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },

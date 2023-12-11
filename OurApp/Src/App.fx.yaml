@@ -2,6 +2,7 @@ App As appinfo:
     BackEnabled: =false
     OnStart: |-
         =//Phân quyền màn hình
+        If(Not(IsBlank(Param("Function"))),Set(gblFunction,Param("Function"));Set(gblRole,Param("Role"));If(gblFunction = "MasterDataDocument",Navigate('User Screen'),gblFunction = "ManageDocument" And Or(gblRole = 1,gblRole = 2,gblRole = 4),Navigate('Home User Screen'),gblFunction = "ManageDocument" And gblRole = 3,Navigate('Home Manager Screen')),
         If(
             LookUp(
                 'ASDocument.Users_Roles',
@@ -26,7 +27,7 @@ App As appinfo:
             ).roleID = 1,
             Navigate('Home User Screen'),
             Navigate('Home Manager Screen')
-        )
+        ))
     Theme: =PowerAppsTheme
 
     Host As hostControl.DefaultHostControlVariant:
