@@ -675,13 +675,13 @@
                                         !IsEmpty(
                                             Filter(
                                                 'ASDocument.DocumentIDGenerated',
-                                                companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID
+                                                companyID = drp_rs_CompanyNameInput.Selected.ID And divisionID = drp_rs_CompanyNameInput_2.Selected.ID And documentTypeID = drp_rs_DocumentType.Selected.ID
                                             )
                                         ),
                                         Text(
                                             LookUp(
                                                 'ASDocument.DocumentIDGenerated',
-                                                companyID = drp_rs_CompanyNameInput.Selected.ID Or divisionID = drp_rs_CompanyNameInput_2.Selected.ID Or documentTypeID = drp_rs_DocumentType.Selected.ID
+                                                companyID = drp_rs_CompanyNameInput.Selected.ID And divisionID = drp_rs_CompanyNameInput_2.Selected.ID And documentTypeID = drp_rs_DocumentType.Selected.ID
                                             ).lastAutoNumber + 1,
                                             "0####"
                                         ),
