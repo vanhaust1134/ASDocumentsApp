@@ -811,6 +811,7 @@
                                 documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel And sort = locInfoRequest.lastSignNum
                             ).userID
                         ),
+                        locInfoRequest.currentApproveLevel,
                         {
                             file: {
                                 contentBytes: First(locInfoRequest.Attachments).Value,
@@ -867,6 +868,7 @@
                                 documentID = locInfoRequest.documentID And approveProcess = locInfoRequest.currentApproveLevel And sort = locInfoRequest.lastSignNum
                             ).userID
                         ),
+                        locInfoRequest.currentApproveLevel,
                         {
                             file: {
                                 contentBytes: First(locInfoRequest.Attachments).Value,

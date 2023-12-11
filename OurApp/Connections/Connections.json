@@ -17,8 +17,8 @@
       "91e71581-1a55-421b-8e6c-6b20180263ac",
       "6de92e69-c9f5-43fa-a264-adf90e9425b8",
       "c899f120-0e7b-4d79-93db-1d7ed9d37c78",
-      "ce362d58-d8fe-404b-879d-ba83d26b39a6",
-      "4ef112ff-ccce-4417-a0ee-2ee2625a5e51"
+      "4ef112ff-ccce-4417-a0ee-2ee2625a5e51",
+      "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
     ],
     "id": "057daa16-c2b5-479e-8044-c22dd0b0b593"
   },
@@ -39,7 +39,7 @@
     "dependencies": {},
     "dependents": [
       "49a9d252-942b-4d0b-bb82-4a9085385104",
-      "ce362d58-d8fe-404b-879d-ba83d26b39a6"
+      "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
     ],
     "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
   },
@@ -48,8 +48,8 @@
       "displayName": "Plumsail Documents",
       "executionRestrictions": {
         "apiId": "/providers/microsoft.powerapps/apis/shared_plumsail",
-        "appVer": "3.23114.19",
-        "modifiedOn": "2023-12-07 07:52:15",
+        "appVer": "3.23114.24",
+        "modifiedOn": "2023-12-11 04:38:12",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },
@@ -63,9 +63,7 @@
       "PlumsailDocuments"
     ],
     "dependencies": {},
-    "dependents": [
-      "ce362d58-d8fe-404b-879d-ba83d26b39a6"
-    ],
+    "dependents": [],
     "id": "36e7ea85-b654-42f9-875e-dfd13bd619b8"
   },
   "49a9d252-942b-4d0b-bb82-4a9085385104": {
@@ -310,62 +308,6 @@
     "dependents": [],
     "id": "c899f120-0e7b-4d79-93db-1d7ed9d37c78"
   },
-  "ce362d58-d8fe-404b-879d-ba83d26b39a6": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "057daa16-c2b5-479e-8044-c22dd0b0b593": {
-          "value": "shared_sharepointonline_1"
-        },
-        "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
-          "value": "shared_office365"
-        },
-        "36e7ea85-b654-42f9-875e-dfd13bd619b8": {
-          "value": "shared_plumsail_1"
-        },
-        "workflowEntityId": {
-          "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
-        },
-        "workflowName": {
-          "value": "a1876159-9ebb-480c-b802-534f41307874"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_office365": {
-          "value": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
-        },
-        "shared_plumsail_1": {
-          "value": "36e7ea85-b654-42f9-875e-dfd13bd619b8"
-        },
-        "shared_sharepointonline": {
-          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
-        },
-        "shared_sharepointonline_1": {
-          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
-        },
-        "workflowEntityId": {
-          "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
-        },
-        "workflowName": {
-          "value": "a1876159-9ebb-480c-b802-534f41307874"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "ASDocument.DocumentSign"
-    ],
-    "dependencies": {
-      "shared_office365": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1",
-      "shared_plumsail_1": "36e7ea85-b654-42f9-875e-dfd13bd619b8",
-      "shared_sharepointonline": "057daa16-c2b5-479e-8044-c22dd0b0b593",
-      "shared_sharepointonline_1": "057daa16-c2b5-479e-8044-c22dd0b0b593"
-    },
-    "dependents": [],
-    "id": "ce362d58-d8fe-404b-879d-ba83d26b39a6"
-  },
   "cf341574-441c-4f2a-a3b6-ead8c294cdc6": {
     "appActions": [
       "providers/PowerPlatform.Governance/Operations/Read",
@@ -470,5 +412,84 @@
     "dependencies": {},
     "dependents": [],
     "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
+  },
+  "f9150914-2e97-4366-b7d6-c65e3ccde4fc": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "057daa16-c2b5-479e-8044-c22dd0b0b593": {
+          "value": "shared_sharepointonline_1"
+        },
+        "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
+          "value": "shared_office365"
+        },
+        "fef39038-98ad-4e3f-a987-4e67f095c34c": {
+          "value": "shared_plumsail_1"
+        },
+        "workflowEntityId": {
+          "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
+        },
+        "workflowName": {
+          "value": "a1876159-9ebb-480c-b802-534f41307874"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_office365": {
+          "value": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
+        },
+        "shared_plumsail_1": {
+          "value": "fef39038-98ad-4e3f-a987-4e67f095c34c"
+        },
+        "shared_sharepointonline": {
+          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
+        },
+        "shared_sharepointonline_1": {
+          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
+        },
+        "workflowEntityId": {
+          "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
+        },
+        "workflowName": {
+          "value": "a1876159-9ebb-480c-b802-534f41307874"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ASDocument.DocumentSign"
+    ],
+    "dependencies": {
+      "shared_office365": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1",
+      "shared_plumsail_1": "fef39038-98ad-4e3f-a987-4e67f095c34c",
+      "shared_sharepointonline": "057daa16-c2b5-479e-8044-c22dd0b0b593",
+      "shared_sharepointonline_1": "057daa16-c2b5-479e-8044-c22dd0b0b593"
+    },
+    "dependents": [],
+    "id": "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
+  },
+  "fef39038-98ad-4e3f-a987-4e67f095c34c": {
+    "connectionRef": {
+      "displayName": "Plumsail Documents",
+      "executionRestrictions": {
+        "apiId": "unknown",
+        "appVer": "3.23114.24",
+        "modifiedOn": "2023-12-11 04:38:12",
+        "policy": "{\"type\":\"unused\"}",
+        "version": 1
+      },
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/version-mismatches-special-train/1.0.1670.3520/plumsail/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_plumsail",
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_plumsail/connections/shared-plumsail-26f74d94-d7a0-45fa-93a7-cc1c2d72fee7",
+      "xrmConnectionReferenceLogicalName": "tvh123_sharedplumsail_67756"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
+    ],
+    "id": "fef39038-98ad-4e3f-a987-4e67f095c34c"
   }
 }
