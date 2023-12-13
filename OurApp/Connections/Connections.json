@@ -10,7 +10,9 @@
       "ASDocument.DocumentRequest",
       "ASDocument.Division",
       "ASDocument.SignedDocument",
-      "ASDocument.HistoryApprove"
+      "ASDocument.HistoryApprove",
+      "ASDocument.DocumentIDGenerated",
+      "ASDocument.ProcessApproval"
     ],
     "dependencies": {},
     "dependents": [
@@ -451,8 +453,8 @@
       "displayName": "Plumsail Documents",
       "executionRestrictions": {
         "apiId": "unknown",
-        "appVer": "3.23114.24",
-        "modifiedOn": "2023-12-12 08:37:21",
+        "appVer": "3.23121.20",
+        "modifiedOn": "2023-12-13 01:43:56",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },

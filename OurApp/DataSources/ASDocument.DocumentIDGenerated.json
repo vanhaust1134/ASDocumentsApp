@@ -29,11 +29,13 @@
       "ComplianceAssetId": "Compliance Asset Id",
       "Created": "Created",
       "divisionID": "divisionID",
+      "documentID": "documentID",
       "documentTypeID": "documentTypeID",
       "Editor": "Modified By",
       "Editor#Claims": "Modified By Claims",
       "ID": "ID",
       "lastAutoNumber": "lastAutoNumber",
+      "lastRepeatApproveAutoNumber": "lastRepeatApproveAutoNumber",
       "Modified": "Modified",
       "OData__ColorTag": "Color Tag",
       "Title": "Title"

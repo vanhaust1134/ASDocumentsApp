@@ -36,6 +36,7 @@
       "documentGroupID": "documentGroupID",
       "documentID": "documentID",
       "documentName": "documentName",
+      "documentShortName": "documentShortName",
       "documentTypeID": "documentTypeID",
       "Editor": "Modified By",
       "Editor#Claims": "Modified By Claims",
