@@ -308,10 +308,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 16,
-                  "charOffset": 381,
+                  "charLength": 21,
+                  "charOffset": 356,
                   "snippet": {
-                    "text": "'Approve Screen'"
+                    "text": "'Home Manager Screen'"
                   }
                 }
               },
@@ -348,10 +348,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 21,
-                  "charOffset": 408,
+                  "charLength": 16,
+                  "charOffset": 413,
                   "snippet": {
-                    "text": "'Home Manager Screen'"
+                    "text": "'Approve Screen'"
                   }
                 }
               },

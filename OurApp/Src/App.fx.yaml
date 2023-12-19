@@ -2,7 +2,7 @@ App As appinfo:
     BackEnabled: =false
     OnStart: |-
         =//Phân quyền màn hình
-        If(Not(IsBlank(Param("Function"))),Set(gblFunction,Param("Function"));Set(gblRole,Param("Role"));If(gblFunction = "MasterDataDocument" Or gblRole = 5,Navigate('User Screen'),gblFunction = "ManageDocument" And Or(gblRole = 1,gblRole = 2,gblRole = 4),Navigate('Home User Screen'),gblFunction = "ManageDocument" And gblRole = 3,gblFunction = "Approval",Navigate('Approve Screen'),Navigate('Home Manager Screen')),
+        If(Not(IsBlank(Param("Function"))),Set(gblFunction,Param("Function"));Set(gblRole,Param("Role"));If(gblFunction = "MasterDataDocument" Or gblRole = 5,Navigate('User Screen'),gblFunction = "ManageDocument" And Or(gblRole = 1,gblRole = 2,gblRole = 4),Navigate('Home User Screen'),gblFunction = "ManageDocument" And gblRole = 3,Navigate('Home Manager Screen'),gblFunction = "Approval",Navigate('Approve Screen')),
         If(
             LookUp(
                 'ASDocument.Users_Roles',
