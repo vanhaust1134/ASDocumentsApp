@@ -490,10 +490,10 @@
                             AlignInContainer: =AlignInContainer.Center
                             FillPortions: =1.5
                             Height: =50
-                            Image: =First(ThisItem.'{Attachments}').AbsoluteUri
+                            Image: =First(ThisItem.Attachments).AbsoluteUri
                             OnSelect: |-
                                 =UpdateContext({locShowImage:true});
-                                UpdateContext({locImageSign:First(ThisItem.'{Attachments}').AbsoluteUri})
+                                UpdateContext({locImageSign:First(ThisItem.Attachments).AbsoluteUri})
                             ZIndex: =4
 
                         img_us_Edit As image:
