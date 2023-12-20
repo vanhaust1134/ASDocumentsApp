@@ -716,7 +716,7 @@
                                 OnSelect: |-
                                     =If(ThisItem.status = 0,Patch(colHistorySign,LookUp(colHistorySign,ID = ThisItem.ID),{status:1}),Patch(colHistorySign,LookUp(colHistorySign,ID = ThisItem.ID),{status:0}))
                                 Size: =12
-                                Text: =If(ThisItem.status = 3,"Yêu cầu đã bị từ chối",ThisItem.status = 2,"Yêu cầu đã được duyệt")
+                                Text: =If(ThisItem.status = 3,"Yêu cầu đã bị từ chối",ThisItem.status = 2,"Yêu cầu đã được duyệt","Yêu cầu đang được duyệt")
                                 ZIndex: =2
 
                             Label12_4 As label:

@@ -34,7 +34,7 @@
       "6de92e69-c9f5-43fa-a264-adf90e9425b8",
       "c899f120-0e7b-4d79-93db-1d7ed9d37c78",
       "4ef112ff-ccce-4417-a0ee-2ee2625a5e51",
-      "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
+      "d1f79a77-fed6-4ce0-9470-1e05f8f88583"
     ],
     "id": "057daa16-c2b5-479e-8044-c22dd0b0b593"
   },
@@ -55,7 +55,7 @@
     "dependencies": {},
     "dependents": [
       "49a9d252-942b-4d0b-bb82-4a9085385104",
-      "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
+      "d1f79a77-fed6-4ce0-9470-1e05f8f88583"
     ],
     "id": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
   },
@@ -263,6 +263,22 @@
     "dependents": [],
     "id": "91e71581-1a55-421b-8e6c-6b20180263ac"
   },
+  "92533175-b583-49f7-862c-9e829e0968e5": {
+    "connectionRef": {
+      "displayName": "Plumsail Documents",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/version-mismatches-special-train/1.0.1670.3520/plumsail/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_plumsail",
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_plumsail/connections/shared-plumsail-26f74d94-d7a0-45fa-93a7-cc1c2d72fee7",
+      "xrmConnectionReferenceLogicalName": "tvh123_sharedplumsail_67756"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "d1f79a77-fed6-4ce0-9470-1e05f8f88583"
+    ],
+    "id": "92533175-b583-49f7-862c-9e829e0968e5"
+  },
   "c899f120-0e7b-4d79-93db-1d7ed9d37c78": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -406,21 +422,12 @@
     "dependents": [],
     "id": "cf341574-441c-4f2a-a3b6-ead8c294cdc6"
   },
-  "f9150914-2e97-4366-b7d6-c65e3ccde4fc": {
+  "d1f79a77-fed6-4ce0-9470-1e05f8f88583": {
     "connectionRef": {
       "displayName": "Logic flows",
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "057daa16-c2b5-479e-8044-c22dd0b0b593": {
-          "value": "shared_sharepointonline_1"
-        },
-        "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
-          "value": "shared_office365"
-        },
-        "fef39038-98ad-4e3f-a987-4e67f095c34c": {
-          "value": "shared_plumsail_1"
-        },
         "workflowEntityId": {
           "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
         },
@@ -429,18 +436,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_office365": {
-          "value": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
-        },
-        "shared_plumsail_1": {
-          "value": "fef39038-98ad-4e3f-a987-4e67f095c34c"
-        },
-        "shared_sharepointonline": {
-          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
-        },
-        "shared_sharepointonline_1": {
-          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
-        },
         "workflowEntityId": {
           "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
         },
@@ -455,34 +450,11 @@
     ],
     "dependencies": {
       "shared_office365": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1",
-      "shared_plumsail_1": "fef39038-98ad-4e3f-a987-4e67f095c34c",
+      "shared_plumsail_1": "92533175-b583-49f7-862c-9e829e0968e5",
       "shared_sharepointonline": "057daa16-c2b5-479e-8044-c22dd0b0b593",
       "shared_sharepointonline_1": "057daa16-c2b5-479e-8044-c22dd0b0b593"
     },
     "dependents": [],
-    "id": "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
-  },
-  "fef39038-98ad-4e3f-a987-4e67f095c34c": {
-    "connectionRef": {
-      "displayName": "Plumsail Documents",
-      "executionRestrictions": {
-        "apiId": "unknown",
-        "appVer": "3.23121.20",
-        "modifiedOn": "2023-12-19 02:14:44",
-        "policy": "{\"type\":\"unused\"}",
-        "version": 1
-      },
-      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/version-mismatches-special-train/1.0.1670.3520/plumsail/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_plumsail",
-      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_plumsail/connections/shared-plumsail-26f74d94-d7a0-45fa-93a7-cc1c2d72fee7",
-      "xrmConnectionReferenceLogicalName": "tvh123_sharedplumsail_67756"
-    },
-    "datasets": {},
-    "dataSources": [],
-    "dependencies": {},
-    "dependents": [
-      "f9150914-2e97-4366-b7d6-c65e3ccde4fc"
-    ],
-    "id": "fef39038-98ad-4e3f-a987-4e67f095c34c"
+    "id": "d1f79a77-fed6-4ce0-9470-1e05f8f88583"
   }
 }
