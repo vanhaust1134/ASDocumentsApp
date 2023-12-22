@@ -539,166 +539,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Items"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Items",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 12,
-                  "charOffset": 371,
-                  "snippet": {
-                    "text": "\"documentID\""
-                  }
-                }
-              },
-              "properties": {
-                "member": "Items",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Search"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Height",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 12,
-                  "charOffset": 358,
-                  "snippet": {
-                    "text": "\"documentID\""
-                  }
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Search"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 26,
-                  "charOffset": 24,
-                  "snippet": {
-                    "text": "'File name with extension'"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.Button1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "File name with extension"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 51,
-                  "snippet": {
-                    "text": "="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.Button1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Approve Screen'.ctn_as_Reject.btn_as_Submit.OnSelect"
                 }
               ],
@@ -939,126 +779,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 26,
-                  "charOffset": 47,
-                  "snippet": {
-                    "text": "'File name with extension'"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "File name with extension"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 74,
-                  "snippet": {
-                    "text": "="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2.Height",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 134,
-                  "charOffset": 5,
-                  "snippet": {
-                    "text": "CountRows(Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1))"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "CountRows"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_Header.ctn_rds_Tab.ctn_rs_Tab_1.btn_rs_Create_1.OnSelect"
                 }
               ],
@@ -1093,7 +813,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType-ExpectedType-ProvidedType",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1133,7 +853,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -1174,7 +894,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType-ExpectedType-ProvidedType",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1214,7 +934,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 6
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -1327,6 +1047,286 @@
           "message": {
             "arguments": [
               "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 26,
+                  "charOffset": 47,
+                  "snippet": {
+                    "text": "'File name with extension'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "File name with extension"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 74,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label12_4"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2.Height",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 134,
+                  "charOffset": 5,
+                  "snippet": {
+                    "text": "CountRows(Filter('ASDocument.HistoryApprove',documentID = locInfoRequest.documentID And requestTimeNum = ThisItem.requestTimeNum + 1))"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "CountRows"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 371,
+                  "snippet": {
+                    "text": "\"documentID\""
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Search"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Height",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 358,
+                  "snippet": {
+                    "text": "\"documentID\""
+                  }
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Search"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 26,
+                  "charOffset": 24,
+                  "snippet": {
+                    "text": "'File name with extension'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.Button1"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "File name with extension"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.Button1.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 51,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.Button1"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
             ],
             "id": "issue"
           },
@@ -1534,7 +1534,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
-          "ruleIndex": 3
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -1575,1776 +1575,6 @@
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
           "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.ctn_has_Search_1.txt_has_Search_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.ctn_has_Search_1.txt_has_Search_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.ctn_has_Search_1.txt_has_Search_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.cbo_hs_Company.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.cbo_hs_Company.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.cbo_hs_Company"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.FocusedBorderThickness"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.FocusedBorderThickness",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "FocusedBorderThickness",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.FocusedBorderThickness"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.FocusedBorderThickness",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "FocusedBorderThickness",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.FocusedBorderThickness"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.FocusedBorderThickness",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "FocusedBorderThickness",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Home User Screen",
-                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.txt_ds_DocuementLevelName.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.txt_ds_DocuementLevelName.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.txt_ds_DocuementLevelName"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType_3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType_3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.cbo_ds_ApprovalMSD.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.cbo_ds_ApprovalMSD.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_us_AddSignature_2.cbo_ds_ApprovalMSD"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.drp_ds_Levels.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.drp_ds_Levels.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_Filter.drp_ds_Levels"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_Filter.Icon1_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_Filter.Icon1_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Document Screen",
-                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
         },
         {
           "locations": [
@@ -3471,6 +1701,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.txt_rs_FileCodeInput.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.txt_rs_FileCodeInput.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Screen",
+                "type": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.txt_rs_FileCodeInput"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.ctn_rs_CompanyName.ctn_rs_CompanyNameInput.drp_rs_CompanyNameInput.AccessibleLabel"
                 }
               ],
@@ -3574,36 +1834,6 @@
                 "member": "AccessibleLabel",
                 "module": "Request Screen",
                 "type": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.ctn_rs_DocumentType.ctn_rs_DocumentTypeInput.drp_rs_DocumentType"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.txt_rs_FileCodeInput.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.txt_rs_FileCodeInput.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Screen",
-                "type": "'Request Screen'.ctn_rs_MainContent.ctn_rs_Form.ctn_rs_FormDetail2.ctn_rs_DocumentDetail.txt_rs_FileCodeInput"
               }
             }
           ],
@@ -5061,6 +3291,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_CompanyName_1.ctn_rds_CompanyNameInput_1.drp_rds_CompanyNameInput_1.AccessibleLabel"
                 }
               ],
@@ -5164,36 +3424,6 @@
                 "member": "AccessibleLabel",
                 "module": "Request Detail Screen",
                 "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.ctn_rds_DocumentType_1.ctn_rds_DocumentTypeInput_1.drp_rds_DocumentType_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_Detail.ctn_rds_FormDetail2_1.ctn_rds_DocumentDetail_1.txt_rds_FileCodeInput"
               }
             }
           ],
@@ -5451,66 +3681,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Request Detail Screen",
-                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label16.FocusedBorderThickness"
                 }
               ],
@@ -5554,6 +3724,66 @@
                 "member": "TabIndex",
                 "module": "Request Detail Screen",
                 "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Label16"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Request Detail Screen",
+                "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Container3.Container7.Image7"
               }
             }
           ],
@@ -5674,6 +3904,666 @@
                 "member": "TabIndex",
                 "module": "Request Detail Screen",
                 "type": "'Request Detail Screen'.ctn_rds_MainContent.ctn_rds_SignedHistory.ctn_rds_FormDetail2_4.Gallery11.Gallery5_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_Navigate.ctn_NavigationMenu.gal_NavigationMenu"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Container1.Icon2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Image8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_Statistical.Gallery9.Gallery10"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.ctn_has_Search_1.txt_has_Search_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.ctn_has_Search_1.txt_has_Search_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.ctn_has_Search_1.txt_has_Search_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.cbo_hs_Company.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.cbo_hs_Company.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Container6.cbo_hs_Company"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_9"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home User Screen",
+                "type": "'Home User Screen'.ctn_hs_MainContent.ctn_hs_List.Gallery1_1.Gallery6_2.Container10_3.Label9_8"
               }
             }
           ],
@@ -6171,66 +5061,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "User Screen",
-                "type": "'User Screen'.ctn_us_Filter.Image1_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "User Screen",
-                "type": "'User Screen'.ctn_us_Filter.Image1_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'User Screen'.ctn_us_Filter.drp_us_Employee_1.AccessibleLabel"
                 }
               ],
@@ -6285,6 +5115,66 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "User Screen",
+                "type": "'User Screen'.ctn_us_Filter.Image1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_Filter.Image1_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "User Screen",
+                "type": "'User Screen'.ctn_us_Filter.Image1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -6531,66 +5421,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "User Screen",
-                "type": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "User Screen",
-                "type": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.img_us_Edit.AccessibleLabel"
                 }
               ],
@@ -6634,6 +5464,66 @@
                 "member": "TabIndex",
                 "module": "User Screen",
                 "type": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.img_us_Edit"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "User Screen",
+                "type": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "User Screen",
+                "type": "'User Screen'.ctn_us_MainContent.ctn_us_List.ctn_us_DetailList.gal_us_List.ctn_us_ItemList.Image5"
               }
             }
           ],
@@ -7834,6 +6724,1116 @@
                 "member": "TabIndex",
                 "module": "Company Screen",
                 "type": "'Company Screen'.ctn_ds_MainContent_1.ctn_ds_List_2.ctn_ds_DetailList_2.gal_ds_DocumentLevel_1.gal_ds_DocumentType_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_Navigate_8.ctn_NavigationMenu_8.gal_NavigationMenu_8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_DeleteDocumentType.ico_ds_Cancel_5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.ico_ds_Cancel_8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.txt_ds_DocuementLevelName.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.txt_ds_DocuementLevelName.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.txt_ds_DocuementLevelName"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType_3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType_3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.txt_ds_DocumentType"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_UpdateDocument.gal_ds_ListUpdateDocument.ctn_ds_ListUpdateDocument.img_ds_DeleteDocumentTypeItem"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_us_AddSignature_2.ico_us_Cancel_15"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.cbo_ds_ApprovalMSD.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_us_AddSignature_2.cbo_ds_ApprovalMSD.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_us_AddSignature_2.cbo_ds_ApprovalMSD"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.drp_ds_Levels.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.drp_ds_Levels.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_Filter.drp_ds_Levels"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_Filter.Icon1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_Filter.Icon1_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_Filter.Icon1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.img_ds_Edit_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List.ctn_ds_DetailList.gal_ds_DocumentLevel.gal_ds_DocumentType"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Left"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.ctn_ds_ListContent_1.ico_ds_Right"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.Container2.img_ds_Edit_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Delete_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Document Screen",
+                "type": "'Document Screen'.ctn_ds_MainContent.ctn_ds_List_1.ctn_ds_DetailList_1.gal_ds_ApproverDocumentLevel.img_us_Edit_4"
               }
             }
           ],
@@ -9141,64 +9141,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Home User Screen'"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Home User Screen'",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "module": "Home User Screen",
-                "type": "'Home User Screen'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-ScreenHasManyControls",
-          "ruleIndex": 11
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Document Screen'"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Document Screen'",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "module": "Document Screen",
-                "type": "'Document Screen'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-ScreenHasManyControls",
-          "ruleIndex": 11
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Request Detail Screen'"
                 }
               ],
@@ -9318,6 +9260,35 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Home User Screen'"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home User Screen'",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "module": "Home User Screen",
+                "type": "'Home User Screen'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-ScreenHasManyControls",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'User Screen'.locDetailUser"
                 }
               ],
@@ -9418,6 +9389,35 @@
               "properties": {
                 "module": "Company Screen",
                 "type": "'Company Screen'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-ScreenHasManyControls",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Document Screen'"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Document Screen'",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "module": "Document Screen",
+                "type": "'Document Screen'"
               }
             }
           ],
@@ -9577,6 +9577,34 @@
               }
             },
             {
+              "id": "app-ErrBadType-ExpectedType-ProvidedType",
+              "messageStrings": {
+                "issue": {
+                  "text": "Invalid argument type ({1}). Expecting a {0} value instead."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrInvalidArgs-Func",
+              "messageStrings": {
+                "issue": {
+                  "text": "The function '{0}' has some invalid arguments."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
               "id": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
               "messageStrings": {
                 "issue": {
@@ -9610,34 +9638,6 @@
                   "Try moving your data to a different data source."
                 ],
                 "level": "Medium",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrBadType-ExpectedType-ProvidedType",
-              "messageStrings": {
-                "issue": {
-                  "text": "Invalid argument type ({1}). Expecting a {0} value instead."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrInvalidArgs-Func",
-              "messageStrings": {
-                "issue": {
-                  "text": "The function '{0}' has some invalid arguments."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "level": "High",
                 "primaryCategory": "formula",
                 "whyFix": ""
               }
@@ -9728,7 +9728,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Home User Screen\" is 418, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Request Detail Screen\" is 331, which exceeds the maximum threshold recommended (300)."
               }
             },
             {

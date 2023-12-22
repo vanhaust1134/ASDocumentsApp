@@ -1,7 +1,13 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(80,80,80,1)
     OnVisible: |-
-        =Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
+        =//Lấy user hiện tại
+            Set(
+                gblRecUser,
+                LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
+            );
+        
+        Refresh('ASDocument.DocumentRequest');Refresh('ASDocument.ProcessApproval');
         //Lấy danh sách phê duyệt
         ClearCollect(gblColApprovalByRequest,AddColumns(Filter('ASDocument.DocumentRequest',status = 1 And active = 1) As Temp,"approvalUserID",LookUp('ASDocument.ProcessApproval',sort = Temp.lastSignNum And approveProcess = Temp.currentApproveLevel And documentID = Temp.documentID).userID))
         

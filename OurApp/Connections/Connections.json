@@ -266,6 +266,13 @@
   "92533175-b583-49f7-862c-9e829e0968e5": {
     "connectionRef": {
       "displayName": "Plumsail Documents",
+      "executionRestrictions": {
+        "apiId": "unknown",
+        "appVer": "3.23122.17",
+        "modifiedOn": "2023-12-22 02:12:32",
+        "policy": "{\"type\":\"unused\"}",
+        "version": 1
+      },
       "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/version-mismatches-special-train/1.0.1670.3520/plumsail/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_plumsail",
       "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_plumsail/connections/shared-plumsail-26f74d94-d7a0-45fa-93a7-cc1c2d72fee7",
@@ -428,6 +435,15 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "057daa16-c2b5-479e-8044-c22dd0b0b593": {
+          "value": "shared_sharepointonline_1"
+        },
+        "0eb57bc9-f0aa-4596-a1bf-9585afadffa1": {
+          "value": "shared_office365"
+        },
+        "92533175-b583-49f7-862c-9e829e0968e5": {
+          "value": "shared_plumsail_1"
+        },
         "workflowEntityId": {
           "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
         },
@@ -436,6 +452,18 @@
         }
       },
       "parameterHintsV2": {
+        "shared_office365": {
+          "value": "0eb57bc9-f0aa-4596-a1bf-9585afadffa1"
+        },
+        "shared_plumsail_1": {
+          "value": "92533175-b583-49f7-862c-9e829e0968e5"
+        },
+        "shared_sharepointonline": {
+          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
+        },
+        "shared_sharepointonline_1": {
+          "value": "057daa16-c2b5-479e-8044-c22dd0b0b593"
+        },
         "workflowEntityId": {
           "value": "f9f29306-908e-ee11-8179-000d3aa0d035"
         },
