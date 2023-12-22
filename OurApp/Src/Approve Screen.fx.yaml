@@ -1,7 +1,17 @@
 "'Approve Screen' As screen":
     Fill: =RGBA(80,80,80,1)
     OnVisible: |-
-        =//Lấy user hiện tại
+        =//Lấy tất cả user và role về
+            //role: 1 người soạn thảo, 2 người xem xét, 3 MSD, 4 người phê duyệt, 5 admin
+            ClearCollect(
+                gblColAllUser,
+                AddColumns(
+                    ShowColumns(Filter('ASTakeLeave.Users', active = 1), "ID", "userID", "fullName", "shortName", "email", "phone", "jobTitle", "departmentID", "divisionID", "OData__x0033_65AccountInfo", "active","{Attachments}") As temp, 
+                    "roleID", 
+                    LookUp(Filter('ASDocument.Users_Roles', active = 1), userID = temp.userID).roleID
+                )
+            );
+        //Lấy user hiện tại
             Set(
                 gblRecUser,
                 LookUp(Filter(gblColAllUser, active = 1), email = User().Email)
